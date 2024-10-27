@@ -5,7 +5,7 @@ export default function LandingPage() {
   return (
     <div className="wrapper">
       <Navbar />
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,55 @@
+"use client";
+import { supabase } from "@/lib/supabaseClient";
 import styles from "./footer.module.css";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 export default function Footer() {
+  const [user, setUser] = useState();
+  const [subscribed,setSubscribed]=useState(false);
+  const [loading,setLoading]=useState(false);
+
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        console.log("event: ", event);
+        if ((event === "SIGNED_IN" || event === "INITIAL_SESSION") && session) {
+          const { user } = session;
+          setUser(user);
+        } else {
+          setUser(null);
+        }
+      }
+    );
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
+
+  const subscribeToNewsletter = async () => {
+    setLoading(true);
+    if (!user) {
+      alert("You need to login first!");
+      setLoading(false);
+      return;
+    }
+    const { data, error: insertError } = await supabase
+      .from("newsletter")
+      .insert([
+        { name: user.user_metadata.name, email: user.user_metadata.email },
+      ]);
+    if (insertError) {
+      if (insertError.message.includes("duplicate key")) {
+        alert("You are already subscribed to the newsletter!");
+        setLoading(false);
+      } else {
+        console.log("Error inserting record:", insertError);
+      }
+      return;
+    }
+    setLoading(false);
+    setSubscribed(true);
+  };
+
   return (
     <section className={styles.footer}>
       <div className={styles.socialsSection}>
@@ -48,7 +97,7 @@ export default function Footer() {
       <hr />
       <div className={styles.newsletterSection}>
         <h1>Subscribe to the newsletter</h1>
-        <button>Join The Community</button>
+        <button onClick={subscribeToNewsletter}>{subscribed?"Subscribed":loading?"Subscribing...":"Join The Community"}</button>
       </div>
     </section>
   );
