@@ -84,10 +84,12 @@
 }
 .expEvents ul a li:hover{
   transform: scale(1.01,1.01);
-  border-radius: 20px;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 .expEvents ul a li:active{
   transform: scale(1,1);
-  border-radius: 20px;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
   opacity: 0.5;
 }
