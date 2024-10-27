@@ -115,7 +115,7 @@ export default function HomeContent() {
           <ul>
             <li>
               <Link href="#">
-                <h4>Call for Paper</h4>
+                <h3>Call for Paper</h3>
                 <h3>Sat, 28 Sept</h3>
                 <h3>
                   9th Justice Murtaza Husain Memorial National Moot Court
@@ -127,7 +127,7 @@ export default function HomeContent() {
             <hr />
             <li>
               <Link href="#">
-                <h4>Bare Acts</h4>
+                <h3>Bare Acts</h3>
                 <h3>Sat, 28 Sept</h3>
                 <h3>
                   9th Justice Murtaza Husain Memorial National Moot Court
@@ -139,7 +139,7 @@ export default function HomeContent() {
             <hr />
             <li>
               <Link href="#">
-                <h4>Internships</h4>
+                <h3>Internships</h3>
                 <h3>Sat, 28 Sept</h3>
                 <h3>
                   9th Justice Murtaza Husain Memorial National Moot Court
