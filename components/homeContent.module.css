@@ -167,6 +167,7 @@
   color: black;
   transition: all 0.15s ease-in-out;
   font-style: italic;
+  position: relative;
 }
 .currEvents ul li a * {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -185,4 +186,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.currEvents ul li a h4{
+  position: absolute;
+  left: 8rem;
+  top: -1.65rem;
+  padding: 0.4rem;
+  background-color: #FFF8ED;
+  color: var(--secondary-color);
+  font-weight: bold;
+  border-radius: 20px;
 }

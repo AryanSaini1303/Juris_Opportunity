@@ -115,27 +115,36 @@ export default function HomeContent() {
           <ul>
             <li>
               <Link href="#">
+                <h4>Call for Paper</h4>
                 <h3>Sat, 28 Sept</h3>
                 <h3>
-                  9th Justice Murtaza Husain Memorial National Moot Court Competition, just some random text to check ellipsis of this text area
+                  9th Justice Murtaza Husain Memorial National Moot Court
+                  Competition, just some random text to check ellipsis of this
+                  text area
                 </h3>
               </Link>
             </li>
             <hr />
             <li>
               <Link href="#">
+                <h4>Bare Acts</h4>
                 <h3>Sat, 28 Sept</h3>
                 <h3>
-                  9th Justice Murtaza Husain Memorial National Moot Court Competition, just some random text to check ellipsis of this text area
+                  9th Justice Murtaza Husain Memorial National Moot Court
+                  Competition, just some random text to check ellipsis of this
+                  text area
                 </h3>
               </Link>
             </li>
             <hr />
             <li>
               <Link href="#">
+                <h4>Internships</h4>
                 <h3>Sat, 28 Sept</h3>
                 <h3>
-                  9th Justice Murtaza Husain Memorial National Moot Court Competition, just some random text to check ellipsis of this text area
+                  9th Justice Murtaza Husain Memorial National Moot Court
+                  Competition, just some random text to check ellipsis of this
+                  text area
                 </h3>
               </Link>
             </li>
