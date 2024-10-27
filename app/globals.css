@@ -1,11 +1,17 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-color: #fffdd3;
+  --secondary-color: #4C0A02;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+} */
+body{
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-color);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

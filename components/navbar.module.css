@@ -1,0 +1,113 @@
+.navbar{
+    display: grid;
+    grid-template-columns: 2fr 5fr 1fr 1fr;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 0;
+    gap: 1rem;
+    box-shadow: 0 0.3rem 0.8rem black;
+}
+.logoSection{
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    margin: auto;
+}
+.logoSection img{
+    border-radius: 50%;
+    box-shadow: 0 0 0.5rem white;
+}
+.logoSection h3{
+    margin: 0;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+.logoSection h6{
+    margin: 0;
+    font-weight: lighter;
+}
+.linkSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.linkSection ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0;
+}
+.linkSection ul *{
+    text-decoration: none;
+    color: white;
+    font-weight: lighter;
+    font-size: 1.2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.linkSection ul a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0;
+}
+.linkSection ul a li{
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+    padding:0.4rem 0.5rem;
+}
+.linkSection ul a li:hover{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateY(-0.2rem);
+}
+.linkSection ul a li:active{
+    opacity: 0.5;
+    box-shadow: 0.2rem 0.2rem 0.5rem black;
+}
+.searchSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchSection form{
+    position: relative;
+}
+.searchSection svg{
+    position: absolute;
+    top: 47%;
+    left: 10%;
+    transform: translate(-50%,-50%);
+}
+.searchSection form input{
+    width: 7vw;
+    padding: 0.5rem 1.8rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+.loginSection{
+    margin: auto;
+}
+.loginSection a{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    color: white;
+    transition: all 0.15s ease-in-out;
+}
+.loginSection *{
+    font-weight: lighter;
+}
+.loginSection a:hover{
+    filter: drop-shadow(0 0 0.1rem var(--primary-color));
+}
+.loginSection a:active{
+    filter: drop-shadow(0 0 0.1rem var(--primary-color));
+    opacity: 0.5;
+}
