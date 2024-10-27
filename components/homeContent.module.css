@@ -1,6 +1,9 @@
 .homeContent {
   padding: 1rem;
   min-height: 62.5vh;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 10rem;
 }
 .leftContent button {
   border-radius: 30px;
@@ -37,18 +40,17 @@
   margin-top: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.1rem;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-weight: lighter;
 }
-.timer h2{
+.timer h2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 500;
   margin: 0.5rem;
 }
-.expEvents{
+.expEvents {
   width: 15vw;
   margin-bottom: 3rem;
 }
-.expEvents ul{
+.expEvents ul {
   overflow: hidden;
   border-radius: 5px;
   list-style-type: none;
@@ -56,16 +58,16 @@
   margin: 0;
   color: white;
 }
-.expEvents ul a li .venueDetails{
-  display:flex;
+.expEvents ul a li .venueDetails {
+  display: flex;
 }
-.expEvents ul a li *{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.expEvents ul a li * {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: lighter;
   text-align: center;
   margin: 0.3rem;
 }
-.expEvents ul a li{
+.expEvents ul a li {
   transition: all 0.2s ease-in-out;
   background-color: #4c0902;
   backdrop-filter: blur(10px);
@@ -75,21 +77,112 @@
   align-items: center;
   padding: 1rem;
 }
-.expEvents ul a{
+.expEvents ul a {
   text-decoration: none;
   color: white;
 }
-.expEvents ul a li h3{
+.expEvents ul a li h3 {
   font-weight: bolder;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.expEvents ul a li:hover{
-  transform: scale(1.01,1.01);
+.expEvents ul a li:hover {
+  transform: scale(1.01, 1.01);
   border-top-left-radius: 50px;
   border-bottom-right-radius: 50px;
 }
-.expEvents ul a li:active{
-  transform: scale(1,1);
+.expEvents ul a li:active {
+  transform: scale(1, 1);
   border-top-left-radius: 50px;
   border-bottom-right-radius: 50px;
   opacity: 0.5;
+}
+.rightContent header ul li img {
+  height: 3.3rem;
+  width: 3.3rem;
+  filter: invert(100%);
+}
+.rightContent header ul {
+  display: grid;
+  list-style-type: none;
+  grid-template-columns: repeat(8, 1fr);
+  padding: 0;
+  gap: 1rem;
+}
+.rightContent {
+  margin-right: 10rem;
+}
+.rightContent header ul li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: solid var(--primary-color) 2px;
+  transition: all 0.15s ease-in-out;
+  text-decoration: none;
+}
+.rightContent header ul li h4 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 500;
+  margin: 0.2rem;
+  color: white;
+}
+.rightContent header ul li a:hover {
+  cursor: pointer;
+  box-shadow: 0.4rem 0.4rem 0.3rem black;
+  border: solid var(--secondary-color) 2px;
+}
+.rightContent header ul li a:active {
+  cursor: pointer;
+  transform: scale(0.95, 0.95);
+  box-shadow: 0.4rem 0.4rem 0.3rem black;
+  border: solid var(--secondary-color) 2px;
+  opacity: 0.5;
+}
+.rightContent hr {
+  box-shadow: 0 0.15rem 0.1rem black;
+}
+.currEvents hr {
+  box-shadow: 0 0.1rem 0.05rem white;
+}
+.currEvents {
+  background-color: #4c09026b;
+  margin: 3rem 0;
+  padding: 1rem 2rem;
+}
+.currEvents ul li {
+  list-style-type: none;
+}
+.currEvents ul {
+  padding: 0;
+}
+.currEvents ul li a {
+  text-decoration: none;
+  color: black;
+  transition: all 0.15s ease-in-out;
+  font-style: italic;
+}
+.currEvents ul li a * {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: lighter;
+}
+.currEvents ul li a:hover {
+  color: white;
+  filter: drop-shadow(0 0 0.1rem black);
+}
+.currEvents ul li a:active {
+  color: rgba(0, 0, 0, 0.5);
+  filter: none;
+}
+.currEvents ul li a h3:nth-child(2) {
+  width: 57vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
