@@ -6,6 +6,7 @@
     padding: 0.5rem 0;
     gap: 1rem;
     box-shadow: 0 0.3rem 0.8rem black;
+    user-select: none;
 }
 .logoSection{
     display: flex;
@@ -89,13 +90,13 @@
 .loginSection{
     margin: auto;
 }
-.loginSection a{
+.loginSection div{
     width: fit-content;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.5rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
     color: white;
@@ -104,10 +105,17 @@
 .loginSection *{
     font-weight: lighter;
 }
-.loginSection a:hover{
+.loginSection div:hover{
     filter: drop-shadow(0 0 0.1rem var(--primary-color));
+    cursor: pointer;
 }
-.loginSection a:active{
+.loginSection div:active{
     filter: drop-shadow(0 0 0.1rem var(--primary-color));
     opacity: 0.5;
+}
+.loginSection h3{
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
