@@ -158,7 +158,9 @@
 }
 .currEvents ul li {
   list-style-type: none;
-  transition: all 0.15s ease-in-out;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.7;
+  font-weight: bolder;
 }
 .currEvents ul {
   padding: 0;
@@ -175,11 +177,11 @@
 }
 .currEvents ul li:hover {
   cursor: pointer;
-  transform: scale(1.01,1.01);
-  font-weight: bolder;
+  transform: scale(1.01);
+  opacity: 1;
 }
 .currEvents ul li:active {
-  transform: scale(1,1);
+  transform: scale(1);
   opacity: 0.5;
 }
 .currEvents ul li a h3:nth-child(3) {
