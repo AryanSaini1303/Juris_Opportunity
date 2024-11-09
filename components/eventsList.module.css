@@ -1,0 +1,94 @@
+.currEvents hr {
+  box-shadow: 0 0.1rem 0.05rem white;
+}
+.currEvents {
+  background-color: #4c09026b;
+  margin: 1rem 0;
+  padding: 1rem 2rem;
+  animation: eventsReveal 0.5s ease-in-out;
+  border-radius: 5px;
+}
+@keyframes eventsReveal {
+  0%{
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.currEvents ul li {
+  list-style-type: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.7;
+}
+.currEvents ul li a h3{
+    font-weight: 550;
+}
+.currEvents ul {
+  padding: 0;
+}
+.currEvents ul li a {
+  text-decoration: none;
+  color: black;
+  font-style: italic;
+  position: relative;
+}
+.currEvents ul li a * {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: lighter;
+}
+.currEvents ul li:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  opacity: 1;
+  filter: contrast(150%);
+}
+.currEvents ul li:active {
+  transform: scale(1);
+  opacity: 0.5;
+}
+.currEvents ul li a .specifics h3 {
+  margin: 0.6rem;
+  width: 57vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.currEvents ul li a img {
+  height: 4rem;
+  width: 4rem;
+  margin: auto;
+  border-radius: 50%;
+  filter: contrast(130%) brightness(130%);
+}
+.currEvents ul li a {
+  display: flex;
+}
+.specifics {
+  display: flex;
+  flex-direction: column;
+}
+.header h1{
+  font-size: 1.6rem;
+  width: fit-content;
+  margin: 0.8rem 0;
+  padding: 0 0.5rem;
+  border-radius: 10px;
+  color: var(--secondary-color);
+  border: solid var(--secondary-color) 2px;
+  box-shadow: 0 0.25rem 0.2rem var(--secondary-color);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  animation: reveal 0.5s ease-in-out;
+}
+@keyframes reveal {
+  0%{
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

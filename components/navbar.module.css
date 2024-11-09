@@ -8,6 +8,13 @@
     box-shadow: 0 0.3rem 0.8rem black;
     user-select: none;
 }
+.navbar>a{
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .logoSection{
     display: flex;
     gap: 0.8rem;

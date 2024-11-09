@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const [user, setUser] = useState();
   const [hover, setHover] = useState(false);
-
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -56,13 +55,15 @@ export default function Navbar() {
   }
   return (
     <section className={styles.navbar}>
-      <div className={styles.logoSection}>
-        <Image src={"/logo.jpg"} height={60} width={60} alt="logo" />
-        <div className={styles.logoInfo}>
-          <h3>JURIS OPPORTUNITIES</h3>
-          <h6>Where Legal Aspirations Meet Opportunities</h6>
+      <Link href={"/"}>
+        <div className={styles.logoSection}>
+          <Image src={"/logo.jpg"} height={60} width={60} alt="logo" />
+          <div className={styles.logoInfo}>
+            <h3>JURIS OPPORTUNITIES</h3>
+            <h6>Where Legal Aspirations Meet Opportunities</h6>
+          </div>
         </div>
-      </div>
+      </Link>
       <div className={styles.linkSection}>
         <ul>
           <Link href={"#"}>
@@ -82,9 +83,6 @@ export default function Navbar() {
           </Link>
           <Link href={"#"}>
             <li>Notes</li>
-          </Link>
-          <Link href={"#"}>
-            <li>More</li>
           </Link>
         </ul>
       </div>
@@ -108,7 +106,9 @@ export default function Navbar() {
       >
         <div onClick={!user ? signIn : signOut}>
           {user && hover ? (
-            <h3 style={{margin:" 1.2rem 2rem", fontWeight:"bolder"}}>Log Out</h3>
+            <h3 style={{ margin: " 1.2rem 2rem", fontWeight: "bolder" }}>
+              Log Out
+            </h3>
           ) : (
             <>
               {!user ? (

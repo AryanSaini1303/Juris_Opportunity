@@ -8,7 +8,7 @@ export default function LandingPage() {
     <div className={styles.wrapper}>
       <Navbar />
       <main className={styles.content}>
-        <HomeContent />
+        <HomeContent/>
       </main>
       <Footer />
     </div>
