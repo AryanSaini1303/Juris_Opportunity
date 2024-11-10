@@ -37,7 +37,7 @@ export default async function EventsList({ category }) {
         <ul>
           {data?data.map((event, index) => (
             <>
-              <li>
+              <li key={event.id}>
                 <Link href={`/event/${event.category}_${event.id}`}>
                   <img src={event.poster} alt="" />
                   <div className={styles.specifics}>

@@ -52,7 +52,7 @@ export default async function EventPage({ params }) {
               <ul>
                 {data &&
                   data[0].responsibilities.map((element, index) => (
-                    <li>{element}</li>
+                    <li key={element.id}>{element}</li>
                   ))}
               </ul>
             </div>
@@ -61,7 +61,7 @@ export default async function EventPage({ params }) {
               <ul>
                 {data &&
                   data[0].requirements.map((element, index) => (
-                    <li>{element}</li>
+                    <li key={element.id}>{element}</li>
                   ))}
               </ul>
             </div>
