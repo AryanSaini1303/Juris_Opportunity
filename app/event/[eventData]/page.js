@@ -12,10 +12,10 @@ export default async function EventPage({ params }) {
     .select("*")
     .eq("id", id)
     .order("start_date", { ascending: true });
-  if (error) {
-    console.log(error);
-  }
-  console.log(data);
+  // if (error) {
+  //   console.log(error);
+  // }
+  // console.log(data);
 
   return (
     <div className="wrapper">

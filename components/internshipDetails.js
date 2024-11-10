@@ -58,7 +58,7 @@ export default function InternshipDetailsPage({ data }) {
         <div className={styles.item}>
           <h3>Contact</h3>
           {data[0].contact.map((element, index) => (
-            <p>
+            <p key={element.id}>
               {index == 0 ? "Phone: " : "Email: "} {element}
             </p>
           ))}

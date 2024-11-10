@@ -7,7 +7,6 @@ export default async function EventsList({ category }) {
       .from(category&&category.toLowerCase())
       .select("heading, category, start_date, poster, id")
       .order("start_date", {ascending:true});
-    console.log(category&&category.toLowerCase());
     // if (error) {
     //   console.log(error);
     // }
