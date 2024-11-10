@@ -1,6 +1,8 @@
 :root {
   --primary-color: #fffeef;
-  --secondary-color: #4C0A02;
+  --secondary-color: #4c0a02;
+  --text-color: #333333;
+  --accent-color: #ff6f61;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -9,11 +11,11 @@
     --foreground: #ededed;
   }
 } */
-body{
+body {
   margin: 0;
   padding: 0;
   background-color: var(--primary-color);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   user-select: none;
 }
 
@@ -29,4 +31,13 @@ body{
 
 *::-webkit-scrollbar-track {
   background: white; /* Remove scrollbar background */
+}
+
+.wrapper {
+  min-height: 100vh; /* setting wrapper to cover the whole screen at minimum*/
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1; /* Makes this section take all remaining space*/
 }

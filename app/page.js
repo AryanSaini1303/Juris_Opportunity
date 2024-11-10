@@ -5,9 +5,9 @@ import Navbar from "@/components/navbar";
 
 export default function LandingPage() {
   return (
-    <div className={styles.wrapper}>
+    <div className="wrapper">
       <Navbar />
-      <main className={styles.content}>
+      <main className="content">
         <HomeContent/>
       </main>
       <Footer />

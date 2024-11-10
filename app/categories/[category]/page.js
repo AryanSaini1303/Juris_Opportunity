@@ -6,9 +6,9 @@ import Footer from "@/components/footer";
 export default async function CategoryPage({ params }) {
   const { category } = await params;
   return (
-    <div className={styles.wrapper}>
+    <div className="wrapper">
       <Navbar />
-      <main className={styles.content}>
+      <main className="content">
         <HomeContent category={category}/>
       </main>
       <Footer />

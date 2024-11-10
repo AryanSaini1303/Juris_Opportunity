@@ -4,7 +4,6 @@ import styles from "./categories.module.css";
 import Link from "next/link";
 export default function Categories() {
   const url=usePathname();
-  console.log(url);
   return (
     <div className={styles.rightContent}>
       <header>
