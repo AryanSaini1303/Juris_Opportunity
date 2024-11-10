@@ -87,26 +87,34 @@ export default function MootDetailsPage({ data }) {
         </div>
         <div className={styles.item}>
           <h3>Registration Link</h3>
-          <a href={data[0].registration_link} target="_blank">{data[0].registration_link}</a>
+          <a href={data[0].registration_link} target="_blank">
+            {data[0].registration_link}
+          </a>
         </div>
         <div className={styles.item}>
           <h3>Click to access website</h3>
-          <a href={data[0].website_url} target="_blank">{data[0].website_url}</a>
+          <a href={data[0].website_url} target="_blank">
+            {data[0].website_url}
+          </a>
         </div>
         <div className={styles.item}>
           <h3>Click here for the moot problem</h3>
-          <a href={data[0].moot_problem} target="_blank">{data[0].moot_problem}</a>
+          <a href={data[0].moot_problem} target="_blank">
+            {data[0].moot_problem}
+          </a>
         </div>
       </section>
       <hr />
-      {data[0].location.toLowerCase() != "online" && (
+      {!(
+        data[0].location.toLowerCase() == "online" || data[0].location == "-"
+      ) && (
         <div className={styles.map}>
           <iframe
             width="100%"
             height="100%"
             loading="lazy"
             allowFullScreen
-            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API}&q=${data[0].location}`}
+            src={`https://www.google.com/maps/embed/v1/pllace?key=${process.env.GOOGLE_MAPS_API}&q=${data[0].location}`}
           ></iframe>
         </div>
       )}

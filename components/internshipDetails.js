@@ -68,7 +68,9 @@ export default function InternshipDetailsPage({ data }) {
         </div>
       </section>
       <hr />
-      {data[0].location.toLowerCase() != "online" && (
+      {!(
+        data[0].location.toLowerCase() == "online" || data[0].location == "-"
+      ) && (
         <div className={styles.map}>
           <iframe
             width="100%"

@@ -1,5 +1,5 @@
-import styles from "./jobDetails.module.css"
-export default function JobDetailsPage({data}) {
+import styles from "./jobDetails.module.css";
+export default function JobDetailsPage({ data }) {
   return (
     <div className={styles.details}>
       <header className={styles.header}>
@@ -53,15 +53,19 @@ export default function JobDetailsPage({data}) {
         </div>
       </section>
       <hr />
-      <div className={styles.map}>
-        <iframe
-          width="100%"
-          height="100%"
-          loading="lazy"
-          allowFullScreen
-          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API}&q=${data[0].location}`}
-        ></iframe>
-      </div>
+      {!(
+        data[0].location.toLowerCase() == "online" || data[0].location == "-"
+      ) && (
+        <div className={styles.map}>
+          <iframe
+            width="100%"
+            height="100%"
+            loading="lazy"
+            allowFullScreen
+            src={`https://www.google.com/maps/embed/v1/pllace?key=${process.env.GOOGLE_MAPS_API}&q=${data[0].location}`}
+          ></iframe>
+        </div>
+      )}
     </div>
   );
 }
