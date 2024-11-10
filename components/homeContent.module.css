@@ -3,8 +3,9 @@
   min-height: 62.5vh;
   display: grid;
   grid-template-columns: 1fr 5fr;
-  gap: 10rem;
+  gap: 12rem;
 }
 .rightContent{
   margin-right: 10rem;
+  max-width: 60vw;
 }
