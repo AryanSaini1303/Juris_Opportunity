@@ -15,6 +15,7 @@ export default function InternshipDetailsPage({ data }) {
             {data[0].deadline}
           </p>
           <p className={styles.location}>Location: {data[0].location}</p>
+          <p className={styles.location}>Mode: {data[0].mode}</p>
         </div>
       </header>
       <hr />

@@ -14,6 +14,7 @@ export default function JobDetailsPage({data}) {
             Start: {data[0].start_date} | End: {data[0].end_date}
           </p>
           <p className={styles.location}>Location: {data[0].location}</p>
+          <p className={styles.location}>Mode: {data[0].mode}</p>
         </div>
       </header>
       <hr />

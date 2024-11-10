@@ -60,7 +60,7 @@
   height: 4rem;
   width: 4rem;
   margin: auto;
-  border-radius: 50%;
+  border-radius: 5px;
   filter: contrast(130%);
 }
 .currEvents ul li a {
