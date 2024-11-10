@@ -1,5 +1,5 @@
 import styles from "./jobDetails.module.css";
-export default function InternshipDetailsPage({ data }) {
+export default function MootDetailsPage({ data }) {
   return (
     <div className={styles.details}>
       <header className={styles.header}>
@@ -28,20 +28,24 @@ export default function InternshipDetailsPage({ data }) {
       <section className={styles.detailsSection}>
         <div className={styles.item}>
           <h3>Eligibility</h3>
-          <p>{data[0].eligibility}</p>
+          <ul>
+            {data[0].eligibility.map((element, index) => {
+              <li key={element.id}>{element}</li>;
+            })}
+          </ul>
         </div>
         <div className={styles.item}>
-          <h3>How to Apply?</h3>
-          <p>{data[0].apply}</p>
-        </div>
-        <div className={styles.item}>
-          <h3>Roles and Responsibilities</h3>
+          <h3>Registration Details</h3>
           <ul>
             {data &&
-              data[0].roles_responsibilities.map((element, index) => (
-                <li key={element.id}>{element}</li>
-              ))}
+              data[0].registration_details.map((element, index) => {
+                <li key={element.id}>{element}</li>;
+              })}
           </ul>
+        </div>
+        <div className={styles.item}>
+          <h3>Team Size</h3>
+          <p>{data[0].team_size}</p>
         </div>
         <div className={styles.item}>
           <h3>Eligibility</h3>
@@ -53,18 +57,45 @@ export default function InternshipDetailsPage({ data }) {
           </ul>
         </div>
         <div className={styles.item}>
-          <h3>Stipend</h3>
-          <p>{data[0].stipend}</p>
+          <h3>Prize Pool</h3>
+          <ul>
+            {data &&
+              data[0].prize_pool.map((element, index) => (
+                <li key={element.id}>{element}</li>
+              ))}
+          </ul>
+        </div>
+        <div className={styles.item}>
+          <h3>Schedule</h3>
+          <ul>
+            {data[0].schedule.map((element, index) => (
+              <li key={element.id}>{element}</li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles.item}>
+          <h3>Payment</h3>
+          <p>{data[0].payment}</p>
         </div>
         <div className={styles.item}>
           <h3>Contact</h3>
           <ul>
             {data[0].contact.map((element, index) => (
-              <li key={element.id}>
-                {index == 0 ? "Phone: " : "Email: "} {element}
-              </li>
+              <li key={element.id}>{element}</li>
             ))}
           </ul>
+        </div>
+        <div className={styles.item}>
+          <h3>Registration Link</h3>
+          <a href={data[0].registration_link} target="_blank">{data[0].registration_link}</a>
+        </div>
+        <div className={styles.item}>
+          <h3>Click to access website</h3>
+          <a href={data[0].website_url} target="_blank">{data[0].website_url}</a>
+        </div>
+        <div className={styles.item}>
+          <h3>Click here for the moot problem</h3>
+          <a href={data[0].moot_problem} target="_blank">{data[0].moot_problem}</a>
         </div>
       </section>
       <hr />
@@ -75,7 +106,7 @@ export default function InternshipDetailsPage({ data }) {
             height="100%"
             loading="lazy"
             allowFullScreen
-            src={`https://www.google.com/maps/embed/v1/pllace?key=${process.env.GOOGLE_MAPS_API}&q=${data[0].location}`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API}&q=${data[0].location}`}
           ></iframe>
         </div>
       )}

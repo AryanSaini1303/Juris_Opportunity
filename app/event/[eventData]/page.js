@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import JobDetailsPage from "@/components/jobDetails";
 import Navbar from "@/components/navbar";
 import { supabase } from "@/lib/supabaseClient";
+import MootDetailsPage from "@/components/mootDetails";
 
 export default async function EventPage({ params }) {
   const { eventData } = await params;
@@ -23,6 +24,7 @@ export default async function EventPage({ params }) {
       <main className="content">
         {category.toLowerCase()=="jobs"&&<JobDetailsPage data={data}/>}
         {category.toLowerCase()=="internships"&&<InternshipDetailsPage data={data}/>}
+        {category.toLowerCase()=="moots"&&<MootDetailsPage data={data}/>}
       </main>
       <Footer />
     </div>

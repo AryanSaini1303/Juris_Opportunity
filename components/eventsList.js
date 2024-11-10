@@ -7,10 +7,10 @@ export default async function EventsList({ category }) {
       .from(category&&category.toLowerCase())
       .select("heading, category, start_date, poster, id")
       .order("start_date", {ascending:true});
-    // if (error) {
-    //   console.log(error);
-    // }
-  // console.log(data);
+    if (error) {
+      console.log(error);
+    }
+  console.log(data);
   return (
     <>
       <header className={styles.header}>
