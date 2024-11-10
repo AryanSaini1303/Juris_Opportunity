@@ -73,3 +73,11 @@
   background-color: black;
   box-shadow: 0 0 0.1rem black;
 }
+.map{
+  width: 80%;
+  height: 30vh;
+  margin: 1rem auto;
+  border-radius: 5px;
+  overflow: hidden;
+  border: solid black 3px;
+}

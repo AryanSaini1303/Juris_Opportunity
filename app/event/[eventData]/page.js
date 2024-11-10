@@ -71,6 +71,15 @@ export default async function EventPage({ params }) {
             </div>
           </section>
           <hr />
+          <div className={styles.map}>
+            <iframe
+              width="100%"
+              height="100%"
+              loading="lazy"
+              allowFullScreen
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCW1m8oOM_xs3PR3gimOXRqrWSkUUgW3Q4&q=${data[0].location}`}
+            ></iframe>
+          </div>
         </div>
       </main>
       <Footer />
