@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import InternshipDetailsPage from "@/components/internshipDetails";
 import Footer from "@/components/footer";
 import JobDetailsPage from "@/components/jobDetails";
 import Navbar from "@/components/navbar";
@@ -21,7 +21,8 @@ export default async function EventPage({ params }) {
     <div className="wrapper">
       <Navbar />
       <main className="content">
-        <JobDetailsPage data={data}/>
+        {category.toLowerCase()=="jobs"&&<JobDetailsPage data={data}/>}
+        {category.toLowerCase()=="internships"&&<InternshipDetailsPage data={data}/>}
       </main>
       <Footer />
     </div>

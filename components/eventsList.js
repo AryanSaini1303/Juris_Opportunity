@@ -4,13 +4,13 @@ import Link from "next/link";
 
 export default async function EventsList({ category }) {
     const { data, error } = await supabase
-      .from(category?category.toLowerCase():"jobs")
+      .from(category&&category.toLowerCase())
       .select("heading, category, start_date, poster, id")
       .order("start_date", {ascending:true});
-
-    if (error) {
-      console.log(error);
-    }
+    console.log(category&&category.toLowerCase());
+    // if (error) {
+    //   console.log(error);
+    // }
   // console.log(data);
   return (
     <>
