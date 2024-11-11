@@ -29,8 +29,18 @@ export default function CompetitionDetailsPage({ data }) {
         <div className={styles.item}>
           <h3>Eligibility</h3>
           <ul>
-            {data[0].eligibility.map((element, index)=>{
-                <li>{element}</li>
+            {data[0].eligibility.map((element, index) => {
+              return Array.isArray(element) ? (
+                <li key={index} style={{listStyleType:"none"}}>
+                  <ul>
+                    {element.map((element1, index1) => (
+                      <li key={index1}>{element1}</li>
+                    ))}
+                  </ul>
+                </li>
+              ) : (
+                <li key={index}>{element}</li>
+              );
             })}
           </ul>
         </div>
