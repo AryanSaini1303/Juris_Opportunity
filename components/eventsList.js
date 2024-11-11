@@ -3,14 +3,74 @@ import styles from "./eventsList.module.css";
 import Link from "next/link";
 
 export default async function EventsList({ category }) {
-    const { data, error } = await supabase
-      .from(category&&category.toLowerCase())
-      .select("heading, category, start_date, poster, id")
-      .order("start_date", {ascending:true});
-  //   if (error) {
-  //     console.log(error);
-  //   }
-  // console.log(data);
+  const { data, error } = await supabase
+    .from(category && category.toLowerCase())
+    .select("heading, category, start_date, poster, id")
+    .order("start_date", { ascending: true });
+
+  let categoryData;
+  let filteredCategoryData;
+  if (!category) {
+    // Fetch data from all tables concurrently using Promise.all
+    const [jobsData, internshipsData, competitionsData, mootsData] =
+      await Promise.all([
+        supabase
+          .from("jobs")
+          .select("heading, category, start_date, poster, id, created_at")
+          .order("start_date", { ascending: true }),
+        supabase
+          .from("internships")
+          .select("heading, category, start_date, poster, id, created_at")
+          .order("start_date", { ascending: true }),
+        supabase
+          .from("competitions")
+          .select("heading, category, start_date, poster, id, created_at")
+          .order("start_date", { ascending: true }),
+        supabase
+          .from("moots")
+          .select("heading, category, start_date, poster, id, created_at")
+          .order("start_date", { ascending: true }),
+      ]);
+
+    // Check for errors in any of the queries
+    if (
+      jobsData.error ||
+      internshipsData.error ||
+      competitionsData.error ||
+      mootsData.error
+    ) {
+      console.error(
+        "Error fetching data:",
+        jobsData.error ||
+          internshipsData.error ||
+          competitionsData.error ||
+          mootsData.error
+      );
+      return;
+    }
+    // Concatenate the data from all tables into a single object
+    categoryData = {
+      jobs: jobsData.data,
+      internships: internshipsData.data,
+      competitions: competitionsData.data,
+      moots: mootsData.data,
+    };
+    // Step 1: Get the current date and the date one week ago
+    const currentDate = new Date();
+    const oneWeekAgo = new Date(currentDate.setDate(currentDate.getDate() - 7));
+    // Step 2: Filter events within each category where created_at is within the last week
+    filteredCategoryData = Object.keys(categoryData).reduce((acc, category) => {
+      const filteredEvents = categoryData[category].filter((event) => {
+        const eventDate = new Date(event.created_at);
+        return eventDate >= oneWeekAgo; // Filter events created less than a week ago
+      });
+      if (filteredEvents.length > 0) {
+        acc[category] = filteredEvents; // Only include categories with valid events
+      }
+      return acc;
+    }, {});
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -32,24 +92,59 @@ export default async function EventsList({ category }) {
             : category}
         </h1>
       </header>
+
       <div className={styles.currEvents}>
         <ul>
-          {data?data.map((event, index) => (
-            <>
+          {/* If data is available, render events */}
+          {data ? (
+            data.map((event) => (
               <li key={event.id}>
                 <Link href={`/event/${event.category}_${event.id}`}>
                   <img src={event.poster} alt="" />
                   <div className={styles.specifics}>
                     <h3>
-                      {event.start_date} <span> &emsp; &emsp; {event.category}</span>
+                      {event.start_date}{" "}
+                      <span>&emsp; &emsp; {event.category}</span>
                     </h3>
                     <h3>{event.heading}</h3>
                   </div>
                 </Link>
+                <hr />
               </li>
-              <hr />
-            </>
-          )):<h1 className={styles.noEventHeader}>SCHEDULED EVENTS WILL APPEAR HERE!</h1>}
+            ))
+          ) : categoryData ? (
+            // Loop through categoryData and render each category's events
+            /*If you want to loop through the keys or values of an object, you need to use other methods like Object.keys(), Object.values(), or Object.entries(). Here's how you can do it:
+            Using Object.keys(): This method returns an array of the keys of the object, which you can then iterate over using map(). */
+            Object.keys(filteredCategoryData).map((categoryKey) => {
+              const events = filteredCategoryData[categoryKey];
+              return events && events.length > 0 ? (
+                <div key={categoryKey}>
+                  {/* <h2>{categoryKey}</h2> */}
+                  {events.map((event) => (
+                    <li key={event.id}>
+                      <Link href={`/event/${event.category}_${event.id}`}>
+                        <img src={event.poster} alt="" />
+                        <div className={styles.specifics}>
+                          <h3>
+                            {event.start_date}{" "}
+                            <span>&emsp; &emsp; {event.category}</span>
+                          </h3>
+                          <h3>{event.heading}</h3>
+                        </div>
+                      </Link>
+                      <hr />
+                    </li>
+                  ))}
+                </div>
+              ) : null;
+            })
+          ) : (
+            // Fallback message when neither data nor filteredCategoryData is available
+            <h1 className={styles.noEventHeader}>
+              SCHEDULED EVENTS WILL APPEAR HERE!
+            </h1>
+          )}
         </ul>
       </div>
     </>
