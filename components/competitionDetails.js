@@ -1,5 +1,5 @@
 import styles from "./jobDetails.module.css";
-export default function InternshipDetailsPage({ data }) {
+export default function CompetitionDetailsPage({ data }) {
   return (
     <div className={styles.details}>
       <header className={styles.header}>
@@ -28,43 +28,27 @@ export default function InternshipDetailsPage({ data }) {
       <section className={styles.detailsSection}>
         <div className={styles.item}>
           <h3>Eligibility</h3>
-          <p>{data[0].eligibility}</p>
+          <ul>
+            {data[0].eligibility.map((element, index)=>{
+                <li>{element}</li>
+            })}
+          </ul>
         </div>
         <div className={styles.item}>
           <h3>How to Apply?</h3>
           <p>{data[0].apply}</p>
         </div>
         <div className={styles.item}>
-          <h3>Roles and Responsibilities</h3>
-          <ul>
-            {data &&
-              data[0].roles_responsibilities.map((element, index) => (
-                <li key={element.id}>{element}</li>
-              ))}
-          </ul>
-        </div>
-        <div className={styles.item}>
-          <h3>Eligibility</h3>
-          <ul>
-            {data &&
-              data[0].eligibility.map((element, index) => (
-                <li key={element.id}>{element}</li>
-              ))}
-          </ul>
+          <h3>Application Submission</h3>
+          <p>{data[0].application_submission}</p>
         </div>
         <div className={styles.item}>
           <h3>Stipend</h3>
           <p>{data[0].stipend}</p>
         </div>
         <div className={styles.item}>
-          <h3>Contact</h3>
-          <ul>
-            {data[0].contact.map((element, index) => (
-              <li key={element.id}>
-                {index == 0 ? "Phone: " : "Email: "} {element}
-              </li>
-            ))}
-          </ul>
+          <h3>Deadline</h3>
+          <p>{data[0].deadline}</p>
         </div>
       </section>
       <hr />

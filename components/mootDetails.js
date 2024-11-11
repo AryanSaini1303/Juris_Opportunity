@@ -105,7 +105,7 @@ export default function MootDetailsPage({ data }) {
         </div>
       </section>
       <hr />
-      {!(
+      {/* {!(
         data[0].location.toLowerCase() == "online" || data[0].location == "-"
       ) && (
         <div className={styles.map}>
@@ -117,7 +117,7 @@ export default function MootDetailsPage({ data }) {
             src={`https://www.google.com/maps/embed/v1/pllace?key=${process.env.GOOGLE_MAPS_API}&q=${data[0].location}`}
           ></iframe>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

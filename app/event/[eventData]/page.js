@@ -4,6 +4,7 @@ import JobDetailsPage from "@/components/jobDetails";
 import Navbar from "@/components/navbar";
 import { supabase } from "@/lib/supabaseClient";
 import MootDetailsPage from "@/components/mootDetails";
+import CompetitionDetailsPage from "@/components/competitionDetails";
 
 export default async function EventPage({ params }) {
   const { eventData } = await params;
@@ -22,9 +23,14 @@ export default async function EventPage({ params }) {
     <div className="wrapper">
       <Navbar />
       <main className="content">
-        {category.toLowerCase()=="jobs"&&<JobDetailsPage data={data}/>}
-        {category.toLowerCase()=="internships"&&<InternshipDetailsPage data={data}/>}
-        {category.toLowerCase()=="moots"&&<MootDetailsPage data={data}/>}
+        {category.toLowerCase() == "jobs" && <JobDetailsPage data={data} />}
+        {category.toLowerCase() == "internships" && (
+          <InternshipDetailsPage data={data} />
+        )}
+        {category.toLowerCase() == "moots" && <MootDetailsPage data={data} />}
+        {category.toLowerCase() == "competitions" && (
+          <CompetitionDetailsPage data={data} />
+        )}
       </main>
       <Footer />
     </div>
