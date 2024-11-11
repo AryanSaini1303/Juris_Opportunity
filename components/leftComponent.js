@@ -1,6 +1,69 @@
+import { supabase } from "@/lib/supabaseClient";
 import styles from "./leftComponent.module.css";
 import Link from "next/link";
-export default function LeftComponent() {
+export default async function LeftComponent() {
+  // Fetch data from all tables concurrently using Promise.all
+  let categoryData;
+  let filteredCategoryData;
+  const [jobsData, internshipsData, competitionsData, mootsData] =
+    await Promise.all([
+      supabase
+        .from("jobs")
+        .select("heading, category, start_date, id, created_at, location, mode, deadline")
+        .order("start_date", { ascending: true }),
+      supabase
+        .from("internships")
+        .select("heading, category, start_date, id, created_at, location, mode, deadline")
+        .order("start_date", { ascending: true }),
+      supabase
+        .from("competitions")
+        .select("heading, category, start_date, id, created_at, location, mode, deadline")
+        .order("start_date", { ascending: true }),
+      supabase
+        .from("moots")
+        .select("heading, category, start_date, id, created_at, location, mode, deadline")
+        .order("start_date", { ascending: true }),
+    ]);
+
+  // Check for errors in any of the queries
+  if (
+    jobsData.error ||
+    internshipsData.error ||
+    competitionsData.error ||
+    mootsData.error
+  ) {
+    console.error(
+      "Error fetching data:",
+      jobsData.error ||
+        internshipsData.error ||
+        competitionsData.error ||
+        mootsData.error
+    );
+    return;
+  }
+  // Concatenate the data from all tables into a single object
+  categoryData = {
+    jobs: jobsData.data,
+    internships: internshipsData.data,
+    competitions: competitionsData.data,
+    moots: mootsData.data,
+  };
+  // Step 1: Get the current date and the date two days from now
+  const currentDate = new Date();
+  const twoDaysFromNow = new Date(currentDate);
+  twoDaysFromNow.setDate(currentDate.getDate() + 2); // This does not modify currentDate
+  // Step 2: Filter events within each category where the event's deadline is within 2 days from now
+  filteredCategoryData = Object.keys(categoryData).reduce((acc, category) => {
+    const filteredEvents = categoryData[category].filter((event) => {
+      const eventDeadline = new Date(event.deadline);
+      return eventDeadline <= twoDaysFromNow && eventDeadline > currentDate; // Filter events where deadline is within 2 days
+    });
+    if (filteredEvents.length > 0) {
+      acc[category] = filteredEvents; // Only include categories with valid events
+    }
+    return acc;
+  }, {});
+
   return (
     <section className={styles.leftContent}>
       <button>
@@ -23,36 +86,31 @@ export default function LeftComponent() {
       </div>
       <div className={styles.expEvents}>
         <ul>
-          <Link href={"#"}>
-            <li>
-              <h3>9th Justice Murtaza Husain Memorial</h3>
-              <div className={styles.venueDetails}>
-                <h5>Sat, 28 Sept</h5>
-                <hr />
-                <h5>Lucknow, Uttarakhand</h5>
+          {Object.keys(filteredCategoryData).map((categoryKey) => {
+            const events = filteredCategoryData[categoryKey];
+            return events && events.length > 0 ? (
+              <div key={categoryKey}>
+                {/* <h2>{categoryKey}</h2> */}
+                {events.map((event) => (
+                  <li key={event.id}>
+                    <Link href={`/event/${event.category}_${event.id}`}>
+                      <h3>{event.heading}</h3>
+                      <div className={styles.venueDetails}>
+                        <h5>{event.start_date}</h5>
+                        <hr />
+                        <h5>{event.location}</h5>
+                      </div>
+                      {/* <div className={styles.venueDetails}>
+                        <h5>{event.mode}</h5>
+                        <hr />
+                        <h5>{event.category}</h5>
+                      </div> */}
+                    </Link>
+                  </li>
+                ))}
               </div>
-            </li>
-          </Link>
-          <Link href={"#"}>
-            <li>
-              <h3>9th Justice Murtaza Husain Memorial</h3>
-              <div className={styles.venueDetails}>
-                <h5>Sat, 28 Sept</h5>
-                <hr />
-                <h5>Lucknow, Uttarakhand</h5>
-              </div>
-            </li>
-          </Link>
-          <Link href={"#"}>
-            <li>
-              <h3>9th Justice Murtaza Husain Memorial</h3>
-              <div className={styles.venueDetails}>
-                <h5>Sat, 28 Sept</h5>
-                <hr />
-                <h5>Lucknow, Uttarakhand</h5>
-              </div>
-            </li>
-          </Link>
+            ) : null;
+          })}
         </ul>
       </div>
     </section>

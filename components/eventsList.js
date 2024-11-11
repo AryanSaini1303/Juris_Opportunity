@@ -3,35 +3,39 @@ import styles from "./eventsList.module.css";
 import Link from "next/link";
 
 export default async function EventsList({ category }) {
-  const { data, error } = await supabase
-    .from(category && category.toLowerCase())
-    .select("heading, category, start_date, poster, id")
-    .order("start_date", { ascending: true });
-
+  let data;
   let categoryData;
   let filteredCategoryData;
+
   if (!category) {
     // Fetch data from all tables concurrently using Promise.all
     const [jobsData, internshipsData, competitionsData, mootsData] =
       await Promise.all([
         supabase
           .from("jobs")
-          .select("heading, category, start_date, poster, id, created_at")
+          .select(
+            "heading, category, start_date, poster, id, created_at, deadline"
+          )
           .order("start_date", { ascending: true }),
         supabase
           .from("internships")
-          .select("heading, category, start_date, poster, id, created_at")
+          .select(
+            "heading, category, start_date, poster, id, created_at, deadline"
+          )
           .order("start_date", { ascending: true }),
         supabase
           .from("competitions")
-          .select("heading, category, start_date, poster, id, created_at")
+          .select(
+            "heading, category, start_date, poster, id, created_at, deadline"
+          )
           .order("start_date", { ascending: true }),
         supabase
           .from("moots")
-          .select("heading, category, start_date, poster, id, created_at")
+          .select(
+            "heading, category, start_date, poster, id, created_at, deadline"
+          )
           .order("start_date", { ascending: true }),
       ]);
-
     // Check for errors in any of the queries
     if (
       jobsData.error ||
@@ -55,20 +59,35 @@ export default async function EventsList({ category }) {
       competitions: competitionsData.data,
       moots: mootsData.data,
     };
-    // Step 1: Get the current date and the date one week ago
+    // Step 1: Get the current date
     const currentDate = new Date();
     const oneWeekAgo = new Date(currentDate.setDate(currentDate.getDate() - 7));
     // Step 2: Filter events within each category where created_at is within the last week
     filteredCategoryData = Object.keys(categoryData).reduce((acc, category) => {
       const filteredEvents = categoryData[category].filter((event) => {
+        const eventDeadline = new Date(event.deadline);
         const eventDate = new Date(event.created_at);
-        return eventDate >= oneWeekAgo; // Filter events created less than a week ago
+        return eventDate >= oneWeekAgo && eventDeadline >= currentDate; // Filter events created less than a week ago
       });
       if (filteredEvents.length > 0) {
         acc[category] = filteredEvents; // Only include categories with valid events
       }
       return acc;
     }, {});
+  } else {
+    let { data: fetchedData, error } = await supabase
+      .from(category && category.toLowerCase())
+      .select("heading, category, start_date, poster, id, deadline")
+      .order("start_date", { ascending: true });
+    const currentDate = new Date();
+    console.log(currentDate);
+    data =
+      fetchedData &&
+      fetchedData.filter((event) => {
+        const eventDeadline = new Date(event.deadline);
+        console.log("eventDeadline: ", eventDeadline);
+        return eventDeadline > currentDate;
+      });
   }
 
   return (
@@ -92,11 +111,10 @@ export default async function EventsList({ category }) {
             : category}
         </h1>
       </header>
-
       <div className={styles.currEvents}>
         <ul>
           {/* If data is available, render events */}
-          {data ? (
+          {data && data.length!=0 ? (
             data.map((event) => (
               <li key={event.id}>
                 <Link href={`/event/${event.category}_${event.id}`}>
@@ -114,13 +132,10 @@ export default async function EventsList({ category }) {
             ))
           ) : categoryData ? (
             // Loop through categoryData and render each category's events
-            /*If you want to loop through the keys or values of an object, you need to use other methods like Object.keys(), Object.values(), or Object.entries(). Here's how you can do it:
-            Using Object.keys(): This method returns an array of the keys of the object, which you can then iterate over using map(). */
             Object.keys(filteredCategoryData).map((categoryKey) => {
               const events = filteredCategoryData[categoryKey];
               return events && events.length > 0 ? (
                 <div key={categoryKey}>
-                  {/* <h2>{categoryKey}</h2> */}
                   {events.map((event) => (
                     <li key={event.id}>
                       <Link href={`/event/${event.category}_${event.id}`}>
@@ -140,7 +155,6 @@ export default async function EventsList({ category }) {
               ) : null;
             })
           ) : (
-            // Fallback message when neither data nor filteredCategoryData is available
             <h1 className={styles.noEventHeader}>
               SCHEDULED EVENTS WILL APPEAR HERE!
             </h1>

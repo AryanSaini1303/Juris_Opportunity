@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: 1fr 5fr;
   gap: 12rem;
+  margin: 0 1rem;
 }
 .rightContent{
   margin-right: 10rem;

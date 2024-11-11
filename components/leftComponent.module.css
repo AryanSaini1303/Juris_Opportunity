@@ -1,94 +1,105 @@
 .leftContent button {
-    border-radius: 30px;
-    background-color: var(--secondary-color);
-    padding: 0;
-    border: none;
-    margin: 0.3rem 0;
-    transition: all 0.15s ease-in-out;
-  }
-  .leftContent button a {
-    text-decoration: none;
-    color: white;
-    width: 100%;
-  }
-  .leftContent button a * {
-    background-color: var(--secondary-color);
-    border-radius: 30px;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    font-weight: lighter;
-    margin: 0;
-    padding: 0.7rem 1rem;
-  }
-  .leftContent button:hover {
-    transform: scale(1.01, 1.01);
-    box-shadow: 0.4rem 0.5rem 0.1rem black;
-  }
-  .leftContent button:active {
-    transform: scale(0.98, 0.98);
-    box-shadow: 0.4rem 0.5rem 0.1rem black;
-    opacity: 0.5;
-  }
-  .timer {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-  }
-  .timer h2 {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    font-weight: 500;
-    margin: 0.5rem;
-  }
-  .expEvents {
-    width: 15vw;
-    margin-bottom: 3rem;
-  }
-  .expEvents ul {
-    overflow: hidden;
-    border-radius: 5px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    color: white;
-  }
-  .expEvents ul a li .venueDetails {
-    display: flex;
-  }
-  .expEvents ul a li * {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    font-weight: lighter;
-    text-align: center;
-    margin: 0.3rem;
-  }
-  .expEvents ul a li {
-    transition: all 0.2s ease-in-out;
-    background-color: #4c0902;
-    backdrop-filter: blur(10px);
-    border: solid white 1.5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-  }
-  .expEvents ul a {
-    text-decoration: none;
-    color: white;
-  }
-  .expEvents ul a li h3 {
-    font-weight: bolder;
-    width: 200px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .expEvents ul a li:hover {
-    transform: scale(1.01, 1.01);
-    border-top-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-  }
-  .expEvents ul a li:active {
-    transform: scale(1, 1);
-    border-top-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    opacity: 0.5;
-  }
+  border-radius: 30px;
+  background-color: var(--secondary-color);
+  padding: 0;
+  border: none;
+  margin: 0.3rem 0;
+  transition: all 0.15s ease-in-out;
+}
+.leftContent button a {
+  text-decoration: none;
+  color: white;
+  width: 100%;
+}
+.leftContent button a * {
+  background-color: var(--secondary-color);
+  border-radius: 30px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0.7rem 1rem;
+}
+.leftContent button:hover {
+  transform: scale(1.01, 1.01);
+  box-shadow: 0.4rem 0.5rem 0.1rem black;
+}
+.leftContent button:active {
+  transform: scale(0.98, 0.98);
+  box-shadow: 0.4rem 0.5rem 0.1rem black;
+  opacity: 0.5;
+}
+.timer {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+.timer h2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 500;
+  margin: 0.5rem;
+}
+.expEvents {
+  width: 15vw;
+  margin-bottom: 3rem;
+}
+.expEvents ul {
+  overflow: hidden;
+  border-radius: 5px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+.expEvents ul li a .venueDetails {
+  display: grid;
+  grid-template-columns: 8fr 1fr 10fr;
+  margin: auto;
+  place-items: center;
+}
+.expEvents ul li a .venueDetails hr{
+  height: 90%;
+}
+.expEvents ul li a * {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: lighter;
+  text-align: center;
+  margin: 0.3rem;
+}
+.expEvents ul li a {
+  transition: all 0.2s ease-in-out;
+  background-color: #4c0902;
+  backdrop-filter: blur(10px);
+  border: solid white 1.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  height: 5rem;
+}
+.expEvents ul a {
+  text-decoration: none;
+  color: white;
+}
+.expEvents ul li a h3 {
+  font-weight: bolder;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.expEvents ul li a:hover {
+  transform: scale(1.01, 1.01);
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.expEvents ul li a:active {
+  transform: scale(1, 1);
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  opacity: 0.5;
+}
+.expEvents h5 {
+  display: flex;
+  align-items: center;
+}

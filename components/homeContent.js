@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./homeContent.module.css";
 import EventsList from "./eventsList";
 import Categories from "./categories";
