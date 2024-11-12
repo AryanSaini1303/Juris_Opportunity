@@ -78,7 +78,7 @@ export default function Navbar() {
           <Link href={"#"}>
             <li>Competitions</li>
           </Link>
-          <Link href={"#"}>
+          <Link href="/MapSearch">
             <li>Map Search</li>
           </Link>
           <Link href={"#"}>

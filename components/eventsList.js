@@ -80,12 +80,12 @@ export default async function EventsList({ category }) {
       .select("heading, category, start_date, poster, id, deadline")
       .order("start_date", { ascending: true });
     const currentDate = new Date();
-    console.log(currentDate);
+    // console.log(currentDate);
     data =
       fetchedData &&
       fetchedData.filter((event) => {
         const eventDeadline = new Date(event.deadline);
-        console.log("eventDeadline: ", eventDeadline);
+        // console.log("eventDeadline: ", eventDeadline);
         return eventDeadline > currentDate;
       });
   }
