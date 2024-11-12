@@ -75,7 +75,7 @@ export default function MootDetailsPage({ data }) {
         </div>
         <div className={styles.item}>
           <h3>Payment</h3>
-          <p>{data[0].payment}</p>
+          <img src={data[0].payment} alt="" />
         </div>
         <div className={styles.item}>
           <h3>Contact</h3>

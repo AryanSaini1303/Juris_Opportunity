@@ -59,18 +59,20 @@ export default async function EventsList({ category }) {
       competitions: competitionsData.data,
       moots: mootsData.data,
     };
-    // Step 1: Get the current date
-    const currentDate = new Date();
-    const oneWeekAgo = new Date(currentDate.setDate(currentDate.getDate() - 7));
-    // Step 2: Filter events within each category where created_at is within the last week
+    // Filter events within each category where created_at is within the last week
     filteredCategoryData = Object.keys(categoryData).reduce((acc, category) => {
       const filteredEvents = categoryData[category].filter((event) => {
         const eventDeadline = new Date(event.deadline);
         const eventDate = new Date(event.created_at);
-        return eventDate >= oneWeekAgo && eventDeadline > currentDate; // Filter events created less than a week ago
+        const currentDate = new Date();
+        const oneWeekAgo = new Date(currentDate);
+        oneWeekAgo.setDate(currentDate.getDate() - 7); // Set date to one week ago
+        // Only include events created within the last week and not expired
+        return eventDate >= oneWeekAgo && eventDeadline > currentDate;
       });
+      // Only include categories with valid events
       if (filteredEvents.length > 0) {
-        acc[category] = filteredEvents; // Only include categories with valid events
+        acc[category] = filteredEvents;
       }
       return acc;
     }, {});

@@ -7,10 +7,12 @@ import { useEffect, useState } from "react";
 
 export default function MapSearchPage() {
   const [state, setState] = useState();
+  const [loading, setLoading] = useState(true);
   const [filteredCategoryData, setFilteredCategoryData] = useState();
   // Fetch data from all tables concurrently using Promise.all
   useEffect(() => {
     const fetchEvents = async () => {
+      setLoading(true);
       try {
         // Fetch data from the API
         const response = await fetch(`/api/stateEvents?state=${state}`);
@@ -20,8 +22,10 @@ export default function MapSearchPage() {
         const data = await response.json();
         // console.log(data);
         setFilteredCategoryData(data);
+        setLoading(false);
         // Update the state with the fetched data
       } catch (err) {
+        setLoading(false);
         console.log(err.message);
       }
     };
@@ -673,11 +677,13 @@ export default function MapSearchPage() {
         </svg>
         <div className={styles.currEvents}>
           {filteredCategoryData &&
-            JSON.stringify(filteredCategoryData) != "{}" && <h1>{state}</h1>}
+            JSON.stringify(filteredCategoryData) != "{}" &&
+            !loading && <h1>{state}</h1>}
           <ul>
             {/* If data is available, render events */}
             {filteredCategoryData &&
-            JSON.stringify(filteredCategoryData) != "{}" ? (
+            JSON.stringify(filteredCategoryData) != "{}" &&
+            !loading ? (
               // Loop through categoryData and render each category's events
               Object.keys(filteredCategoryData).map((categoryKey) => {
                 const events = filteredCategoryData[categoryKey];
