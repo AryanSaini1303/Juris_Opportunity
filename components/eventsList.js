@@ -67,7 +67,7 @@ export default async function EventsList({ category }) {
       const filteredEvents = categoryData[category].filter((event) => {
         const eventDeadline = new Date(event.deadline);
         const eventDate = new Date(event.created_at);
-        return eventDate >= oneWeekAgo && eventDeadline >= currentDate; // Filter events created less than a week ago
+        return eventDate >= oneWeekAgo && eventDeadline > currentDate; // Filter events created less than a week ago
       });
       if (filteredEvents.length > 0) {
         acc[category] = filteredEvents; // Only include categories with valid events
@@ -114,7 +114,7 @@ export default async function EventsList({ category }) {
       <div className={styles.currEvents}>
         <ul>
           {/* If data is available, render events */}
-          {data && data.length!=0 ? (
+          {data && data.length != 0 ? (
             data.map((event) => (
               <li key={event.id}>
                 <Link href={`/event/${event.category}_${event.id}`}>
