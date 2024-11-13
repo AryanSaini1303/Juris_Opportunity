@@ -9,19 +9,27 @@ export default async function LeftComponent() {
     await Promise.all([
       supabase
         .from("jobs")
-        .select("heading, category, start_date, id, created_at, location, mode, deadline")
+        .select(
+          "heading, category, start_date, id, created_at, location, mode, deadline"
+        )
         .order("start_date", { ascending: true }),
       supabase
         .from("internships")
-        .select("heading, category, start_date, id, created_at, location, mode, deadline")
+        .select(
+          "heading, category, start_date, id, created_at, location, mode, deadline"
+        )
         .order("start_date", { ascending: true }),
       supabase
         .from("competitions")
-        .select("heading, category, start_date, id, created_at, location, mode, deadline")
+        .select(
+          "heading, category, start_date, id, created_at, location, mode, deadline"
+        )
         .order("start_date", { ascending: true }),
       supabase
         .from("moots")
-        .select("heading, category, start_date, id, created_at, location, mode, deadline")
+        .select(
+          "heading, category, start_date, id, created_at, location, mode, deadline"
+        )
         .order("start_date", { ascending: true }),
     ]);
 
@@ -49,12 +57,12 @@ export default async function LeftComponent() {
     moots: mootsData.data,
   };
   // Step 1: Get the current date and the date two days from now
-  const currentDate = new Date();
-  const twoDaysFromNow = new Date(currentDate);
-  twoDaysFromNow.setDate(currentDate.getDate() + 2); // This does not modify currentDate
   // Step 2: Filter events within each category where the event's deadline is within 2 days from now
   filteredCategoryData = Object.keys(categoryData).reduce((acc, category) => {
     const filteredEvents = categoryData[category].filter((event) => {
+      const currentDate = new Date();
+      const twoDaysFromNow = new Date(currentDate);
+      twoDaysFromNow.setDate(currentDate.getDate() + 2); // This does not modify currentDate
       const eventDeadline = new Date(event.deadline);
       return eventDeadline <= twoDaysFromNow && eventDeadline > currentDate; // Filter events where deadline is within 2 days
     });
