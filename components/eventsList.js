@@ -91,6 +91,8 @@ export default async function EventsList({ category }) {
         return eventDeadline > currentDate;
       });
   }
+  console.log(filteredCategoryData);
+  console.log(data);
 
   return (
     <>
@@ -132,7 +134,7 @@ export default async function EventsList({ category }) {
                 <hr />
               </li>
             ))
-          ) : categoryData ? (
+          ) : filteredCategoryData &&  Object.keys(filteredCategoryData).length!=0 ? (
             // Loop through categoryData and render each category's events
             Object.keys(filteredCategoryData).map((categoryKey) => {
               const events = filteredCategoryData[categoryKey];
