@@ -39,7 +39,7 @@ export default function Categories() {
             </Link>
           </li>
           <li>
-            <Link href="#">
+            <Link href="/bare_acts">
               <img src="/bare.svg" alt="" />
               <h4>Bare Acts</h4>
             </Link>

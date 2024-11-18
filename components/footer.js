@@ -96,8 +96,8 @@ export default function Footer() {
       </div>
       <hr />
       <div className={styles.newsletterSection}>
-        <h1>Subscribe to the newsletter</h1>
-        <button onClick={subscribeToNewsletter}>{subscribed?"Subscribed":loading?"Subscribing...":"Join The Community"}</button>
+        {/* <h1>Subscribe to the newsletter</h1> */}
+        <button onClick={subscribeToNewsletter}>{subscribed?"Subscribed":loading?"Subscribing...":"Subscribe to the newsletter"}</button>
       </div>
     </section>
   );

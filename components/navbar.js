@@ -66,7 +66,7 @@ export default function Navbar() {
       </Link>
       <div className={styles.linkSection}>
         <ul>
-          <Link href={"#"}>
+          <Link href={"/bare_acts"}>
             <li>Bare Acts</li>
           </Link>
           <Link href={"#"}>

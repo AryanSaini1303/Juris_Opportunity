@@ -1,0 +1,64 @@
+.filter_bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: linear-gradient(rgba(0, 0, 0, 0.11), rgba(0, 0, 0, 0));
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  animation: reveal 0.5s ease-in-out;
+}
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.bare_acts_btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filters select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.search_box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.search_box input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search_box button {
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.search_box img {
+  height: 16px;
+  width: 16px;
+}
