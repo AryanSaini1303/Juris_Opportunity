@@ -1,49 +1,88 @@
-# AI Drive-Through Optimization
+# Juris Opportunity✨⚖️
 
-🚗 **Revolutionizing urban mobility with AI-powered traffic signal optimization!** 🚦
-
-This project optimizes driving efficiency by using AI to minimize stops at traffic signals. By analyzing real-time traffic data, the system recommends **optimal driving speeds** to ensure drivers can avoid red lights and reduce overall travel time. The project combines cutting-edge **machine learning** with **IoT-enabled traffic signals** to create a smarter, more efficient urban transportation system.
-
-### Key Features:
-
-- **AI-driven Speed Optimization:** Recommends optimal driving speeds based on traffic signal data to help drivers pass green lights without unnecessary stops.
-- **Real-Time Traffic Data Integration:** Continuously collects and analyzes traffic signal data, dynamically adjusting predictions and recommendations based on current conditions.
-- **Efficient Route Planning:** Helps reduce travel time and fuel consumption by optimizing speed and minimizing stop-and-go driving.
-- **Smart City Solution:** Enhances urban mobility by integrating IoT-based traffic signal systems, paving the way for smarter cities and connected infrastructure.
-- **Seamless User Experience:** Provides easy-to-follow recommendations for drivers, ensuring a smoother, faster, and more enjoyable driving experience.
+Welcome to Juris Opportunity — your go-to platform for discovering legal opportunities, exploring bare acts and judgments, and becoming part of a vibrant law community. Whether you're a law student, professional, or enthusiast, our platform helps you stay connected to the latest events and resources in the legal field.
 
 ---
 
-## 🚀 How it Works
+## Features 🚀
 
-The AI Drive-Through Optimization system works by analyzing traffic signal data and calculating the optimal speed to avoid red lights. Here's a brief overview of the process:
-
-1. **Data Collection:** The system collects real-time traffic signal data, including the status (green/red) and timings of traffic lights.
-2. **Machine Learning Analysis:** Using machine learning models (e.g., Random Forest Regressor), the system analyzes historical and real-time data to predict when a vehicle will encounter a red light.
-3. **Speed Optimization:** Based on these predictions, the system recommends an optimal driving speed that allows the vehicle to reach the next intersection while the light is green, reducing the need to stop.
-4. **Real-Time Updates:** The system continuously monitors the vehicle's location and adjusts recommendations as the driver moves, ensuring the best possible outcome throughout the journey.
-5. **User Interface:** Drivers receive real-time suggestions on their vehicle’s speed to help them avoid delays caused by traffic signals.
-
-This approach not only improves driving efficiency but also contributes to reducing traffic congestion and lowering carbon emissions, making it a sustainable solution for modern urban environments.
+- **Scheduled Legal Events**: Discover and stay updated on jobs, moot court competitions, internships, and other legal events, categorized by type.
+- **Explore Bare Acts & Judgments**: Access key legal texts and past judgments to support your studies and practice.
+- **State-Wise Filtering**: Easily filter events based on your state and location.
+- **Map Search**: Navigate events with an intuitive map-based search interface.
+- **Latest & Expiring Events**: Be notified about the latest events or those that are about to expire — ensuring you never miss an opportunity!
+- **Community Membership**: Join our growing law community to connect with like-minded individuals and professionals.
 
 ---
 
-## 🧑‍💻 Tech Stack
+## Tech Stack ⚙️
 
-- **Backend:** Python, Flask
-- **Machine Learning:** scikit-learn, Random Forest Regressor
-- **Frontend:** Next.js (React)
-- **Traffic Data Integration:** IoT-enabled traffic signal systems
-
-## 💡 Contributing
-
-We welcome contributions! Feel free to fork this repository, submit issues, or open pull requests. If you have any ideas for improvements or features, let us know. Join us in building smarter and more efficient cities!
+- **Frontend**: Next.js (React framework)
+- **Backend**: Supabase (Database & Authentication)
+- **Styling**: CSS (or Styled Components)
 
 ---
 
-## 📫 Contact
+## Installation 💻
 
-- **Author:** Aryan Saini
-- **Email:** saini.aryan9999@gmail.com
+1. Clone the repository:
 
-**Inspired by:** Smart city initiatives, modern AI-powered traffic solutions, and the drive towards sustainable urban mobility.
+   ```bash
+   git clone https://github.com/AryanSaini1303/Juris_Opportunity.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd Juris_Opportunity
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Set up environment variables in `.env.local`:
+
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+5. Run the project:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Open `http://localhost:3000` in your browser.
+
+---
+
+## Contributing 🤝
+
+We welcome contributions! If you'd like to improve the project, follow these steps:
+
+1. Fork the repository
+2. Create a new branch for your changes
+3. Commit and push your changes
+4. Open a pull request
+
+---
+
+## License 📜
+
+This project is licensed under the **MIT License**.
+
+---
+
+## Impact 🌍
+
+Juris Opportunity empowers the legal community by providing a centralized platform to discover career opportunities, stay informed about important legal events, and connect with peers. Whether you're searching for jobs, internships, or competitions, you'll always stay up to date with this platform.
+
+🌟 **Stay connected, stay informed, and advance your legal career with the Law Events & Community Portal!** 🌟
+
+---
+
+🎉 **Enjoy exploring the legal world with us!** 🎉
