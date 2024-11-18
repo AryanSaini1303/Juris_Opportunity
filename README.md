@@ -69,14 +69,6 @@ We welcome contributions! If you'd like to improve the project, follow these ste
 3. Commit and push your changes
 4. Open a pull request
 
----
-
-## License 📜
-
-This project is licensed under the **MIT License**.
-
----
-
 ## Impact 🌍
 
 Juris Opportunity empowers the legal community by providing a centralized platform to discover career opportunities, stay informed about important legal events, and connect with peers. Whether you're searching for jobs, internships, or competitions, you'll always stay up to date with this platform.
