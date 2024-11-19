@@ -12,7 +12,7 @@ const AboutPage = () => {
       <main className="content">
         <section className={styles.container}>
           <h1 className={styles.title}>
-            Explore Juris Opportunity's Legal Expertise
+            Explore Juris Opportunity&apos;s Legal Expertise
           </h1>
           <p className={styles.description}>
             At Juris Opportunity, we are dedicated to providing exceptional
