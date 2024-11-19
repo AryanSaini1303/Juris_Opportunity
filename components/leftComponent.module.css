@@ -68,7 +68,7 @@
 }
 .expEvents ul li a {
   transition: all 0.2s ease-in-out;
-  background-color: #4c0902;
+  background-color: var(--secondary-color);
   backdrop-filter: blur(10px);
   border: solid white 1.5px;
   display: flex;

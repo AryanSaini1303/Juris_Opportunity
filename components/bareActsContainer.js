@@ -127,6 +127,7 @@ export default function BareActsContainer() {
 
   function handleStateActsClick(data) {
     setStateActQuery(data);
+    console.log(data);
   }
   function handleCentralActsClick(data) {
     setCentralActQuery(data);
@@ -157,9 +158,9 @@ export default function BareActsContainer() {
         <table className={styles.titles_table}>
           <thead>
             <tr>
-              <th style={{ width: "fit-content" }}>Category</th>
+              <th>{stateActQuery ? "State" : "Category"}</th>
               <th>Title</th>
-              {!stateActQuery&&<td>Year</td>}
+              <td>Year</td>
             </tr>
           </thead>
           <tbody>
@@ -175,9 +176,9 @@ export default function BareActsContainer() {
             ) : bareActs && bareActs.length != 0 && !loading ? (
               bareActs.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.category}</td>
+                  <td>{item.category ? item.category : item.state}</td>
                   <td>{item.name}</td>
-                  {!stateActQuery&&<td>{item.year}</td>}
+                  <td>{item.year}</td>
                 </tr>
               ))
             ) : (
