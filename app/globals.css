@@ -43,7 +43,7 @@ body {
 .content {
   flex: 1; /* Makes this section take all remaining space*/
 }
-/* From Uiverse.io by SchawnnahJ */
+
 .loader {
   position: relative;
   width: 2.5em;
