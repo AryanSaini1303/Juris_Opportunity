@@ -75,7 +75,7 @@ export default async function LeftComponent() {
   return (
     <section className={styles.leftContent}>
       <button>
-        <Link href="#">
+        <Link href="/about">
           <h3>About Juris Opportunities</h3>
         </Link>
       </button>
