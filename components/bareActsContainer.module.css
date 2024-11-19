@@ -7,15 +7,15 @@
   animation: reveal 0.5s ease-in-out;
 }
 @keyframes reveal {
-    0% {
-      opacity: 0;
-      transform: translateY(-1rem);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
   }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .central_acts {
   width: 20%;
   background-color: var(--secondary-color);

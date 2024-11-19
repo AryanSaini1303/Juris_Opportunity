@@ -1,6 +1,7 @@
 "use client";
+import BareActModal from "./bareActModal";
 import styles from "./bareActsContainer.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function BareActsContainer() {
   const centralActs = [
@@ -82,6 +83,8 @@ export default function BareActsContainer() {
   const [loading, setLoading] = useState();
   const [centralActQuery, setCentralActQuery] = useState();
   const [stateActQuery, setStateActQuery] = useState();
+  const [showModal, setShowModal] = useState(false);
+  const [bareActIntro, setBareActIntro]=useState();
 
   useEffect(() => {
     const fetchBareActs = async () => {
@@ -127,15 +130,21 @@ export default function BareActsContainer() {
 
   function handleStateActsClick(data) {
     setStateActQuery(data);
-    console.log(data);
   }
   function handleCentralActsClick(data) {
     setCentralActQuery(data);
   }
-  console.log("Bare Acts: ", bareActs);
+  function handleBareActClick(data) {
+    setBareActIntro(data);
+    setShowModal(true);
+  }
+  console.log(showModal);
 
   return (
     <div className={styles.acts_container}>
+      {showModal && (
+        <BareActModal closeFunction={setShowModal} intro={bareActIntro}/>
+      )}
       {/* Central Acts */}
       <div className={styles.central_acts}>
         <h2>Central Acts</h2>
@@ -175,7 +184,7 @@ export default function BareActsContainer() {
               </tr>
             ) : bareActs && bareActs.length != 0 && !loading ? (
               bareActs.map((item, index) => (
-                <tr key={index}>
+                <tr key={index} onClick={()=>{handleBareActClick([item.intro, item.name, item.year])}}>
                   <td>{item.category ? item.category : item.state}</td>
                   <td>{item.name}</td>
                   <td>{item.year}</td>
