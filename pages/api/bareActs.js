@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     try {
       // Query the 'bare_acts' table
       const { data, error } = await supabase
-        .from('bare_acts')
+        .from('central_bare_acts')
         .select('*') // You can specify columns here if needed
         .limit(30);
 

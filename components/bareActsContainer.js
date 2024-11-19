@@ -159,13 +159,14 @@ export default function BareActsContainer() {
             <tr>
               <th style={{ width: "fit-content" }}>Category</th>
               <th>Title</th>
+              {!stateActQuery&&<td>Year</td>}
             </tr>
           </thead>
           <tbody>
             {loading ? (
               <tr>
                 <td
-                  colSpan="2"
+                  colSpan="3"
                   style={{ textAlign: "center", borderBottom: "none" }}
                 >
                   <h2 style={{ margin: 0 }}>Loading...</h2>
@@ -176,12 +177,13 @@ export default function BareActsContainer() {
                 <tr key={index}>
                   <td>{item.category}</td>
                   <td>{item.name}</td>
+                  {!stateActQuery&&<td>{item.year}</td>}
                 </tr>
               ))
             ) : (
               <tr>
                 <td
-                  colSpan="2"
+                  colSpan="3"
                   style={{ textAlign: "center", borderBottom: "none" }}
                 >
                   <h2 style={{ margin: 0 }}>No Bare Acts Available!</h2>
