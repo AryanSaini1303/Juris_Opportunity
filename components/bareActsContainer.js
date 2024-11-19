@@ -1,10 +1,9 @@
 "use client";
-import styles from "./bareActsContainer.module.css"
+import styles from "./bareActsContainer.module.css";
 import { useEffect, useState } from "react";
 
 export default function BareActsContainer() {
   const centralActs = [
-    "Central Acts",
     "Alternative Dispute Resolution Laws",
     "Armed Forces Laws",
     "Banking Laws",
@@ -46,41 +45,43 @@ export default function BareActsContainer() {
   ];
 
   const stateActs = [
-    "Andhra Pradesh state law",
-    "Arunachal Pradesh state law",
-    "Assam state law",
-    "Bihar state law",
-    "Chandigarh state law",
-    "Chhattisgarh state law",
-    "Delhi state law",
-    "Goa state law",
-    "Gujarat state law",
-    "Haryana state law",
-    "Himachal Pradesh state law",
-    "Jammu and Kashmir state law",
-    "Jharkhand state law",
-    "Karnataka state law",
-    "Kerala state law",
-    "Madhya Pradesh state law",
-    "Maharashtra state law",
-    "Manipur state law",
-    "Mizoram state law",
-    "Nagaland state law",
-    "Odisha state law",
-    "Puducherry state law",
-    "Punjab state law",
-    "Rajasthan state law",
-    "Sikkim state law",
-    "Tamil Nadu state law",
-    "Telangana state law",
-    "Tripura state law",
-    "Uttar Pradesh state law",
-    "Uttarakhand state law",
-    "West Bengal state law",
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chandigarh",
+    "Chhattisgarh",
+    "Delhi",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jammu and Kashmir",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Puducherry",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
   ];
 
-  const [bareActs, setBareActs] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [bareActs, setBareActs] = useState();
+  const [loading, setLoading] = useState();
+  const [centralActQuery, setCentralActQuery] = useState();
+  const [stateActQuery, setStateActQuery] = useState();
 
   useEffect(() => {
     const fetchBareActs = async () => {
@@ -89,10 +90,48 @@ export default function BareActsContainer() {
       setBareActs(data);
       setLoading(false);
     };
-
     fetchBareActs();
   }, []);
-  console.log(bareActs);
+
+  useEffect(() => {
+    setLoading(true);
+    setStateActQuery("");
+    if (centralActQuery) {
+      const fetchCentralBareActs = async () => {
+        const response = await fetch(
+          `/api/getCentralBareActs?query=${centralActQuery}`
+        );
+        const data = await response.json();
+        setBareActs(data);
+        setLoading(false);
+      };
+      fetchCentralBareActs();
+    }
+  }, [centralActQuery]);
+
+  useEffect(() => {
+    setCentralActQuery("");
+    setLoading(true);
+    if (stateActQuery) {
+      const fetchStateBareActs = async () => {
+        const response = await fetch(
+          `/api/getStateBareActs?query=${stateActQuery}`
+        );
+        const data = await response.json();
+        setBareActs(data);
+        setLoading(false);
+      };
+      fetchStateBareActs();
+    }
+  }, [stateActQuery]);
+
+  function handleStateActsClick(data) {
+    setStateActQuery(data);
+  }
+  function handleCentralActsClick(data) {
+    setCentralActQuery(data);
+  }
+  console.log("Bare Acts: ", bareActs);
 
   return (
     <div className={styles.acts_container}>
@@ -101,7 +140,14 @@ export default function BareActsContainer() {
         <h2>Central Acts</h2>
         <ul>
           {centralActs.map((act, index) => (
-            <li key={index}>{act}</li>
+            <li
+              key={index}
+              onClick={() => {
+                handleCentralActsClick(act);
+              }}
+            >
+              {act}
+            </li>
           ))}
         </ul>
       </div>
@@ -111,17 +157,37 @@ export default function BareActsContainer() {
         <table className={styles.titles_table}>
           <thead>
             <tr>
-              <th>Source/Category</th>
+              <th style={{ width: "fit-content" }}>Category</th>
               <th>Title</th>
             </tr>
           </thead>
           <tbody>
-            {bareActs.map((item, index) => (
-              <tr key={index}>
-                <td>{item.category}</td>
-                <td>{item.name}</td>
+            {loading ? (
+              <tr>
+                <td
+                  colSpan="2"
+                  style={{ textAlign: "center", borderBottom: "none" }}
+                >
+                  <h2 style={{ margin: 0 }}>Loading...</h2>
+                </td>
               </tr>
-            ))}
+            ) : bareActs && bareActs.length != 0 && !loading ? (
+              bareActs.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.category}</td>
+                  <td>{item.name}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan="2"
+                  style={{ textAlign: "center", borderBottom: "none" }}
+                >
+                  <h2 style={{ margin: 0 }}>No Bare Acts Available!</h2>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
@@ -131,7 +197,14 @@ export default function BareActsContainer() {
         <h2>State Bare Acts</h2>
         <ul>
           {stateActs.map((act, index) => (
-            <li key={index}>{act}</li>
+            <li
+              key={index}
+              onClick={() => {
+                handleStateActsClick(act);
+              }}
+            >
+              {act} state law
+            </li>
           ))}
         </ul>
       </div>
