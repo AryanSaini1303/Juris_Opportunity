@@ -72,7 +72,7 @@ export default function Navbar() {
           <Link href={"/bare_acts?page=1"}>
             <li>Bare Acts</li>
           </Link>
-          <Link href={"#"}>
+          <Link href={"/judgements"}>
             <li>Judgements</li>
           </Link>
           <Link href={"/categories/Competitions"}>

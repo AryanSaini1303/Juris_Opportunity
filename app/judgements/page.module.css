@@ -1,0 +1,193 @@
+.container {
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+  grid-template-columns: 1.4fr 10fr;
+  margin: 2rem 1rem;
+  gap: 1.5rem;
+}
+.searchBar {
+  grid-area: 1 / 1 / 2 / -1;
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  max-width: 400px;
+  background-color: var(--primary-color);
+  border-radius: 30px; /* Makes the search bar rounded */
+  padding: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.575); /* Optional shadow for depth */
+}
+
+.searchBar svg {
+  fill: black; /* Color for the search icon */
+  width: 15px;
+  height: 15px;
+}
+
+.searchBar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 1rem;
+  color: #333;
+  background-color: transparent; /* Transparent background */
+  border-radius: 20px;
+}
+
+.searchBar button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 0.6rem;
+  border-radius: 50%; /* Rounded button */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.searchBar button:hover {
+  box-shadow: 0 0 0.2rem var(--secondary-color);
+}
+.searchBar button:active {
+  background-color: #169f92;
+  transform: scale(0.95, 0.95);
+}
+.searchBar button:focus {
+  outline: none;
+}
+.yearSection {
+  padding: 0 1rem;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+}
+.yearSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.yearSection li {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 10px 20px;
+  border-radius: 5px; /* Slightly rounded edges */
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease,
+    box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.yearSection li:hover {
+  background-color: var(--accent-color); /* Accent color on hover */
+  color: var(--primary-color); /* Changes text color to white on hover */
+  transform: scale(1.03); /* Slight scaling effect */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Adds a shadow on hover */
+}
+
+.yearSection li:active {
+  background-color: #169f92; /* Slightly darker shade for active state */
+  transform: scale(0.98); /* Shrinks slightly when clicked */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow on active */
+}
+.monthSection {
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+}
+.monthSection ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+}
+
+.monthSection li {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 10px 20px;
+  border-radius: 5px; /* Slightly rounded edges */
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.1s ease,
+    box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.monthSection li:hover {
+  background-color: var(--accent-color); /* Accent color on hover */
+  color: var(--primary-color); /* Changes text color to white on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Adds a shadow on hover */
+}
+
+.monthSection li:active {
+  background-color: #169f92; /* Slightly darker shade for active state */
+  transform: scale(0.98); /* Shrinks slightly when clicked */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow on active */
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+.cards a {
+  text-decoration: none;
+  width: 100%;
+}
+.card {
+  display: flex;
+  flex-direction: column; /* Vertical flow inside the card */
+  justify-content: center;
+  align-items: flex-start; /* Align text to the left */
+  background-color: var(--primary-color);
+  color: black;
+  padding: 20px 0;
+  border-radius: 10px;
+  width: 100%;
+  height: fit-content;
+  box-shadow: 0px 2px 5px var(--secondary-color);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.card h3,
+.card h4,
+.card h5 {
+  margin: 0.3rem 1rem;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card h4 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.card h5 {
+  font-size: 0.9rem;
+  font-weight: lighter;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift the card slightly on hover */
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.card:active {
+  transform: translateY(2px); /* Card slightly presses down on click */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3); /* Soft shadow on active state */
+}
