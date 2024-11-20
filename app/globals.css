@@ -1,10 +1,11 @@
 :root {
-  /* --primary-color: #fffeef; */
-  /* --secondary-color: #4c0a02; */
-  --primary-color: #fff5e4;
-  --secondary-color: #47061c;
+  /* --primary-color: #fff5e4;
+  --secondary-color: #47061c; */
+  --primary-color: white;
+  --secondary-color: #0F7986;
+  /* --secondary-color: #7AB2D3; */
   --text-color: #333333;
-  --accent-color: #ff6f61;
+  --accent-color: #21D0C3;
 }
 
 /* @media (prefers-color-scheme: dark) {

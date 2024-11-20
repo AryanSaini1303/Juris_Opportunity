@@ -1,16 +1,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 508 508" xml:space="preserve" width="800px" height="800px" fill="#000000">
 <g id="SVGRepo_bgCarrier" stroke-width="0"/>
 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-<g id="SVGRepo_iconCarrier">
-<path d="M719.8 651.8m-10 0a10 10 0 1 0 20 0 10 10 0 1 0-20 0Z" fill="#000000"/>
-<path d="M512.1 64H172v896h680V385.6L512.1 64z m278.8 324.3h-280v-265l280 265zM808 916H216V108h278.6l0.2 0.2v296.2h312.9l0.2 0.2V916z" fill="#000000"/>
-<path d="M280.5 530h325.9v16H280.5z" fill="#000000"/>
-<path d="M639.5 530h90.2v16h-90.2z" fill="#000000"/>
-<path d="M403.5 641.8h277v16h-277z" fill="#000000"/>
-<path d="M280.6 641.8h91.2v16h-91.2z" fill="#000000"/>
-<path d="M279.9 753.7h326.5v16H279.9z" fill="#000000"/>
-<path d="M655.8 753.7h73.9v16h-73.9z" fill="#000000"/>
-</g>
+<g id="SVGRepo_iconCarrier"> <circle style="fill:#0F7986;" cx="254" cy="254" r="254"/> <path style="fill:#FFFFFF;" d="M113.2,88.8v330c0,7.6,6,13.6,13.6,13.6H334v-47.2c0-7.6,6-13.6,13.6-13.6h47.2V88.8 c0-7.6-6-13.6-13.6-13.6H126.8C119.2,75.6,113.2,81.6,113.2,88.8z"/> <path style="fill:#FAD24D;" d="M334,432.4h47.2c7.6,0,13.6-6,13.6-13.6V372h-47.2c-7.6,0-13.6,6-13.6,13.6V432.4z"/> <g> <path style="fill:#FF5B62;" d="M334,432.4h47.2c7.6,0,13.6-6,13.6-13.6V372L334,432.4z"/> <path style="fill:#FF5B62;" d="M367.2,334H140.8c-1.2,0-2-0.8-2-2V196.8c0-1.2,0.8-2,2-2h226c1.2,0,2,0.8,2,2V332 C369.2,333.2,368,334,367.2,334z M142.8,330h222V198.8h-222V330z"/> <rect x="140.8" y="216.8" style="fill:#FF5B62;" width="226" height="4"/> <rect x="260" y="196.8" style="fill:#FF5B62;" width="4" height="135.2"/> <rect x="314.8" y="196.8" style="fill:#FF5B62;" width="4" height="135.2"/> <rect x="140.8" y="239.6" style="fill:#FF5B62;" width="226" height="4"/> <rect x="140.8" y="262.4" style="fill:#FF5B62;" width="226" height="4"/> <rect x="140.8" y="285.2" style="fill:#FF5B62;" width="226" height="4"/> <rect x="140.8" y="308" style="fill:#FF5B62;" width="226" height="4"/> </g> <rect x="140.8" y="116" style="fill:#FF5B62;" width="226" height="10"/> <rect x="140.8" y="137.6" style="fill:#21D0C3;" width="226" height="10"/> <rect x="140.8" y="159.6" style="fill:#FAD24D;" width="122.8" height="10"/> </g>
 </svg>

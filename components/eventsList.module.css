@@ -2,7 +2,8 @@
   box-shadow: 0 0.1rem 0.05rem white;
 }
 .currEvents {
-  background-color: #4c09026b;
+  background-color: var(--secondary-color);
+  filter: saturate(50%);
   margin: 1rem 0;
   padding: 1rem 2rem;
   animation: eventsReveal 0.5s ease-in-out;
@@ -43,7 +44,7 @@
   cursor: pointer;
   transform: scale(1.01);
   opacity: 1;
-  filter: contrast(150%);
+  filter: contrast(200%);
 }
 .currEvents ul li:active {
   transform: scale(1);
@@ -59,7 +60,7 @@
 .currEvents ul li a img {
   height: 4rem;
   width: 4rem;
-  margin: auto;
+  margin: auto 0;
   border-radius: 5px;
   filter: contrast(130%);
 }
@@ -69,6 +70,7 @@
 .specifics {
   display: flex;
   flex-direction: column;
+  color: black;
 }
 .header h1{
   font-size: 1.6rem;
@@ -94,7 +96,8 @@
 }
 .noEventHeader{
   text-align: center;
-  color: var(--secondary-color);
+  /* color: var(--text-color); */
+  color: white;
   animation: pulse 1.5s infinite ease-in-out;
 }
 @keyframes pulse {

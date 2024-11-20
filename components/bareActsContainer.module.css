@@ -36,16 +36,16 @@
 
 .central_acts h2 {
   margin: 0;
-  color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
+  color: white;
+  border-bottom: 2px solid #21D0C3;
   padding-bottom: 4px;
   text-align: center;
 }
 
 .state_acts h2 {
   margin: 0;
-  color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
+  color: white;
+  border-bottom: 2px solid #21D0C3;
   padding-bottom: 4px;
   text-align: center;
 }
@@ -139,7 +139,7 @@
 
 .titles_table tbody tr:hover {
   cursor: pointer;
-  background-color: #4c0902d0;
+  background-color: var(--accent-color);
   color: var(--primary-color);
 }
 .titles_table tbody tr:active {

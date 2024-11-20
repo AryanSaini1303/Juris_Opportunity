@@ -66,14 +66,14 @@ export default function Navbar() {
       </Link>
       <div className={styles.linkSection}>
         <ul>
+          <Link href={"#"}>
+            <li>POSH & POCSO</li>
+          </Link>
           <Link href={"/bare_acts"}>
             <li>Bare Acts</li>
           </Link>
           <Link href={"#"}>
             <li>Judgements</li>
-          </Link>
-          <Link href={"#"}>
-            <li>Opportunities</li>
           </Link>
           <Link href={"/categories/Competitions"}>
             <li>Competitions</li>
