@@ -2,8 +2,10 @@
 import BareActModal from "./bareActModal";
 import styles from "./bareActsContainer.module.css";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-export default function BareActsContainer() {
+export default function BareActsContainer({ page }) {
   const centralActs = [
     "Alternative Dispute Resolution Laws",
     "Armed Forces Laws",
@@ -84,13 +86,18 @@ export default function BareActsContainer() {
   const [centralActQuery, setCentralActQuery] = useState();
   const [stateActQuery, setStateActQuery] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [bareActIntro, setBareActIntro]=useState();
+  const [bareActIntro, setBareActIntro] = useState();
+  const limit = 25;
+  const [totalPageNumbers, setTotalPageNumbers] = useState();
+  const router = useRouter();
+  const [allBareActs, setAllBareActs] = useState();
 
   useEffect(() => {
     const fetchBareActs = async () => {
       const response = await fetch("/api/bareActs");
       const data = await response.json();
-      setBareActs(data);
+      setTotalPageNumbers(Math.ceil(data.length / limit)); // Math.ceil rounds up the number to the next largest number
+      setAllBareActs(data);
       setLoading(false);
     };
     fetchBareActs();
@@ -105,7 +112,8 @@ export default function BareActsContainer() {
           `/api/getCentralBareActs?query=${centralActQuery}`
         );
         const data = await response.json();
-        setBareActs(data);
+        setTotalPageNumbers(Math.ceil(data.length / limit)); // Math.ceil rounds up the number to the next largest number
+        setAllBareActs(data);
         setLoading(false);
       };
       fetchCentralBareActs();
@@ -121,29 +129,38 @@ export default function BareActsContainer() {
           `/api/getStateBareActs?query=${stateActQuery}`
         );
         const data = await response.json();
-        setBareActs(data);
+        setTotalPageNumbers(Math.ceil(data.length / limit)); // Math.ceil rounds up the number to the next largest number
+        setAllBareActs(data);
         setLoading(false);
       };
       fetchStateBareActs();
     }
   }, [stateActQuery]);
 
+  useEffect(() => {
+    // Determine the start and end indices for the current page
+    const startIndex = (page - 1) * limit; // Start index
+    const endIndex = startIndex + limit; // End index
+    setBareActs(allBareActs?.slice(startIndex, endIndex));
+  }, [allBareActs, page]);
+
   function handleStateActsClick(data) {
     setStateActQuery(data);
+    router.push("/bare_acts?page=1");
   }
   function handleCentralActsClick(data) {
     setCentralActQuery(data);
+    router.push("/bare_acts?page=1");
   }
   function handleBareActClick(data) {
     setBareActIntro(data);
     setShowModal(true);
   }
-  console.log(showModal);
 
   return (
     <div className={styles.acts_container}>
       {showModal && (
-        <BareActModal closeFunction={setShowModal} intro={bareActIntro}/>
+        <BareActModal closeFunction={setShowModal} intro={bareActIntro} />
       )}
       {/* Central Acts */}
       <div className={styles.central_acts}>
@@ -184,7 +201,12 @@ export default function BareActsContainer() {
               </tr>
             ) : bareActs && bareActs.length != 0 && !loading ? (
               bareActs.map((item, index) => (
-                <tr key={index} onClick={()=>{handleBareActClick([item.intro, item.name, item.year])}}>
+                <tr
+                  key={index}
+                  onClick={() => {
+                    handleBareActClick([item.intro, item.name, item.year]);
+                  }}
+                >
                   <td>{item.category ? item.category : item.state}</td>
                   <td>{item.name}</td>
                   <td>{item.year}</td>
@@ -202,6 +224,21 @@ export default function BareActsContainer() {
             )}
           </tbody>
         </table>
+        {bareActs && bareActs.length != 0 && !loading && (
+          <ul>
+            <li>Page no.</li>
+            {Array.from({ length: totalPageNumbers }, (_, index) => (
+              <li key={index}>
+                <Link
+                  href={`/bare_acts?page=${index + 1}`}
+                  style={index + 1 == page ? { backgroundColor:"var(--secondary-color)", color:"var(--primary-color)" } : null}
+                >
+                  {index + 1}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {/* State Bare Acts */}

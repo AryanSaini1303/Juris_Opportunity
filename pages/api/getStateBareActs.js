@@ -8,7 +8,8 @@ export default async function handler(req, res) {
       const { data, error } = await supabase
         .from("state_bare_acts")
         .select("*") // You can specify columns here if needed
-        .eq("state", query);
+        .eq("state", query)
+        .order("year", { ascending: false });
 
       if (error) {
         return res.status(500).json({ message: "Error fetching data", error });

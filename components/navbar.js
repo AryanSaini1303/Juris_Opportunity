@@ -69,7 +69,7 @@ export default function Navbar() {
           <Link href={"#"}>
             <li>POSH & POCSO</li>
           </Link>
-          <Link href={"/bare_acts"}>
+          <Link href={"/bare_acts?page=1"}>
             <li>Bare Acts</li>
           </Link>
           <Link href={"#"}>
