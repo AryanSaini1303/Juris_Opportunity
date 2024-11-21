@@ -37,6 +37,7 @@ export default function JudgementsPage() {
     Math.ceil(22 / limit)
   ); // As initially i'm fetching only 12 entries and one page can show 4 entries so the total page numbers can be calculated by totalEntries/limit
   const divRef = useRef(null);
+  const [searchQuery, setSearchQuery] = useState();
 
   useEffect(() => {
     setLoading(true);
@@ -49,10 +50,6 @@ export default function JudgementsPage() {
       };
       fetchLatestJudgements();
     }
-  }, []);
-
-  useEffect(() => {
-    setLoading(true);
     const fetchAllJudgementYears = async () => {
       const response = await fetch("/api/getAllJudgementYears");
       const data = await response.json();
@@ -101,19 +98,42 @@ export default function JudgementsPage() {
       divRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [allJudgements, page]);
-  console.log(currentJudgements);
-  console.log(loading);
+
+  useEffect(() => {
+    if (searchQuery) {
+      setYearQuery();
+      setMonthQuery();
+      setLoading(true);
+      const fetchFilteredJudgements = async () => {
+        const response = await fetch(
+          `/api/getJudgementsBySearchQuery?query=${searchQuery}`
+        );
+        let data = await response.json();
+        if (data.message === "No judgements found matching the query.") {
+          data = [];
+        }
+        setAllJudgements(data);
+        setTotalPageNumbers(Math.ceil(data.length / limit));
+        setLoading(false);
+      };
+      fetchFilteredJudgements();
+    }
+  }, [searchQuery]);
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    console.log(e.target.searchQuery.value);
+    setSearchQuery(e.target.searchQuery.value);
   }
   return (
     <div className="wrapper">
       <Navbar />
       <main className="content">
         <div className={styles.container}>
-          <SearchBar handleFormSubmit={handleFormSubmit} />
+          <SearchBar
+            handleFormSubmit={handleFormSubmit}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
           <div className={styles.yearSection}>
             {allJudgementYears && allJudgementYears.length != 0 && (
               <ul>
@@ -122,6 +142,7 @@ export default function JudgementsPage() {
                     key={index}
                     onClick={() => {
                       setYearQuery(element.year);
+                      setSearchQuery("");
                     }}
                     style={
                       yearQuery == element.year
@@ -145,7 +166,11 @@ export default function JudgementsPage() {
                   <li
                     key={index}
                     onClick={() => {
-                      monthQuery == element ? setMonthQuery() :monthQuery != element && yearQuery? setMonthQuery(element):null;
+                      monthQuery == element
+                        ? setMonthQuery()
+                        : monthQuery != element && yearQuery
+                        ? setMonthQuery(element)
+                        : null;
                     }}
                     style={
                       monthQuery == element
