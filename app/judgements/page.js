@@ -100,24 +100,28 @@ export default function JudgementsPage() {
   }, [allJudgements, page]);
 
   useEffect(() => {
-    if (searchQuery) {
-      setYearQuery();
-      setMonthQuery();
-      setLoading(true);
-      const fetchFilteredJudgements = async () => {
-        const response = await fetch(
-          `/api/getJudgementsBySearchQuery?query=${searchQuery}`
-        );
-        let data = await response.json();
-        if (data.message === "No judgements found matching the query.") {
-          data = [];
-        }
-        setAllJudgements(data);
-        setTotalPageNumbers(Math.ceil(data.length / limit));
-        setLoading(false);
-      };
-      fetchFilteredJudgements();
-    }
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery) {
+        setYearQuery();
+        setMonthQuery();
+        setLoading(true);
+        const fetchFilteredJudgements = async () => {
+          const response = await fetch(
+            `/api/getJudgementsBySearchQuery?query=${searchQuery}`
+          );
+          let data = await response.json();
+          if (data.message === "No judgements found matching the query.") {
+            data = [];
+          }
+          setAllJudgements(data);
+          setTotalPageNumbers(Math.ceil(data.length / limit));
+          setLoading(false);
+        };
+        fetchFilteredJudgements();
+      }
+    }, 500); // Delay of 500ms
+    // Cleanup function to clear the timeout
+    return () => clearTimeout(delayDebounceFn);
   }, [searchQuery]);
 
   function handleFormSubmit(e) {
