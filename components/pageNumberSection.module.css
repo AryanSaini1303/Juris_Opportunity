@@ -1,0 +1,19 @@
+.container ul{
+    background-color: var(--primary-color);
+    margin: 0;
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    padding: 1rem;
+    justify-content: center;
+  }
+  .container ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem 0.75rem;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+  }
+  .container ul li a:hover{
+    background-color: lightgrey;
+  }

@@ -3,7 +3,6 @@
 }
 .currEvents {
   background-color: var(--secondary-color);
-  filter: saturate(50%);
   margin: 1rem 0;
   padding: 1rem 2rem;
   animation: eventsReveal 0.5s ease-in-out;

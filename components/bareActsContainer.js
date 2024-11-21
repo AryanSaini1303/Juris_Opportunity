@@ -4,6 +4,7 @@ import styles from "./bareActsContainer.module.css";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import PageNumberSection from "./pageNumberSection";
 
 export default function BareActsContainer({ page }) {
   const centralActs = [
@@ -225,19 +226,7 @@ export default function BareActsContainer({ page }) {
           </tbody>
         </table>
         {bareActs && bareActs.length != 0 && !loading && (
-          <ul>
-            <li>Page no.</li>
-            {Array.from({ length: totalPageNumbers }, (_, index) => (
-              <li key={index}>
-                <Link
-                  href={`/bare_acts?page=${index + 1}`}
-                  style={index + 1 == page ? { backgroundColor:"var(--secondary-color)", color:"var(--primary-color)" } : null}
-                >
-                  {index + 1}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <PageNumberSection totalPageNumbers={totalPageNumbers} path={"bare_acts"} currentPage={page}/>
         )}
       </div>
 
