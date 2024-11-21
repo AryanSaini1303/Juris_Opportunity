@@ -20,6 +20,7 @@ body {
   background-color: var(--primary-color);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   user-select: none;
+  scroll-behavior: smooth;
 }
 
 /* Apply styles for all scrollbars in the document */

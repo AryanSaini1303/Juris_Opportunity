@@ -73,7 +73,7 @@ export default function Navbar() {
           <Link href={"/bare_acts?page=1"}>
             <li>Bare Acts</li>
           </Link>
-          <Link href={"/judgements"}>
+          <Link href={"/judgements?page=1"}>
             <li>Judgements</li>
           </Link>
           <Link href={"/categories/Competitions"}>
@@ -82,9 +82,9 @@ export default function Navbar() {
           <Link href="/MapSearch">
             <li>Map Search</li>
           </Link>
-          <Link href={"#"}>
+          {/* <Link href={"#"}>
             <li>Notes</li>
-          </Link>
+          </Link> */}
         </ul>
       </div>
       {/* <div className={styles.searchSection}>

@@ -1,8 +1,7 @@
 "use client";
 import BareActModal from "./bareActModal";
 import styles from "./bareActsContainer.module.css";
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import PageNumberSection from "./pageNumberSection";
 
