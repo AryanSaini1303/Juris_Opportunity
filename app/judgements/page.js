@@ -145,9 +145,7 @@ export default function JudgementsPage() {
                   <li
                     key={index}
                     onClick={() => {
-                      monthQuery == element
-                        ? setMonthQuery()
-                        : setMonthQuery(element);
+                      monthQuery == element ? setMonthQuery() :monthQuery != element && yearQuery? setMonthQuery(element):null;
                     }}
                     style={
                       monthQuery == element
