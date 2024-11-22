@@ -20,7 +20,7 @@ export default function MapSearchPage() {
           throw new Error("Failed to fetch events");
         }
         const data = await response.json();
-        // console.log(data);
+        console.log(data);
         setFilteredCategoryData(data);
         setLoading(false);
         // Update the state with the fetched data
@@ -675,54 +675,49 @@ export default function MapSearchPage() {
           </g>
         </svg>
         <div className={styles.currEvents}>
-          {filteredCategoryData &&
-            Object.keys(filteredCategoryData).length > 0 &&
-            !loading && <h1>{state}</h1>}
-          <ul>
-            {filteredCategoryData &&
-            Object.keys(filteredCategoryData).length > 0 &&
-            !loading ? (
-              Object.keys(filteredCategoryData).map((categoryKey) => {
-                const events = filteredCategoryData[categoryKey];
-                return (
-                  <div key={categoryKey}>
-                    {events && events.length > 0 && (
-                      <div>
-                        {events.map((event) => (
-                          <li key={event.id}>
-                            <Link
-                              href={`/event/${event.category || "default"}_${
-                                event.id
-                              }`}
-                            >
-                              <Image
-                                src={event.poster || "/default-poster.jpg"}
-                                alt={event.heading || "Event"}
-                                width={200}
-                                height={200}
-                              />
-                              <div className={styles.specifics}>
-                                <h3>
-                                  {event.start_date}
-                                  <span>&emsp; &emsp; {event.category}</span>
-                                </h3>
-                                <h3>{event.heading}</h3>
-                              </div>
-                            </Link>
-                            <hr />
-                          </li>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              })
-            ) : (
-              <h2 className={styles.noEventHeader}>
-                SCHEDULED EVENTS WILL APPEAR HERE!
-              </h2>
-            )}
-          </ul>
+          {loading ? (
+            <h2 style={{ textAlign: "center", color: "white" }}>Loading...</h2>
+          ) : filteredCategoryData &&
+            Object.keys(filteredCategoryData).length > 0 ? (
+            <>
+              <h1>{state}</h1>
+              <ul>
+                {Object.keys(filteredCategoryData).map((categoryKey) => {
+                  const events = filteredCategoryData[categoryKey];
+                  return (
+                    events &&
+                    events.length > 0 &&
+                    events.map((event) => (
+                      <li key={event.id}>
+                        <Link
+                          href={`/event/${event.category || "default"}_${
+                            event.id
+                          }`}
+                        >
+                          <img
+                            src={event.poster || "/default-poster.jpg"}
+                            alt={event.heading || "Event"}
+                          />
+                          <div className={styles.specifics}>
+                            <h3>
+                              {event.start_date}
+                              <span>&emsp; &emsp; {event.category}</span>
+                            </h3>
+                            <h3>{event.heading}</h3>
+                          </div>
+                        </Link>
+                        <hr />
+                      </li>
+                    ))
+                  );
+                })}
+              </ul>
+            </>
+          ) : (
+            <h2 className={styles.noEventHeader}>
+              SCHEDULED EVENTS WILL APPEAR HERE!
+            </h2>
+          )}
         </div>
       </main>
       <Footer />

@@ -15,28 +15,37 @@ export default async function handler(req, res) {
 
   try {
     // Fetch data from Supabase tables concurrently using Promise.all
-    const [jobsData, internshipsData, competitionsData, mootsData] = await Promise.all([
-      supabase
-        .from("jobs")
-        .select("heading, category, start_date, poster, id, created_at, deadline")
-        .eq("state", state)
-        .order("start_date", { ascending: true }),
-      supabase
-        .from("internships")
-        .select("heading, category, start_date, poster, id, created_at, deadline")
-        .eq("state", state)
-        .order("start_date", { ascending: true }),
-      supabase
-        .from("competitions")
-        .select("heading, category, start_date, poster, id, created_at, deadline")
-        .eq("state", state)
-        .order("start_date", { ascending: true }),
-      supabase
-        .from("moots")
-        .select("heading, category, start_date, poster, id, created_at, deadline")
-        .eq("state", state)
-        .order("start_date", { ascending: true }),
-    ]);
+    const [jobsData, internshipsData, competitionsData, mootsData] =
+      await Promise.all([
+        supabase
+          .from("jobs")
+          .select(
+            "heading, category, start_date, poster, id, created_at, deadline"
+          )
+          .eq("state", state)
+          .order("start_date", { ascending: true }),
+        supabase
+          .from("internships")
+          .select(
+            "heading, category, start_date, poster, id, created_at, deadline"
+          )
+          .eq("state", state)
+          .order("start_date", { ascending: true }),
+        supabase
+          .from("competitions")
+          .select(
+            "heading, category, start_date, poster, id, created_at, deadline"
+          )
+          .eq("state", state)
+          .order("start_date", { ascending: true }),
+        supabase
+          .from("moots")
+          .select(
+            "heading, category, start_date, poster, id, created_at, deadline"
+          )
+          .eq("state", state)
+          .order("start_date", { ascending: true }),
+      ]);
 
     // Check for errors in any of the queries
     if (
@@ -52,7 +61,9 @@ export default async function handler(req, res) {
           competitionsData.error ||
           mootsData.error
       );
-      return res.status(500).json({ error: "Error fetching data from Supabase" });
+      return res
+        .status(500)
+        .json({ error: "Error fetching data from Supabase" });
     }
 
     // Concatenate the data from all tables into a single object
@@ -62,18 +73,16 @@ export default async function handler(req, res) {
       competitions: competitionsData.data,
       moots: mootsData.data,
     };
-
     // Step 1: Get the current date
-    const currentDate = new Date();
-    const oneWeekAgo = new Date(currentDate.setDate(currentDate.getDate() - 7));
 
+    console.log("categoryData: ", categoryData);
     // Step 2: Filter events within each category where created_at is within the last week
     const filteredCategoryData = Object.keys(categoryData).reduce(
       (acc, category) => {
         const filteredEvents = categoryData[category].filter((event) => {
+          const currentDate = new Date();
           const eventDeadline = new Date(event.deadline);
-          const eventDate = new Date(event.created_at);
-          return eventDate >= oneWeekAgo && eventDeadline >= currentDate; // Filter events created less than a week ago
+          return eventDeadline >= currentDate; // Filter events created less than a week ago
         });
         if (filteredEvents.length > 0) {
           acc[category] = filteredEvents; // Only include categories with valid events
@@ -82,6 +91,7 @@ export default async function handler(req, res) {
       },
       {}
     );
+    console.log("filteredCategoryData: ", filteredCategoryData);
 
     // Return the filtered data as a JSON response
     res.status(200).json(filteredCategoryData);
