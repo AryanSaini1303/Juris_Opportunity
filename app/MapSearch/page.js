@@ -685,7 +685,7 @@ export default function MapSearchPage() {
               Object.keys(filteredCategoryData).map((categoryKey) => {
                 const events = filteredCategoryData[categoryKey];
                 return (
-                  <React.Fragment key={categoryKey}>
+                  <div key={categoryKey}>
                     {events && events.length > 0 && (
                       <div>
                         {events.map((event) => (
@@ -714,7 +714,7 @@ export default function MapSearchPage() {
                         ))}
                       </div>
                     )}
-                  </React.Fragment>
+                  </div>
                 );
               })
             ) : (
