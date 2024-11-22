@@ -166,7 +166,6 @@ export default function MapSearchPage() {
                   handleClick("Dādra and Nagar Haveli and Damān and Diu");
                 }}
                 name="Dādra and Nagar Haveli and Damān and Diu"
-                s
                 className="Dādra and Nagar Haveli and Damān and Diu"
                 fill="slategrey"
               ></path>
@@ -677,27 +676,34 @@ export default function MapSearchPage() {
         </svg>
         <div className={styles.currEvents}>
           {filteredCategoryData &&
-            JSON.stringify(filteredCategoryData) != "{}" &&
+            Object.keys(filteredCategoryData).length > 0 &&
             !loading && <h1>{state}</h1>}
           <ul>
-            {/* If data is available, render events */}
             {filteredCategoryData &&
-            JSON.stringify(filteredCategoryData) != "{}" &&
+            Object.keys(filteredCategoryData).length > 0 &&
             !loading ? (
-              // Loop through categoryData and render each category's events
               Object.keys(filteredCategoryData).map((categoryKey) => {
                 const events = filteredCategoryData[categoryKey];
                 return (
-                  <>
-                    {events && events.length > 0 ? (
-                      <div key={categoryKey}>
+                  <React.Fragment key={categoryKey}>
+                    {events && events.length > 0 && (
+                      <div>
                         {events.map((event) => (
                           <li key={event.id}>
-                            <Link href={`/event/${event.category}_${event.id}`}>
-                              <img src={event.poster} alt="" />
+                            <Link
+                              href={`/event/${event.category || "default"}_${
+                                event.id
+                              }`}
+                            >
+                              <Image
+                                src={event.poster || "/default-poster.jpg"}
+                                alt={event.heading || "Event"}
+                                width={200}
+                                height={200}
+                              />
                               <div className={styles.specifics}>
                                 <h3>
-                                  {event.start_date}{" "}
+                                  {event.start_date}
                                   <span>&emsp; &emsp; {event.category}</span>
                                 </h3>
                                 <h3>{event.heading}</h3>
@@ -707,8 +713,8 @@ export default function MapSearchPage() {
                           </li>
                         ))}
                       </div>
-                    ) : null}
-                  </>
+                    )}
+                  </React.Fragment>
                 );
               })
             ) : (
