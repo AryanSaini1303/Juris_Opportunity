@@ -93,20 +93,22 @@ export default function BareActsContainer({ page }) {
   const [allBareActs, setAllBareActs] = useState();
 
   useEffect(() => {
-    const fetchBareActs = async () => {
-      const response = await fetch("/api/bareActs");
-      const data = await response.json();
-      setTotalPageNumbers(Math.ceil(data.length / limit)); // Math.ceil rounds up the number to the next largest number
-      setAllBareActs(data);
-      setLoading(false);
-    };
-    fetchBareActs();
-  }, []);
+    if ((centralActQuery?.length == 0 && stateActQuery?.length == 0)||(!centralActQuery && !stateActQuery)) {
+      const fetchBareActs = async () => {
+        const response = await fetch("/api/bareActs");
+        const data = await response.json();
+        setTotalPageNumbers(Math.ceil(data.length / limit)); // Math.ceil rounds up the number to the next largest number
+        setAllBareActs(data);
+        setLoading(false);
+      };
+      fetchBareActs();
+    }
+  }, [centralActQuery, stateActQuery]);
 
   useEffect(() => {
     setLoading(true);
-    setStateActQuery("");
     if (centralActQuery) {
+      setStateActQuery("");
       const fetchCentralBareActs = async () => {
         const response = await fetch(
           `/api/getCentralBareActs?query=${centralActQuery}`
@@ -121,9 +123,9 @@ export default function BareActsContainer({ page }) {
   }, [centralActQuery]);
 
   useEffect(() => {
-    setCentralActQuery("");
     setLoading(true);
     if (stateActQuery) {
+      setCentralActQuery("");
       const fetchStateBareActs = async () => {
         const response = await fetch(
           `/api/getStateBareActs?query=${stateActQuery}`
@@ -156,6 +158,7 @@ export default function BareActsContainer({ page }) {
     setBareActIntro(data);
     setShowModal(true);
   }
+  console.log(centralActQuery);
 
   return (
     <div className={styles.acts_container}>
@@ -170,8 +173,15 @@ export default function BareActsContainer({ page }) {
             <li
               key={index}
               onClick={() => {
-                handleCentralActsClick(act);
+                centralActQuery == act
+                  ? handleCentralActsClick("")
+                  : handleCentralActsClick(act);
               }}
+              style={
+                centralActQuery === act
+                  ? { backgroundColor: "var(--accent-color)", color: "white" }
+                  : null
+              }
             >
               {act}
             </li>
@@ -225,7 +235,11 @@ export default function BareActsContainer({ page }) {
           </tbody>
         </table>
         {bareActs && bareActs.length != 0 && !loading && (
-          <PageNumberSection totalPageNumbers={totalPageNumbers} path={"bare_acts"} currentPage={page}/>
+          <PageNumberSection
+            totalPageNumbers={totalPageNumbers}
+            path={"bare_acts"}
+            currentPage={page}
+          />
         )}
       </div>
 
@@ -237,8 +251,15 @@ export default function BareActsContainer({ page }) {
             <li
               key={index}
               onClick={() => {
-                handleStateActsClick(act);
+                stateActQuery == act
+                  ? handleStateActsClick("")
+                  : handleStateActsClick(act);
               }}
+              style={
+                stateActQuery === act
+                  ? { backgroundColor: "var(--accent-color)", color: "white" }
+                  : null
+              }
             >
               {act} state law
             </li>

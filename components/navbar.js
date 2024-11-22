@@ -4,10 +4,12 @@ import styles from "./navbar.module.css";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [user, setUser] = useState();
   const [hover, setHover] = useState(false);
+  const url=usePathname();
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -38,14 +40,14 @@ export default function Navbar() {
     };
   }, []);
 
-  function handleSearch(e) {
-    e.preventDefault();
-    // console.log(e.target.value);
-  }
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    console.log(e.target.searchQuery.value);
-  }
+  // function handleSearch(e) {
+  //   e.preventDefault();
+  //   // console.log(e.target.value);
+  // }
+  // function handleFormSubmit(e) {
+  //   e.preventDefault();
+  //   console.log(e.target.searchQuery.value);
+  // }
 
   function handleMouseEnter() {
     setHover(true);
@@ -53,7 +55,7 @@ export default function Navbar() {
   function handleMouseLeave() {
     setHover(false);
   }
-  console.log(user);
+  // console.log(user);
   return (
     <section className={styles.navbar}>
       <Link href={"/"}>
@@ -71,16 +73,16 @@ export default function Navbar() {
             <li>POSH & POCSO</li>
           </Link>
           <Link href={"/bare_acts?page=1"}>
-            <li>Bare Acts</li>
+            <li style={url.startsWith("/bare_acts")?{backgroundColor:"white", color:"var(--secondary-color)", transform:"translateY(-0.2rem)"}:null}>Bare Acts</li>
           </Link>
           <Link href={"/judgements?page=1"}>
-            <li>Judgements</li>
+            <li style={url.startsWith("/judgements")?{backgroundColor:"white", color:"var(--secondary-color)", transform:"translateY(-0.2rem)"}:null}>Judgements</li>
           </Link>
           <Link href={"/categories/Competitions"}>
-            <li>Competitions</li>
+            <li style={url.startsWith("/categories/Competitions")?{backgroundColor:"white", color:"var(--secondary-color)", transform:"translateY(-0.2rem)"}:null}>Competitions</li>
           </Link>
           <Link href="/MapSearch">
-            <li>Map Search</li>
+            <li style={url.startsWith("/MapSearch")?{backgroundColor:"white", color:"var(--secondary-color)", transform:"translateY(-0.2rem)"}:null}>Map Search</li>
           </Link>
           {/* <Link href={"#"}>
             <li>Notes</li>

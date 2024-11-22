@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       const { data, error } = await supabase
         .from("central_bare_acts")
         .select("*") // You can specify columns here if needed
-        .limit(25)
+        .limit(45)
         .order("year", { ascending: false });
 
       if (error) {
