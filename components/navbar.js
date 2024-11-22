@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
   const [user, setUser] = useState();
   const [hover, setHover] = useState(false);
-  const url=usePathname();
+  const url = usePathname();
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -73,16 +73,60 @@ export default function Navbar() {
             <li>POSH & POCSO</li>
           </Link>
           <Link href={"/bare_acts?page=1"}>
-            <li style={url.startsWith("/bare_acts")?{backgroundColor:"white", color:"var(--secondary-color)", transform:"translateY(-0.2rem)"}:null}>Bare Acts</li>
+            <li
+              style={
+                url.startsWith("/bare_acts")
+                  ? {
+                      backgroundColor: "white",
+                      color: "var(--secondary-color)",
+                    }
+                  : null
+              }
+            >
+              Bare Acts
+            </li>
           </Link>
           <Link href={"/judgements?page=1"}>
-            <li style={url.startsWith("/judgements")?{backgroundColor:"white", color:"var(--secondary-color)", transform:"translateY(-0.2rem)"}:null}>Judgements</li>
+            <li
+              style={
+                url.startsWith("/judgements")
+                  ? {
+                      backgroundColor: "white",
+                      color: "var(--secondary-color)",
+                    }
+                  : null
+              }
+            >
+              Judgements
+            </li>
           </Link>
           <Link href={"/categories/Competitions"}>
-            <li style={url.startsWith("/categories/Competitions")?{backgroundColor:"white", color:"var(--secondary-color)", transform:"translateY(-0.2rem)"}:null}>Competitions</li>
+            <li
+              style={
+                url.startsWith("/categories/Competitions")
+                  ? {
+                      backgroundColor: "white",
+                      color: "var(--secondary-color)",
+                    }
+                  : null
+              }
+            >
+              Competitions
+            </li>
           </Link>
           <Link href="/MapSearch">
-            <li style={url.startsWith("/MapSearch")?{backgroundColor:"white", color:"var(--secondary-color)", transform:"translateY(-0.2rem)"}:null}>Map Search</li>
+            <li
+              style={
+                url.startsWith("/MapSearch")
+                  ? {
+                      backgroundColor: "white",
+                      color: "var(--secondary-color)",
+                    }
+                  : null
+              }
+            >
+              Map Search
+            </li>
           </Link>
           {/* <Link href={"#"}>
             <li>Notes</li>
@@ -118,17 +162,15 @@ export default function Navbar() {
                 <svg viewBox="0 0 24 24" fill="white" height="2em" width="2em">
                   <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z" />
                 </svg>
-              ) : (
-                // <img
-                //   src={user.user_metadata.avatar_url}
-                //   style={{ height: "2rem", width: "2rem", borderRadius: "50%" }}
-                //   onError={(e) => {
-                //     e.target.onerror = null;
-                //     e.target.src = "https://picsum.photos/200";
-                //   }}
-                // />
-                null
-              )}
+              ) : // <img
+              //   src={user.user_metadata.avatar_url}
+              //   style={{ height: "2rem", width: "2rem", borderRadius: "50%" }}
+              //   onError={(e) => {
+              //     e.target.onerror = null;
+              //     e.target.src = "https://picsum.photos/200";
+              //   }}
+              // />
+              null}
               <h3>{user ? `Hey, ${user.user_metadata.name}` : "Log In"}</h3>
             </>
           )}

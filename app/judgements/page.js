@@ -126,7 +126,6 @@ export default function JudgementsPage() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    setSearchQuery(e.target.searchQuery.value);
   }
   return (
     <div className="wrapper">
@@ -137,6 +136,7 @@ export default function JudgementsPage() {
             handleFormSubmit={handleFormSubmit}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
+            placeholder={"e.g. State of Rajasthan"}
           />
           <div className={styles.yearSection}>
             {allJudgementYears && allJudgementYears.length != 0 && (

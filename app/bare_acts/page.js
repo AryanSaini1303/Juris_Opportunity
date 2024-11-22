@@ -12,7 +12,7 @@ export default function LandingPage() {
     <div className="wrapper">
       <Navbar />
       <main className="content">
-        <FilterBar/>
+        {/* <FilterBar/> */}
         <BareActsContainer page={page}/>
       </main>
       <Footer />

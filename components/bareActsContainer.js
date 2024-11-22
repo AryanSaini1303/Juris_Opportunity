@@ -4,6 +4,7 @@ import styles from "./bareActsContainer.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import PageNumberSection from "./pageNumberSection";
+import SearchBar from "./searchBar";
 
 export default function BareActsContainer({ page }) {
   const centralActs = [
@@ -91,9 +92,13 @@ export default function BareActsContainer({ page }) {
   const [totalPageNumbers, setTotalPageNumbers] = useState();
   const router = useRouter();
   const [allBareActs, setAllBareActs] = useState();
+  const [searchQuery, setSearchQuery] = useState();
 
   useEffect(() => {
-    if ((centralActQuery?.length == 0 && stateActQuery?.length == 0)||(!centralActQuery && !stateActQuery)) {
+    if (
+      (centralActQuery?.length == 0 && stateActQuery?.length == 0) ||
+      (!centralActQuery && !stateActQuery)
+    ) {
       const fetchBareActs = async () => {
         const response = await fetch("/api/bareActs");
         const data = await response.json();
@@ -109,6 +114,7 @@ export default function BareActsContainer({ page }) {
     setLoading(true);
     if (centralActQuery) {
       setStateActQuery("");
+      setSearchQuery();
       const fetchCentralBareActs = async () => {
         const response = await fetch(
           `/api/getCentralBareActs?query=${centralActQuery}`
@@ -126,6 +132,7 @@ export default function BareActsContainer({ page }) {
     setLoading(true);
     if (stateActQuery) {
       setCentralActQuery("");
+      setSearchQuery();
       const fetchStateBareActs = async () => {
         const response = await fetch(
           `/api/getStateBareActs?query=${stateActQuery}`
@@ -146,6 +153,32 @@ export default function BareActsContainer({ page }) {
     setBareActs(allBareActs?.slice(startIndex, endIndex));
   }, [allBareActs, page]);
 
+  useEffect(() => {
+    searchQuery && searchQuery.length != 0 && setLoading(true);
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery) {
+        setStateActQuery();
+        setCentralActQuery();
+        const fetchFilteredActs = async () => {
+          const response = await fetch(
+            `/api/getBareActsBySearchQuery?query=${searchQuery}`
+          );
+          let data = await response.json();
+          if (data.message === "No judgements found matching the query.") {
+            data = [];
+          }
+          setAllBareActs(data);
+          setTotalPageNumbers(Math.ceil(data.length / limit));
+          setLoading(false);
+        };
+        fetchFilteredActs();
+      }
+    }, 500); // Delay of 500ms
+    // Cleanup function to clear the timeout
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery]);
+  console.log(allBareActs);
+
   function handleStateActsClick(data) {
     setStateActQuery(data);
     router.push("/bare_acts?page=1");
@@ -158,114 +191,134 @@ export default function BareActsContainer({ page }) {
     setBareActIntro(data);
     setShowModal(true);
   }
-  console.log(centralActQuery);
+  function handleFormSubmit(e) {
+    e.preventDefault();
+  }
 
   return (
-    <div className={styles.acts_container}>
-      {showModal && (
-        <BareActModal closeFunction={setShowModal} intro={bareActIntro} />
-      )}
-      {/* Central Acts */}
-      <div className={styles.central_acts}>
-        <h2>Central Acts</h2>
-        <ul>
-          {centralActs.map((act, index) => (
-            <li
-              key={index}
-              onClick={() => {
-                centralActQuery == act
-                  ? handleCentralActsClick("")
-                  : handleCentralActsClick(act);
-              }}
-              style={
-                centralActQuery === act
-                  ? { backgroundColor: "var(--accent-color)", color: "white" }
-                  : null
-              }
-            >
-              {act}
-            </li>
-          ))}
-        </ul>
+    <>
+      <div className="searchBar" style={{ margin: "2rem 0 0.5rem 0" }}>
+        <SearchBar
+          handleFormSubmit={handleFormSubmit}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          placeholder={"e.g. Bribery and Corruption"}
+        />
       </div>
-
-      {/* Titles Section */}
-      <div className={styles.titles_section}>
-        <table className={styles.titles_table}>
-          <thead>
-            <tr>
-              <th>{stateActQuery ? "State" : "Category"}</th>
-              <th>Title</th>
-              <td>Year</td>
-            </tr>
-          </thead>
-          <tbody>
-            {loading ? (
-              <tr>
-                <td
-                  colSpan="3"
-                  style={{ textAlign: "center", borderBottom: "none" }}
-                >
-                  <h2 style={{ margin: 0 }}>Loading...</h2>
-                </td>
-              </tr>
-            ) : bareActs && bareActs.length != 0 && !loading ? (
-              bareActs.map((item, index) => (
-                <tr
-                  key={index}
-                  onClick={() => {
-                    handleBareActClick([item.intro, item.name, item.year]);
-                  }}
-                >
-                  <td>{item.category ? item.category : item.state}</td>
-                  <td>{item.name}</td>
-                  <td>{item.year}</td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td
-                  colSpan="3"
-                  style={{ textAlign: "center", borderBottom: "none" }}
-                >
-                  <h2 style={{ margin: 0 }}>No Bare Acts Available!</h2>
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-        {bareActs && bareActs.length != 0 && !loading && (
-          <PageNumberSection
-            totalPageNumbers={totalPageNumbers}
-            path={"bare_acts"}
-            currentPage={page}
-          />
+      <div className={styles.acts_container}>
+        {showModal && (
+          <BareActModal closeFunction={setShowModal} intro={bareActIntro} />
         )}
-      </div>
+        {/* Central Acts */}
+        <div className={styles.central_acts}>
+          <h2>Central Acts</h2>
+          <ul>
+            {centralActs.map((act, index) => (
+              <li
+                key={index}
+                onClick={() => {
+                  centralActQuery == act
+                    ? handleCentralActsClick("")
+                    : handleCentralActsClick(act);
+                }}
+                style={
+                  centralActQuery === act
+                    ? { backgroundColor: "var(--accent-color)", color: "white" }
+                    : null
+                }
+              >
+                {act}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* State Bare Acts */}
-      <div className={styles.state_acts}>
-        <h2>State Bare Acts</h2>
-        <ul>
-          {stateActs.map((act, index) => (
-            <li
-              key={index}
-              onClick={() => {
-                stateActQuery == act
-                  ? handleStateActsClick("")
-                  : handleStateActsClick(act);
-              }}
-              style={
-                stateActQuery === act
-                  ? { backgroundColor: "var(--accent-color)", color: "white" }
-                  : null
-              }
-            >
-              {act} state law
-            </li>
-          ))}
-        </ul>
+        {/* Titles Section */}
+        <div className={styles.mainContainer}>
+          <div className={styles.titles_section}>
+            <table className={styles.titles_table}>
+              <thead>
+                <tr>
+                  <th>
+                    {!stateActQuery && !centralActQuery && !loading
+                      ? "Category/State"
+                      : stateActQuery
+                      ? "State"
+                      : "Category"}
+                  </th>
+                  <th>Title</th>
+                  <td>Year</td>
+                </tr>
+              </thead>
+              <tbody>
+                {loading ? (
+                  <tr>
+                    <td
+                      colSpan="3"
+                      style={{ textAlign: "center", borderBottom: "none" }}
+                    >
+                      <h2 style={{ margin: 0 }}>Loading...</h2>
+                    </td>
+                  </tr>
+                ) : bareActs && bareActs.length != 0 && !loading ? (
+                  bareActs.map((item, index) => (
+                    <tr
+                      key={index}
+                      onClick={() => {
+                        handleBareActClick([item.intro, item.name, item.year]);
+                      }}
+                    >
+                      <td>{item.category ? item.category : item.state}</td>
+                      <td>{item.name}</td>
+                      <td>{item.year}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="3"
+                      style={{ textAlign: "center", borderBottom: "none" }}
+                    >
+                      <h2 style={{ margin: 0 }}>No Bare Acts Available!</h2>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+          {bareActs && bareActs.length != 0 && !loading && (
+            <PageNumberSection
+              totalPageNumbers={totalPageNumbers}
+              path={"bare_acts"}
+              currentPage={page}
+            />
+          )}
+        </div>
+
+        {/* State Bare Acts */}
+        <div className={styles.state_acts}>
+          <h2>State Bare Acts</h2>
+          <ul>
+            {stateActs.map((act, index) => (
+              <li
+                key={index}
+                onClick={() => {
+                  stateActQuery == act
+                    ? handleStateActsClick("")
+                    : handleStateActsClick(act);
+                }}
+                style={
+                  stateActQuery === act
+                    ? { backgroundColor: "var(--accent-color)", color: "white" }
+                    : null
+                }
+              >
+                {act} state law
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
