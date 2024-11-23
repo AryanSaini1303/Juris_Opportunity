@@ -187,10 +187,10 @@ export default function BareActsContainer({ page }) {
     setCentralActQuery(data);
     router.push("/bare_acts?page=1");
   }
-  function handleBareActClick(data) {
-    setBareActIntro(data);
-    setShowModal(true);
-  }
+  // function handleBareActClick(data) {
+  //   setBareActIntro(data);
+  //   setShowModal(true);
+  // }
   function handleFormSubmit(e) {
     e.preventDefault();
   }
@@ -202,7 +202,7 @@ export default function BareActsContainer({ page }) {
           handleFormSubmit={handleFormSubmit}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
-          placeholder={"e.g. Bribery and Corruption"}
+          placeholder={"e.g. The Medication Act"}
         />
       </div>
       <div className={styles.acts_container}>
@@ -265,8 +265,9 @@ export default function BareActsContainer({ page }) {
                     <tr
                       key={index}
                       onClick={() => {
-                        handleBareActClick([item.intro, item.name, item.year]);
-                        router.push(`${item.link}`)
+                        // handleBareActClick([item.intro, item.name, item.year]);
+                        // router.push(`${item.link}`)
+                        window.open(item.link, "_blank", "noopener,noreferrer");
                       }}
                     >
                       <td>{item.category ? item.category : item.state}</td>
