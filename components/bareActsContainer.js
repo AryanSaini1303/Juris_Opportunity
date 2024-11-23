@@ -266,7 +266,7 @@ export default function BareActsContainer({ page }) {
                       key={index}
                       onClick={() => {
                         handleBareActClick([item.intro, item.name, item.year]);
-                        router.push(`${item.BareActModal}`)
+                        router.push(`${item.link}`)
                       }}
                     >
                       <td>{item.category ? item.category : item.state}</td>
