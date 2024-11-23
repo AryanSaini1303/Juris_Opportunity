@@ -20,7 +20,7 @@ export default function InternshipDetailsPage({ data }) {
       </header>
       <hr />
       <section className={styles.description}>
-        <h2>About the Job</h2>
+        <h2>About the Internship</h2>
         <p>{data[0].about}</p>
       </section>
       <hr />

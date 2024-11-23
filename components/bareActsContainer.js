@@ -206,9 +206,9 @@ export default function BareActsContainer({ page }) {
         />
       </div>
       <div className={styles.acts_container}>
-        {showModal && (
+        {/* {showModal && (
           <BareActModal closeFunction={setShowModal} intro={bareActIntro} />
-        )}
+        )} */}
         {/* Central Acts */}
         <div className={styles.central_acts}>
           <h2>Central Acts</h2>
@@ -266,6 +266,7 @@ export default function BareActsContainer({ page }) {
                       key={index}
                       onClick={() => {
                         handleBareActClick([item.intro, item.name, item.year]);
+                        router.push(`${item.BareActModal}`)
                       }}
                     >
                       <td>{item.category ? item.category : item.state}</td>

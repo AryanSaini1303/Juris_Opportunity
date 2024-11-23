@@ -20,7 +20,7 @@ export default function CompetitionDetailsPage({ data }) {
       </header>
       <hr />
       <section className={styles.description}>
-        <h2>About the Job</h2>
+        <h2>About the Competition</h2>
         <p>{data[0].about}</p>
       </section>
       <hr />
@@ -53,7 +53,7 @@ export default function CompetitionDetailsPage({ data }) {
           <p>{data[0].application_submission}</p>
         </div>
         <div className={styles.item}>
-          <h3>Stipend</h3>
+          <h3>Prize</h3>
           <p>{data[0].stipend}</p>
         </div>
         <div className={styles.item}>
