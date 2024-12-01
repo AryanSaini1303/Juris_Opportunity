@@ -210,7 +210,7 @@ export default function BareActsContainer({ page }) {
           <BareActModal closeFunction={setShowModal} intro={bareActIntro} />
         )} */}
         {/* Central Acts */}
-        <div className={styles.central_acts}>
+        {/* <div className={styles.central_acts}>
           <h2>Central Acts</h2>
           <ul>
             {centralActs.map((act, index) => (
@@ -231,7 +231,7 @@ export default function BareActsContainer({ page }) {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
         {/* Titles Section */}
         <div className={styles.mainContainer}>
@@ -247,7 +247,8 @@ export default function BareActsContainer({ page }) {
                       : "Category"}
                   </th>
                   <th>Title</th>
-                  <td>Year</td>
+                  <th>Act Number</th>
+                  <th>Year</th>
                 </tr>
               </thead>
               <tbody>
@@ -270,8 +271,9 @@ export default function BareActsContainer({ page }) {
                         window.open(item.link, "_blank", "noopener,noreferrer");
                       }}
                     >
-                      <td>{item.category ? item.category : item.state}</td>
+                      <td>{item.state ? item.state : "Central"}</td>
                       <td>{item.name}</td>
+                      <td>{item.act_number}</td>
                       <td>{item.year}</td>
                     </tr>
                   ))

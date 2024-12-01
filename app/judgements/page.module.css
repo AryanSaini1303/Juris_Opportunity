@@ -10,6 +10,15 @@
   background-color: var(--secondary-color);
   border-radius: 5px;
   animation: yearSectionReveal 0.5s ease-in-out;
+  height: 65.5vh;
+  overflow: scroll;
+}
+.yearSection::-webkit-scrollbar {
+  width: 5px;
+}
+.yearSection::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 2px;
 }
 @keyframes yearSectionReveal {
   0% {
@@ -58,11 +67,11 @@
   animation: monthSectionReveal 0.5s ease-in-out;
 }
 @keyframes monthSectionReveal {
-  0%{
+  0% {
     opacity: 0;
     transform: translateY(-1rem);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
@@ -98,10 +107,10 @@
   transform: scale(0.98); /* Shrinks slightly when clicked */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow on active */
 }
-.cards::-webkit-scrollbar{
+.cards::-webkit-scrollbar {
   width: 5px;
 }
-.cards::-webkit-scrollbar-thumb{
+.cards::-webkit-scrollbar-thumb {
   background-color: var(--accent-color);
   border-radius: 2px;
 }
@@ -115,11 +124,11 @@
   overflow: auto;
 }
 @keyframes cardsReveal {
-  0%{
+  0% {
     opacity: 0;
     transform: translateY(-1rem);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateY(0);
   }

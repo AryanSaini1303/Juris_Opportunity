@@ -5,7 +5,7 @@
   background-color: var(--primary-color);
   color: var(--text-color);
   animation: reveal 0.5s ease-in-out;
-  justify-content: center;
+  /* justify-content: center; */
 }
 @keyframes reveal {
   0% {
@@ -17,14 +17,14 @@
     transform: translateY(0);
   }
 }
-.central_acts {
+/* .central_acts {
   width: 20%;
   background-color: var(--secondary-color);
   color: var(--primary-color);
   padding: 16px;
   border-radius: 8px;
   height: fit-content;
-}
+} */
 
 .state_acts {
   width: 20%;
@@ -100,8 +100,7 @@
   opacity: 0.5;
 }
 .titles_section {
-  flex: 2;
-  width: 100%;
+  /* max-width: 50vw; */
   border-radius: 8px;
   overflow: hidden;
   background-color: var(--secondary-color);
@@ -177,6 +176,6 @@
 .titles_section ul li a:hover {
   background-color: lightgrey;
 }
-.mainContainer {
-  width: 54vw;
+.mainContainer{
+  width: 100%;
 }
