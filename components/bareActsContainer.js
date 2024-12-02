@@ -279,7 +279,7 @@ export default function BareActsContainer({ page }) {
                 {loading ? (
                   <tr>
                     <td
-                      colSpan="3"
+                      colSpan="4"
                       style={{ textAlign: "center", borderBottom: "none" }}
                     >
                       <h2 style={{ margin: 0 }}>Loading...</h2>
