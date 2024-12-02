@@ -233,6 +233,30 @@ export default function BareActsContainer({ page }) {
           </ul>
         </div> */}
 
+        {/* State Bare Acts */}
+        <div className={styles.state_acts}>
+          <h2>State Bare Acts</h2>
+          <ul>
+            {stateActs.map((act, index) => (
+              <li
+                key={index}
+                onClick={() => {
+                  stateActQuery == act
+                    ? handleStateActsClick("")
+                    : handleStateActsClick(act);
+                }}
+                style={
+                  stateActQuery === act
+                    ? { backgroundColor: "var(--accent-color)", color: "white" }
+                    : null
+                }
+              >
+                {act} state law
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* Titles Section */}
         <div className={styles.mainContainer}>
           <div className={styles.titles_section}>
@@ -297,30 +321,6 @@ export default function BareActsContainer({ page }) {
               currentPage={page}
             />
           )}
-        </div>
-
-        {/* State Bare Acts */}
-        <div className={styles.state_acts}>
-          <h2>State Bare Acts</h2>
-          <ul>
-            {stateActs.map((act, index) => (
-              <li
-                key={index}
-                onClick={() => {
-                  stateActQuery == act
-                    ? handleStateActsClick("")
-                    : handleStateActsClick(act);
-                }}
-                style={
-                  stateActQuery === act
-                    ? { backgroundColor: "var(--accent-color)", color: "white" }
-                    : null
-                }
-              >
-                {act} state law
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </>
