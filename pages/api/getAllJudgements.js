@@ -7,7 +7,7 @@ export default async function handler(req, res) {
         .from("judgements")
         .select("*") // You can specify columns here if needed
         .order("date", { ascending: false })
-        .limit(22)
+        .limit(48)
 
       if (error) {
         return res.status(500).json({ message: "Error fetching data", error });

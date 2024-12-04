@@ -31,10 +31,10 @@ export default function JudgementsPage() {
     "November",
     "December",
   ];
-  const limit = 10;
+  const limit = 24;
   const router = useRouter();
   const [totalPageNumbers, setTotalPageNumbers] = useState(
-    Math.ceil(22 / limit)
+    Math.ceil(48 / limit)
   ); // As initially i'm fetching only 12 entries and one page can show 4 entries so the total page numbers can be calculated by totalEntries/limit
   const divRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState();
