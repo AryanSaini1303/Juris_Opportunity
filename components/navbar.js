@@ -60,7 +60,7 @@ export default function Navbar() {
     <section className={styles.navbar}>
       <Link href={"/"}>
         <div className={styles.logoSection}>
-          <Image src={"/logo.jpg"} height={60} width={60} alt="logo" />
+          <Image src={"/logo.png"} height={60} width={60} alt="logo" />
           <div className={styles.logoInfo}>
             <h3>JURIS OPPORTUNITIES</h3>
             <h6>Where Legal Aspirations Meet Opportunities</h6>
