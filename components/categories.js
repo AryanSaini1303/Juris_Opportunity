@@ -74,9 +74,9 @@ export default function Categories() {
             </Link>
           </li>
           <li>
-            <Link href="/bare_acts?page=1">
+            <Link href="">
               <img src="/bare.svg" alt="" />
-              <h4>Bare Acts</h4>
+              <h4>Legal News</h4>
             </Link>
           </li>
           <li>

@@ -7,6 +7,7 @@ import SearchBar from "@/components/searchBar";
 import { useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import PageNumberSection from "@/components/pageNumberSection";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function JudgementsPage() {
   const [loading, setLoading] = useState();
@@ -38,6 +39,8 @@ export default function JudgementsPage() {
   ); // As initially i'm fetching only 12 entries and one page can show 4 entries so the total page numbers can be calculated by totalEntries/limit
   const divRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState();
+  const [judgementClick, setJudgementClick] = useState(false);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     setLoading(true);
@@ -124,6 +127,23 @@ export default function JudgementsPage() {
     return () => clearTimeout(delayDebounceFn);
   }, [searchQuery]);
 
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        // console.log("event: ", event);
+        if ((event === "SIGNED_IN" || event === "INITIAL_SESSION") && session) {
+          const { user } = session;
+          setUser(user);
+        } else {
+          setUser(null);
+        }
+      }
+    );
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, [judgementClick]);
+
   function handleFormSubmit(e) {
     e.preventDefault();
   }
@@ -195,7 +215,16 @@ export default function JudgementsPage() {
             ) : currentJudgements && currentJudgements.length != 0 ? (
               <div className={styles.cards} ref={divRef}>
                 {currentJudgements.map((element, index) => (
-                  <Link href={element.link} key={index} target="_blank">
+                  <Link
+                    href={user ? element.link : ""}
+                    key={index}
+                    target={user && "_blank"}
+                    onClick={() => {
+                      setJudgementClick(true);
+                      !user &&
+                        alert("To access full information, Please login ☺️");
+                    }}
+                  >
                     <div className={styles.card}>
                       <h3>{element.title}</h3>
                       <h4>Judgement Date: {element.date}</h4>

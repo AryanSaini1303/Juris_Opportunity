@@ -5,48 +5,49 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import PageNumberSection from "./pageNumberSection";
 import SearchBar from "./searchBar";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function BareActsContainer({ page }) {
-  const centralActs = [
-    "Alternative Dispute Resolution Laws",
-    "Armed Forces Laws",
-    "Banking Laws",
-    "Bills in Parliament",
-    "Children Laws",
-    "Civil Laws",
-    "Consumer Protection Laws",
-    "Corporate Laws",
-    "Criminal Laws",
-    "Direct Tax Laws",
-    "Education Laws",
-    "Environmental Laws",
-    "Family Laws",
-    "Food & Agriculture Laws",
-    "Foreign Exchange Laws ",
-    "Human Rights Laws",
-    "Indirect Tax Laws",
-    "Information Technology Laws",
-    "Insurance Laws ",
-    "Intellectual Property Laws ",
-    "International Laws and Conventions ",
-    "Legal and Professional Laws ",
-    "Media and Entertainment Laws ",
-    "Medical and Health Laws",
-    "Miscellaneous Laws",
-    "Petroleum & Natural Gas Laws",
-    "Political and Election Laws",
-    "Power Sector Laws",
-    "Property Laws",
-    "Public Related Laws",
-    "Railway Laws",
-    "Repealed Laws",
-    "Service and Labour Laws",
-    "Tourism Laws",
-    "Transport Laws",
-    "BNS with IPC",
-    "BNSS with CrPC",
-    "BSA with IEA",
-  ];
+  // const centralActs = [
+  //   "Alternative Dispute Resolution Laws",
+  //   "Armed Forces Laws",
+  //   "Banking Laws",
+  //   "Bills in Parliament",
+  //   "Children Laws",
+  //   "Civil Laws",
+  //   "Consumer Protection Laws",
+  //   "Corporate Laws",
+  //   "Criminal Laws",
+  //   "Direct Tax Laws",
+  //   "Education Laws",
+  //   "Environmental Laws",
+  //   "Family Laws",
+  //   "Food & Agriculture Laws",
+  //   "Foreign Exchange Laws ",
+  //   "Human Rights Laws",
+  //   "Indirect Tax Laws",
+  //   "Information Technology Laws",
+  //   "Insurance Laws ",
+  //   "Intellectual Property Laws ",
+  //   "International Laws and Conventions ",
+  //   "Legal and Professional Laws ",
+  //   "Media and Entertainment Laws ",
+  //   "Medical and Health Laws",
+  //   "Miscellaneous Laws",
+  //   "Petroleum & Natural Gas Laws",
+  //   "Political and Election Laws",
+  //   "Power Sector Laws",
+  //   "Property Laws",
+  //   "Public Related Laws",
+  //   "Railway Laws",
+  //   "Repealed Laws",
+  //   "Service and Labour Laws",
+  //   "Tourism Laws",
+  //   "Transport Laws",
+  //   "BNS with IPC",
+  //   "BNSS with CrPC",
+  //   "BSA with IEA",
+  // ];
 
   const stateActs = [
     "Andhra Pradesh",
@@ -93,7 +94,8 @@ export default function BareActsContainer({ page }) {
   const router = useRouter();
   const [allBareActs, setAllBareActs] = useState();
   const [searchQuery, setSearchQuery] = useState();
-
+  const [user, setUser] = useState();
+  const [bareActClick, setBareActClick] = useState(false);
   useEffect(() => {
     if (
       (centralActQuery?.length == 0 && stateActQuery?.length == 0) ||
@@ -178,6 +180,23 @@ export default function BareActsContainer({ page }) {
     return () => clearTimeout(delayDebounceFn);
   }, [searchQuery]);
   console.log(allBareActs);
+
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        // console.log("event: ", event);
+        if ((event === "SIGNED_IN" || event === "INITIAL_SESSION") && session) {
+          const { user } = session;
+          setUser(user);
+        } else {
+          setUser(null);
+        }
+      }
+    );
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, [bareActClick]);
 
   function handleStateActsClick(data) {
     setStateActQuery(data);
@@ -292,7 +311,16 @@ export default function BareActsContainer({ page }) {
                       onClick={() => {
                         // handleBareActClick([item.intro, item.name, item.year]);
                         // router.push(`${item.link}`)
-                        window.open(item.link, "_blank", "noopener,noreferrer");
+                        setBareActClick(true);
+                        {
+                          user
+                            ? window.open(
+                                item.link,
+                                "_blank",
+                                "noopener,noreferrer"
+                              )
+                            : alert("To access full information, Please login ☺️");
+                        }
                       }}
                     >
                       <td>{item.state ? item.state : "Central"}</td>

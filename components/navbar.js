@@ -100,10 +100,10 @@ export default function Navbar() {
               Judgements
             </li>
           </Link>
-          <Link href={"/categories/Competitions"}>
+          <Link href={""}>
             <li
               style={
-                url.startsWith("/categories/Competitions")
+                url.startsWith("/categories/notes")
                   ? {
                       backgroundColor: "white",
                       color: "var(--secondary-color)",
@@ -111,7 +111,7 @@ export default function Navbar() {
                   : null
               }
             >
-              Competitions
+              Notes
             </li>
           </Link>
           <Link href="/MapSearch">
