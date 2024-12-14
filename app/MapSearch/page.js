@@ -20,7 +20,7 @@ export default function MapSearchPage() {
           throw new Error("Failed to fetch events");
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setFilteredCategoryData(data);
         setLoading(false);
         // Update the state with the fetched data

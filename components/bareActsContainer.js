@@ -179,7 +179,7 @@ export default function BareActsContainer({ page }) {
     // Cleanup function to clear the timeout
     return () => clearTimeout(delayDebounceFn);
   }, [searchQuery]);
-  console.log(allBareActs);
+  // console.log(allBareActs);
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
