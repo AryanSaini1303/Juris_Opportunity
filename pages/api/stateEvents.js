@@ -75,7 +75,7 @@ export default async function handler(req, res) {
     };
     // Step 1: Get the current date
 
-    console.log("categoryData: ", categoryData);
+    // console.log("categoryData: ", categoryData);
     // Step 2: Filter events within each category where created_at is within the last week
     const filteredCategoryData = Object.keys(categoryData).reduce(
       (acc, category) => {
@@ -91,7 +91,7 @@ export default async function handler(req, res) {
       },
       {}
     );
-    console.log("filteredCategoryData: ", filteredCategoryData);
+    // console.log("filteredCategoryData: ", filteredCategoryData);
 
     // Return the filtered data as a JSON response
     res.status(200).json(filteredCategoryData);

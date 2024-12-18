@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./pageNumberSection.module.css"
 export default function PageNumberSection({totalPageNumbers, path, currentPage}) {
+  // console.log(totalPageNumbers);
   return (
     <ul className={styles.list}>
       <li>Page no.</li>

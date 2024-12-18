@@ -74,7 +74,7 @@ export default function Categories() {
             </Link>
           </li>
           <li>
-            <Link href="">
+            <Link href="/news">
               <img src="/bare.svg" alt="" />
               <h4>Legal News</h4>
             </Link>

@@ -4,9 +4,10 @@ export default function SearchBar({
   searchQuery,
   setSearchQuery,
   placeholder,
+  margin
 }) {
   return (
-    <div className={styles.searchBar}>
+    <div className={styles.searchBar} style={{margin:margin}}>
       <form onSubmit={handleFormSubmit}>
         <input type="text" name="searchQuery" placeholder={placeholder} value={searchQuery || ""} onChange={(e) => setSearchQuery(e.target.value)}/>
         <button type="submit">
