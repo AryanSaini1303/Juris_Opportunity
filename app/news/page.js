@@ -18,7 +18,7 @@ export default function NewsPage() {
   const [totalPageNumbers, setTotalPageNumbers] = useState();
   const page = searchparams.get("page") || 1;
   const [searchQuery, setSearchQuery] = useState();
-  const router=useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     if (!searchQuery) {
@@ -95,9 +95,14 @@ export default function NewsPage() {
             />
             {page == 1 && !searchQuery && (
               <section className={styles.topStories}>
-                <h1>Today's Top Stories</h1>
+                <h1>Today&apos; Top Stories</h1>
                 <div className={styles.cardsSection}>
-                  <section className={styles.card1} onClick={()=>{router.push(`/news/${topNews[0].id}`)}}>
+                  <section
+                    className={styles.card1}
+                    onClick={() => {
+                      router.push(`/news/${topNews[0].id}`);
+                    }}
+                  >
                     <img src={topNews[0].poster} alt="" />
                     <h3>{topNews[0].heading}</h3>
                     <p>{topNews[0].readTime} min read</p>
@@ -106,7 +111,13 @@ export default function NewsPage() {
                   {topNews.map((element, index) => {
                     if (index > 0) {
                       return (
-                        <section className={styles.card} key={element.id} onClick={()=>{router.push(`/news/${element.id}`)}}>
+                        <section
+                          className={styles.card}
+                          key={element.id}
+                          onClick={() => {
+                            router.push(`/news/${element.id}`);
+                          }}
+                        >
                           <img src={element.poster} alt="" />
                           <div>
                             <h3>{element.heading}</h3>
@@ -121,7 +132,7 @@ export default function NewsPage() {
             )}
 
             {loading ? (
-              <LoaderComponent/>
+              <LoaderComponent />
             ) : (
               <section
                 className={styles.topStories}
@@ -139,7 +150,13 @@ export default function NewsPage() {
                     {otherNews.map((element, index) => {
                       {
                         return (
-                          <section className={styles.card} key={element.id} onClick={()=>{router.push(`/news/${element.id}`)}}>
+                          <section
+                            className={styles.card}
+                            key={element.id}
+                            onClick={() => {
+                              router.push(`/news/${element.id}`);
+                            }}
+                          >
                             <img src={element.poster} alt="" />
                             <div>
                               <h3>{element.heading}</h3>
@@ -165,7 +182,7 @@ export default function NewsPage() {
             )}
           </>
         ) : (
-          <LoaderComponent/>
+          <LoaderComponent />
         )}
       </main>
       <Footer />
