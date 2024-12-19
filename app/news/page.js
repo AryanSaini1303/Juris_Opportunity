@@ -119,7 +119,7 @@ export default function NewsPage() {
                           }}
                         >
                           <img src={element.poster} alt="" />
-                          <div>
+                          <div className={styles.info}>
                             <h3>{element.heading}</h3>
                             <p>{element.readTime} min read</p>
                           </div>
@@ -158,7 +158,7 @@ export default function NewsPage() {
                             }}
                           >
                             <img src={element.poster} alt="" />
-                            <div>
+                            <div className={styles.info}>
                               <h3>{element.heading}</h3>
                               <p>{element.readTime} min read</p>
                               <p>{element.author}</p>

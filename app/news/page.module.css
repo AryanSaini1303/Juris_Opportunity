@@ -12,7 +12,7 @@
 .card {
   display: flex;
   gap: 0.8rem;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 1rem;
 }
@@ -36,7 +36,7 @@
 }
 .card img{
     height: 6rem;
-    width:10vw;
+    width:8.5vw;
 }
 .topStories {
   margin: 2rem 4rem;
@@ -97,4 +97,7 @@
     opacity: 0.5;
     margin: 0.5rem 0;
     font-size: 0.9rem;
+}
+.info{
+    width: 15.5vw;
 }
