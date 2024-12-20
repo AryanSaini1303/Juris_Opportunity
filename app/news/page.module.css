@@ -46,7 +46,7 @@
     transition: all 0.2s ease-in-out;
     border-radius: 10px;
     animation: reveal 0.8s ease-in-out;
-    box-shadow: 0 0.4rem 0.3rem rgba(0, 0, 0, 0.151);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.151);
 }
 @keyframes reveal {
     0%{
@@ -60,8 +60,8 @@
 }
 .cardsSection section:hover{
     cursor: pointer;
-    box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.363);
-    transform: translateY(-0.2rem);
+    box-shadow: 0 0.5rem 0.4rem rgba(0, 0, 0, 0.363);
+    transform: translateY(-0.3rem);
 }
 .cardsSection section:active{
     cursor: pointer;

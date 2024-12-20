@@ -79,12 +79,12 @@ export default function Categories() {
               <h4>Legal News</h4>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="#">
               <img src="/blogs.svg" alt="" />
               <h4>Blogs</h4>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               href="/categories/Competitions"

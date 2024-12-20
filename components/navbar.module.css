@@ -8,6 +8,13 @@
     box-shadow: 0 0.3rem 0.8rem black;
     user-select: none;
 }
+.linkSection>li{
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 .navbar>a{
     color: var(--primary-color);
     text-decoration: none;
@@ -54,24 +61,24 @@
     font-size: 1.2rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.linkSection ul a{
+.linkSection ul li{
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     padding: 0;
 }
-.linkSection ul a li{
+.linkSection ul li a{
     transition: all 0.2s ease-in-out;
     border-radius: 5px;
     padding:0.4rem 0.5rem;
 }
-.linkSection ul a li:hover{
+.linkSection ul li a:hover{
     background-color: var(--primary-color);
     color: var(--secondary-color);
     transform: translateY(-0.2rem);
 }
-.linkSection ul a li:active{
+.linkSection ul li a:active{
     opacity: 0.5;
     box-shadow: 0.2rem 0.2rem 0.5rem black;
 }
@@ -126,4 +133,48 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.navbar .linkSection .dropdown{
+    position: absolute;
+    top: 3.8rem;
+    z-index: 100;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    backdrop-filter: blur(0.5rem);
+    background-color: rgba(255, 255, 255, 0.644);
+    border-radius: 5px;
+    padding: 0.5rem;
+    /* border: solid black 0.1rem; */
+    box-shadow: 0.3rem 0.3rem 0.3rem black, inset 0 0 0.5rem grey;
+    animation: dropdownReveal 0.2s ease-in-out;
+}
+.navbar .linkSection .dropdown li a{
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease-in-out;
+    transform: translateY(0);
+}
+.navbar .linkSection .dropdown li a:hover{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+}
+.navbar .linkSection .dropdown li a:active{
+    transform: scale(0.95);
+    opacity: 0.5;
+}
+.navbar .linkSection a:nth-child(4){
+    position: relative;
+}
+@keyframes dropdownReveal {
+    0%{
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
 }

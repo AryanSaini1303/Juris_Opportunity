@@ -10,6 +10,8 @@ export default function Navbar() {
   const [user, setUser] = useState();
   const [hover, setHover] = useState(false);
   const url = usePathname();
+  const [notesClick, setNotesClick] = useState(false);
+  const [allChapters, setAllChapters] = useState();
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -40,14 +42,18 @@ export default function Navbar() {
     };
   }, []);
 
-  // function handleSearch(e) {
-  //   e.preventDefault();
-  //   // console.log(e.target.value);
-  // }
-  // function handleFormSubmit(e) {
-  //   e.preventDefault();
-  //   console.log(e.target.searchQuery.value);
-  // }
+  useEffect(() => {
+    const fetchChapters = async () => {
+      try {
+        const response = await fetch("/api/getAllChapters");
+        const data = await response.json();
+        setAllChapters(data);
+      } catch (error) {
+        console.error("Error fetching chapters:", error);
+      }
+    };
+    fetchChapters();
+  }, []);
 
   function handleMouseEnter() {
     setHover(true);
@@ -55,7 +61,6 @@ export default function Navbar() {
   function handleMouseLeave() {
     setHover(false);
   }
-  // console.log(user);
   return (
     <section className={styles.navbar}>
       <Link href={"/"}>
@@ -69,11 +74,12 @@ export default function Navbar() {
       </Link>
       <div className={styles.linkSection}>
         <ul>
-          <Link href={"#"}>
-            <li>POSH & POCSO</li>
-          </Link>
-          <Link href={"/bare_acts?page=1"}>
-            <li
+          <li>
+            <Link href={"#"}>POSH & POCSO</Link>
+          </li>
+          <li>
+            <Link
+              href={"/bare_acts?page=1"}
               style={
                 url.startsWith("/bare_acts")
                   ? {
@@ -84,10 +90,11 @@ export default function Navbar() {
               }
             >
               Bare Acts
-            </li>
-          </Link>
-          <Link href={"/judgements?page=1"}>
-            <li
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={"/judgements?page=1"}
               style={
                 url.startsWith("/judgements")
                   ? {
@@ -98,24 +105,42 @@ export default function Navbar() {
               }
             >
               Judgements
-            </li>
-          </Link>
-          <Link href={""}>
-            <li
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={""}
               style={
-                url.startsWith("/categories/notes")
+                url.startsWith("/categories/notes") || notesClick
                   ? {
                       backgroundColor: "white",
                       color: "var(--secondary-color)",
                     }
                   : null
               }
+              tabIndex={0}
+              onBlur={() =>
+                setTimeout(() => {
+                  setNotesClick(false);
+                }, 100)
+              }
+              onClick={() => setNotesClick(!notesClick)}
             >
               Notes
-            </li>
-          </Link>
-          <Link href="/MapSearch">
-            <li
+            </Link>
+            {notesClick && allChapters && (
+              <ul className={styles.dropdown}>
+                {allChapters.map((element) => (
+                  <li key={element.id}>
+                    <Link href={`/chapters/${element.id}`}>{element.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+          <li>
+            <Link
+              href="/MapSearch"
               style={
                 url.startsWith("/MapSearch")
                   ? {
@@ -126,8 +151,8 @@ export default function Navbar() {
               }
             >
               Map Search
-            </li>
-          </Link>
+            </Link>
+          </li>
           {/* <Link href={"#"}>
             <li>Notes</li>
           </Link> */}
