@@ -112,7 +112,7 @@ export default function Navbar() {
             <Link
               href={""}
               style={
-                url.startsWith("/categories/notes") || notesClick
+                url.startsWith("/chapters") || notesClick
                   ? {
                       backgroundColor: "white",
                       color: "var(--secondary-color)",
