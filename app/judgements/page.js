@@ -43,24 +43,26 @@ export default function JudgementsPage() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    setLoading(true);
-    if (!yearQuery) {
-      const fetchLatestJudgements = async () => {
-        const response = await fetch("/api/getAllJudgements");
+    if (!searchQuery) {
+      setLoading(true);
+      if (!yearQuery) {
+        const fetchLatestJudgements = async () => {
+          const response = await fetch("/api/getAllJudgements");
+          const data = await response.json();
+          setAllJudgements(data);
+          setLoading(false);
+        };
+        fetchLatestJudgements();
+      }
+      const fetchAllJudgementYears = async () => {
+        const response = await fetch("/api/getAllJudgementYears");
         const data = await response.json();
-        setAllJudgements(data);
+        setAllJudgementYears(data);
         setLoading(false);
       };
-      fetchLatestJudgements();
+      fetchAllJudgementYears();
     }
-    const fetchAllJudgementYears = async () => {
-      const response = await fetch("/api/getAllJudgementYears");
-      const data = await response.json();
-      setAllJudgementYears(data);
-      setLoading(false);
-    };
-    fetchAllJudgementYears();
-  }, []);
+  }, [searchQuery]);
 
   useEffect(() => {
     if (yearQuery && monthQuery) {

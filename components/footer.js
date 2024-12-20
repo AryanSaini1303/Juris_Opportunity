@@ -107,7 +107,7 @@ export default function Footer() {
           </button>
         </div>
       </section>
-      <p style={{ textAlign:"center",margin:"0", backgroundColor:"var(--secondary-color)", width:"100vw", color:"white", fontSize:"0.8rem", paddingBottom:"0.7rem"}}>
+      <p style={{ textAlign:"center",margin:"0", backgroundColor:"var(--secondary-color)", width:"100vw", color:"white", fontSize:"0.8rem",paddingBottom:"0.2rem" }}>
         &copy; 2024 Juris Opportunity. All rights reserved.
       </p>
     </>

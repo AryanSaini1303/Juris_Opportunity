@@ -99,7 +99,7 @@ export default function BareActsContainer({ page }) {
   useEffect(() => {
     if (
       (centralActQuery?.length == 0 && stateActQuery?.length == 0) ||
-      (!centralActQuery && !stateActQuery)
+      (!centralActQuery && !stateActQuery) && !searchQuery
     ) {
       const fetchBareActs = async () => {
         const response = await fetch("/api/bareActs");
@@ -110,7 +110,7 @@ export default function BareActsContainer({ page }) {
       };
       fetchBareActs();
     }
-  }, [centralActQuery, stateActQuery]);
+  }, [centralActQuery, stateActQuery, searchQuery]);
 
   useEffect(() => {
     setLoading(true);
