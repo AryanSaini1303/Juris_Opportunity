@@ -154,6 +154,8 @@
     padding: 0.5rem 1rem;
     transition: all 0.2s ease-in-out;
     transform: translateY(0);
+    width: 100%;
+    text-align: center;
 }
 .navbar .linkSection .dropdown li a:hover{
     background-color: var(--secondary-color);

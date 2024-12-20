@@ -12,6 +12,7 @@ export default function Navbar() {
   const url = usePathname();
   const [notesClick, setNotesClick] = useState(false);
   const [allChapters, setAllChapters] = useState();
+  const [chaptersHover, setChaptersHover] = useState(false);
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -43,16 +44,16 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const fetchChapters = async () => {
+    const fetchSubjects = async () => {
       try {
-        const response = await fetch("/api/getAllChapters");
+        const response = await fetch("/api/getAllSubjects");
         const data = await response.json();
         setAllChapters(data);
       } catch (error) {
         console.error("Error fetching chapters:", error);
       }
     };
-    fetchChapters();
+    fetchSubjects();
   }, []);
 
   function handleMouseEnter() {
@@ -119,11 +120,7 @@ export default function Navbar() {
                   : null
               }
               tabIndex={0}
-              onBlur={() =>
-                setTimeout(() => {
-                  setNotesClick(false);
-                }, 100)
-              }
+              onBlur={() => !chaptersHover && setNotesClick(false)}
               onClick={() => setNotesClick(!notesClick)}
             >
               Notes
@@ -132,7 +129,21 @@ export default function Navbar() {
               <ul className={styles.dropdown}>
                 {allChapters.map((element) => (
                   <li key={element.id}>
-                    <Link href={`/chapters/${element.id}`}>{element.name}</Link>
+                    <Link
+                      href={`/chapters/${element.id}`}
+                      onMouseEnter={() => setChaptersHover(true)}
+                      onMouseLeave={() => setChaptersHover(false)}
+                      style={
+                        url.endsWith(element.id)
+                          ? {
+                              backgroundColor: "var(--secondary-color)",
+                              color: "var(--primary-color)",
+                            }
+                          : null
+                      }
+                    >
+                      {element.name}
+                    </Link>
                   </li>
                 ))}
               </ul>

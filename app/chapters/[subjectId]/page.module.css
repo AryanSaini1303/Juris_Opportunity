@@ -1,0 +1,83 @@
+.chaptersContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100%;
+  /* padding: 2rem 0; */
+}
+.chaptersContainer > h1 {
+  font-size: 2.5rem;
+  position: relative;
+  margin: 2rem 0;
+}
+.chaptersContainer > h1::before {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  width: 100%;
+  height: 10%;
+  background-color: var(--secondary-color);
+  animation: revealBefore 0.8s ease-in-out;
+}
+@keyframes revealBefore {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 40%;
+  margin-bottom: 2rem;
+}
+.card {
+  background-color: white;
+  padding: 0 1rem;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: black;
+  height: fit-content;
+  box-shadow: 0px 2px 5px var(--secondary-color);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  animation: reveal 0.5s ease-in-out;
+}
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card:hover {
+  transform: translateY(-5px); /* Lift the card slightly on hover */
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.card:active {
+  transform: translateY(2px); /* Card slightly presses down on click */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3); /* Soft shadow on active state */
+}
+.card p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 37.5vw;
+  color: grey;
+}
+.card h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 37.5vw;
+}
