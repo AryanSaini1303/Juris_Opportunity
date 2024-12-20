@@ -134,7 +134,7 @@ export default function Navbar() {
                       onMouseEnter={() => setChaptersHover(true)}
                       onMouseLeave={() => setChaptersHover(false)}
                       style={
-                        url.endsWith(element.id)
+                        url.endsWith(`/chapters/${element.id}`)
                           ? {
                               backgroundColor: "var(--secondary-color)",
                               color: "var(--primary-color)",

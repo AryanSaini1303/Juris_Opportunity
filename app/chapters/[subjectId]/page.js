@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import LoaderComponent from "@/components/loader";
+import Link from "next/link";
 export default function ChaptersPage({ params }) {
   const [chapters, setAllChapters] = useState();
   const [loading, setLoading] = useState(true);
@@ -38,10 +39,10 @@ export default function ChaptersPage({ params }) {
               <LoaderComponent />
             ) : chapters && chapters.length != 0 ? (
               chapters.map((chapter) => (
-                <div key={chapter.id} className={styles.card}>
+                <Link key={chapter.id} className={styles.card} href={'/chapter_detail/'+chapter.id}>
                   <h2>{chapter.name}</h2>
                   <p>{chapter.description}</p>
-                </div>
+                </Link>
               ))
             ) : (
               <h1 style={{textAlign:'center'}}>No Chapters Found!</h1>
