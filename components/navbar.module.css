@@ -150,7 +150,7 @@
     box-shadow: 0.3rem 0.3rem 0.3rem black, inset 0 0 0.5rem grey;
     animation: dropdownReveal 0.2s ease-in-out;
     overflow-y: auto;
-    height: 46.5%;
+    max-height: 46.5%;
 }
 .navbar .linkSection .dropdown::-webkit-scrollbar{
     width: 0.2rem;
