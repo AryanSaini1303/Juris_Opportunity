@@ -13,6 +13,8 @@ export default function Navbar() {
   const [notesClick, setNotesClick] = useState(false);
   const [allChapters, setAllChapters] = useState();
   const [chaptersHover, setChaptersHover] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  const [hamburger, setHamburger] = useState(false);
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -26,6 +28,29 @@ export default function Navbar() {
   const signOut = async () => {
     await supabase.auth.signOut();
   };
+  // console.log("mobile: ", mobile);
+  // console.log("hamburger: ", hamburger);
+  useEffect(() => {
+    // Ensure the code only runs in the browser
+    const handleResize = () => {
+      if (window.innerWidth <= 426) {
+        setMobile(true);
+      } else {
+        setMobile(false);
+      }
+    };
+
+    // Set the initial screen width
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
@@ -73,154 +98,233 @@ export default function Navbar() {
           </div>
         </div>
       </Link>
-      <div className={styles.linkSection}>
-        <ul>
-          <li>
-            <Link href={"/posh_pocso"} style={
-                url.startsWith("/posh_pocso")
-                  ? {
-                      backgroundColor: "white",
-                      color: "var(--secondary-color)",
-                    }
-                  : null
-              }>POSH & POCSO</Link>
-          </li>
-          <li>
-            <Link
-              href={"/bare_acts?page=1"}
-              style={
-                url.startsWith("/bare_acts")
-                  ? {
-                      backgroundColor: "white",
-                      color: "var(--secondary-color)",
-                    }
-                  : null
-              }
-            >
-              Bare Acts
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={"/judgements?page=1"}
-              style={
-                url.startsWith("/judgements")
-                  ? {
-                      backgroundColor: "white",
-                      color: "var(--secondary-color)",
-                    }
-                  : null
-              }
-            >
-              Judgements
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={""}
-              style={
-                url.startsWith("/chapters") ||
-                notesClick ||
-                url.startsWith("/chapter_detail")
-                  ? {
-                      backgroundColor: "white",
-                      color: "var(--secondary-color)",
-                    }
-                  : null
-              }
-              tabIndex={0}
-              onBlur={() => !chaptersHover && setNotesClick(false)}
-              onClick={() => setNotesClick(!notesClick)}
-            >
-              Notes
-            </Link>
-            {notesClick && allChapters && (
-              <ul className={styles.dropdown}>
-                {allChapters.map((element) => (
-                  <li key={element.id}>
-                    <Link
-                      href={`/chapters/${element.id}`}
-                      onMouseEnter={() => setChaptersHover(true)}
-                      onMouseLeave={() => setChaptersHover(false)}
-                      style={
-                        url.endsWith(`/chapters/${element.id}`)
-                          ? {
-                              backgroundColor: "var(--secondary-color)",
-                              color: "var(--primary-color)",
-                            }
-                          : null
+      {((hamburger && mobile) || (!hamburger && !mobile)) && (
+        <div className={styles.linkSection}>
+          <ul>
+            <li>
+              <Link
+                href={"/posh_pocso"}
+                style={
+                  url.startsWith("/posh_pocso")
+                    ? {
+                        backgroundColor: "white",
+                        color: "var(--secondary-color)",
                       }
-                    >
-                      {element.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                    : null
+                }
+              >
+                POSH & POCSO
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={"/bare_acts?page=1"}
+                style={
+                  url.startsWith("/bare_acts")
+                    ? {
+                        backgroundColor: "white",
+                        color: "var(--secondary-color)",
+                      }
+                    : null
+                }
+              >
+                Bare Acts
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={"/judgements?page=1"}
+                style={
+                  url.startsWith("/judgements")
+                    ? {
+                        backgroundColor: "white",
+                        color: "var(--secondary-color)",
+                      }
+                    : null
+                }
+              >
+                Judgements
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={""}
+                style={
+                  url.startsWith("/chapters") ||
+                  notesClick ||
+                  url.startsWith("/chapter_detail")
+                    ? {
+                        backgroundColor: "white",
+                        color: "var(--secondary-color)",
+                      }
+                    : null
+                }
+                tabIndex={0}
+                onBlur={() => !chaptersHover && setNotesClick(false)}
+                onClick={() => setNotesClick(!notesClick)}
+              >
+                Notes
+              </Link>
+              {notesClick && allChapters && (
+                <ul className={styles.dropdown}>
+                  {allChapters.map((element) => (
+                    <li key={element.id}>
+                      <Link
+                        href={`/chapters/${element.id}`}
+                        onMouseEnter={() => setChaptersHover(true)}
+                        onMouseLeave={() => setChaptersHover(false)}
+                        style={
+                          url.endsWith(`/chapters/${element.id}`)
+                            ? {
+                                backgroundColor: "var(--secondary-color)",
+                                color: "var(--primary-color)",
+                              }
+                            : null
+                        }
+                      >
+                        {element.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            {mobile && (
+              <li>
+                <Link
+                  href={"/expiring_events"}
+                  style={
+                    url.startsWith("/expiring_events")
+                      ? {
+                          backgroundColor: "white",
+                          color: "var(--secondary-color)",
+                        }
+                      : null
+                  }
+                >
+                  Expiring Events
+                </Link>
+              </li>
             )}
-          </li>
-          <li>
-            <Link
-              href="/MapSearch"
-              style={
-                url.startsWith("/MapSearch")
-                  ? {
-                      backgroundColor: "white",
-                      color: "var(--secondary-color)",
-                    }
-                  : null
-              }
-            >
-              Map Search
-            </Link>
-          </li>
-          {/* <Link href={"#"}>
+            <li>
+              <Link
+                href={!mobile ? "/MapSearch" : "/about"}
+                style={
+                  url.startsWith(!mobile ? "/MapSearch" : "/about")
+                    ? {
+                        backgroundColor: "white",
+                        color: "var(--secondary-color)",
+                      }
+                    : null
+                }
+              >
+                {!mobile ? "Map Search" : "About Us"}
+              </Link>
+            </li>
+            {mobile && (
+              <li>
+                <div onClick={!user ? signIn : signOut}>
+                  {user && hover ? (
+                    <h3
+                      style={{ margin: " 1.2rem 2rem", fontWeight: "bolder" }}
+                    >
+                      Log Out
+                    </h3>
+                  ) : (
+                    <>
+                      {!user && !mobile ? (
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="var(--secondary-color)"
+                          height="2em"
+                          width="2em"
+                        >
+                          <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z" />
+                        </svg>
+                      ) : // <img
+                      //   src={user.user_metadata.avatar_url}
+                      //   style={{ height: "2rem", width: "2rem", borderRadius: "50%" }}
+                      //   onError={(e) => {
+                      //     e.target.onerror = null;
+                      //     e.target.src = "https://picsum.photos/200";
+                      //   }}
+                      // />
+                      null}
+                      <h3>
+                        {user ? `Hey, ${user.user_metadata.name}` : "Log In"}
+                      </h3>
+                    </>
+                  )}
+                </div>
+              </li>
+            )}
+            {/* <Link href={"#"}>
             <li>Notes</li>
           </Link> */}
-        </ul>
-      </div>
-      {/* <div className={styles.searchSection}>
-        <form onSubmit={handleFormSubmit}>
-          <svg fill="#4C0A02" viewBox="0 0 16 16" height="1em" width="1em">
-            <path d="M11.742 10.344a6.5 6.5 0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007 0 00-.115-.1zM12 6.5a5.5 5.5 0 11-11 0 5.5 5.5 0 0111 0z" />
-          </svg>
-          <input
-            type="text"
-            onChange={handleSearch}
-            name="searchQuery"
-            placeholder="Search..."
-          />
-        </form>
-      </div> */}
+          </ul>
+        </div>
+      )}
       <div
         className={styles.loginSection}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div onClick={!user ? signIn : signOut}>
-          {user && hover ? (
-            <h3 style={{ margin: " 1.2rem 2rem", fontWeight: "bolder" }}>
-              Log Out
-            </h3>
-          ) : (
-            <>
-              {!user ? (
-                <svg viewBox="0 0 24 24" fill="white" height="2em" width="2em">
-                  <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z" />
-                </svg>
-              ) : // <img
-              //   src={user.user_metadata.avatar_url}
-              //   style={{ height: "2rem", width: "2rem", borderRadius: "50%" }}
-              //   onError={(e) => {
-              //     e.target.onerror = null;
-              //     e.target.src = "https://picsum.photos/200";
-              //   }}
-              // />
-              null}
-              <h3>{user ? `Hey, ${user.user_metadata.name}` : "Log In"}</h3>
-            </>
-          )}
-        </div>
+        {!mobile && (
+          <div onClick={!user ? signIn : signOut}>
+            {user && hover ? (
+              <h3 style={{ margin: " 1.2rem 2rem", fontWeight: "bolder" }}>
+                Log Out
+              </h3>
+            ) : (
+              <>
+                {!user ? (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    height="2em"
+                    width="2em"
+                  >
+                    <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z" />
+                  </svg>
+                ) : // <img
+                //   src={user.user_metadata.avatar_url}
+                //   style={{ height: "2rem", width: "2rem", borderRadius: "50%" }}
+                //   onError={(e) => {
+                //     e.target.onerror = null;
+                //     e.target.src = "https://picsum.photos/200";
+                //   }}
+                // />
+                null}
+                <h3>{user ? `Hey, ${user.user_metadata.name}` : "Log In"}</h3>
+              </>
+            )}
+          </div>
+        )}
       </div>
+      {mobile && (
+        <div
+          className={styles.hamburger}
+          onClick={() => {
+            setHamburger(!hamburger);
+          }}
+          style={hamburger ? { boxShadow: "0.3rem 0.3rem 0.3rem black" } : null}
+        >
+          <div
+            style={
+              hamburger
+                ? { transform: "rotate(-45deg)", transformOrigin: "80% 150%" }
+                : null
+            }
+          ></div>
+          <div
+            style={
+              hamburger
+                ? { transform: "rotate(45deg)", transformOrigin: "70% 0%" }
+                : null
+            }
+          ></div>
+        </div>
+      )}
     </section>
   );
 }

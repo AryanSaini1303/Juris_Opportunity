@@ -110,3 +110,11 @@
     opacity: 0.5;
   }
 }
+@media (max-width: 426px) {
+  .currEvents {
+    display: none;
+  }
+  .header{
+    display: none ;
+  }
+}

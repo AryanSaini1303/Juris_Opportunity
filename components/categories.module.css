@@ -51,5 +51,8 @@
   box-shadow: 0.2rem 0.2rem 0.2rem black;
   border: solid black 2px;
 }
-
-
+@media (max-width: 426px) {
+  .rightContent{
+    display: none;
+  }
+}

@@ -10,3 +10,8 @@
   margin-right: 10rem;
   width: 65vw;
 }
+@media (max-width: 426px) {
+  .rightContent {
+    display: none;
+  }
+}

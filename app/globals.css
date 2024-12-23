@@ -41,6 +41,7 @@ body {
   min-height: 100vh; /* setting wrapper to cover the whole screen at minimum*/
   display: flex;
   flex-direction: column;
+  width: 100vw;
 }
 .content {
   flex: 1; /* Makes this section take all remaining space*/
