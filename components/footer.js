@@ -11,7 +11,6 @@ export default function Footer() {
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        // console.log("event: ", event);
         if ((event === "SIGNED_IN" || event === "INITIAL_SESSION") && session) {
           const { user } = session;
           setUser(user);
@@ -27,6 +26,7 @@ export default function Footer() {
 
   const subscribeToNewsletter = async () => {
     setLoading(true);
+    console.log("user: ", user);
     if (!user) {
       alert("You need to login first!");
       setLoading(false);
