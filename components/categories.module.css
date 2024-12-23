@@ -52,7 +52,35 @@
   border: solid black 2px;
 }
 @media (max-width: 426px) {
-  .rightContent{
-    display: none;
+  .rightContent header ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  .rightContent header ul li a{
+    width: 25vw;
+  }
+  .rightContent header ul li{
+    height: fit-content;
+  }
+  .rightContent header ul li img {
+    height: 3rem;
+    width: 3rem;
+  }
+  .rightContent header ul li h4 {
+    font-size: 0.9rem;
+  }
+  .rightContent header ul li a:hover {
+    cursor: pointer;
+    box-shadow: none;
+    border:none;
+  }
+  .rightContent header ul li a:active {
+    cursor: pointer;
+    transform: scale(0.95, 0.95);
+    box-shadow: 0.4rem 0.4rem 0.3rem black;
+    border: solid var(--secondary-color) 2px;
+    opacity: 0.5;
   }
 }

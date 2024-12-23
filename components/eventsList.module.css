@@ -55,6 +55,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: clamp(0.8rem, 5vw, 1.2rem);
 }
 .currEvents ul li a img {
   height: 4rem;
@@ -72,7 +73,7 @@
   color: black;
 }
 .header h1{
-  font-size: 1.6rem;
+  font-size: clamp(1rem, 6vw, 1.6rem);
   width: fit-content;
   margin: 0.8rem 0;
   padding: 0 0.5rem;
@@ -97,6 +98,7 @@
   text-align: center;
   /* color: var(--text-color); */
   color: white;
+  font-size: clamp(0.5rem, 5vw, 1.6rem);
   animation: pulse 1.5s infinite ease-in-out;
 }
 @keyframes pulse {
@@ -111,10 +113,18 @@
   }
 }
 @media (max-width: 426px) {
-  .currEvents {
-    display: none;
+  .currEvents ul li a img{
+    height: 3rem;
+    width: 3rem;
   }
-  .header{
-    display: none ;
+  .currEvents ul li a .specifics h3{
+    margin: 0.3rem 0.5rem;
+    width: 65vw;
+  }
+  .currEvents{
+    padding: 0.1rem 0.5rem;
+  }
+  .currEvents ul li a{
+    width: 100%;
   }
 }
