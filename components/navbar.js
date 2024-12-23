@@ -76,7 +76,14 @@ export default function Navbar() {
       <div className={styles.linkSection}>
         <ul>
           <li>
-            <Link href={"#"}>POSH & POCSO</Link>
+            <Link href={"/posh_pocso"} style={
+                url.startsWith("/posh_pocso")
+                  ? {
+                      backgroundColor: "white",
+                      color: "var(--secondary-color)",
+                    }
+                  : null
+              }>POSH & POCSO</Link>
           </li>
           <li>
             <Link
