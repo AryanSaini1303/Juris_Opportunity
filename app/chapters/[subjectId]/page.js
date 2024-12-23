@@ -45,7 +45,7 @@ export default function ChaptersPage({ params }) {
                 </Link>
               ))
             ) : (
-              <h1 style={{textAlign:'center'}}>No Chapters Found!</h1>
+              <h1 style={{textAlign:'center', width:"100vw"}}>No Chapters Found!</h1>
             )}
           </div>
         </div>
