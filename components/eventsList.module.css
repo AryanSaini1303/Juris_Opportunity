@@ -98,7 +98,7 @@
   text-align: center;
   /* color: var(--text-color); */
   color: white;
-  font-size: clamp(0.5rem, 5vw, 1.6rem);
+  font-size: clamp(0.3rem, 4vw, 1.6rem);
   animation: pulse 1.5s infinite ease-in-out;
 }
 @keyframes pulse {

@@ -60,6 +60,7 @@
   }
   .rightContent header ul li a{
     width: 25vw;
+    padding: 0;
   }
   .rightContent header ul li{
     height: fit-content;
