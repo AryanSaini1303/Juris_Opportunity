@@ -189,23 +189,6 @@ export default function Navbar() {
                 </ul>
               )}
             </li>
-            {mobile && (
-              <li>
-                <Link
-                  href={"/expiring_events"}
-                  style={
-                    url.startsWith("/expiring_events")
-                      ? {
-                          backgroundColor: "white",
-                          color: "var(--secondary-color)",
-                        }
-                      : null
-                  }
-                >
-                  Expiring Events
-                </Link>
-              </li>
-            )}
             <li>
               <Link
                 href={!mobile ? "/MapSearch" : "/about"}

@@ -4,53 +4,67 @@ export default function JobDetailsPage({ data }) {
     <div className={styles.details}>
       <header className={styles.header}>
         <img
-          src={data[0].poster}
+          src={data[0].poster || "https://picsum.photos/300/300"}
           alt="Event Poster"
           className={styles.poster}
         />
         <div className={styles.info}>
-          <h1 className={styles.heading}>{data[0].heading}</h1>
+          <h1 className={styles.heading}>{data[0].heading || "-"}</h1>
           <p className={styles.dateTime}>
-            Start: {data[0].start_date} | End: {data[0].end_date} | deadline: {data[0].deadline}
+            {data[0].start_date && "Start:"} {data[0].start_date + " |"}{" "}
+            {data[0].end_date && "End:"} {data[0].end_date + " |"}{" "}
+            {data[0].deadline && "Deadline:"} {data[0].deadline}
           </p>
-          <p className={styles.location}>Location: {data[0].location}</p>
-          <p className={styles.location}>Mode: {data[0].mode}</p>
+          {data[0].location && (
+            <p className={styles.location}>Location: {data[0].location}</p>
+          )}
+          {data[0].mode && (
+            <p className={styles.location}>Mode: {data[0].mode}</p>
+          )}
         </div>
       </header>
       <hr />
-      <section className={styles.description}>
-        <h2>About the Job</h2>
-        <p>{data[0].about}</p>
-      </section>
+      {data[0].about && (
+        <section className={styles.description}>
+          <h2>About the Job</h2>
+          <p>{data[0].about}</p>
+        </section>
+      )}
       <hr />
 
       <section className={styles.detailsSection}>
-        <div className={styles.item}>
-          <h3>Position</h3>
-          <p>{data[0].position}</p>
-        </div>
-        <div className={styles.item}>
-          <h3>Responsibilities</h3>
-          <ul>
-            {data &&
-              data[0].responsibilities.map((element, index) => (
+        {data[0].position && (
+          <div className={styles.item}>
+            <h3>Position</h3>
+            <p>{data[0].position}</p>
+          </div>
+        )}
+        {data[0].responsibilities && (
+          <div className={styles.item}>
+            <h3>Responsibilities</h3>
+            <ul>
+              {data[0].responsibilities.map((element, index) => (
                 <li key={element.id}>{element}</li>
               ))}
-          </ul>
-        </div>
-        <div className={styles.item}>
-          <h3>Requirements</h3>
-          <ul>
-            {data &&
-              data[0].requirements.map((element, index) => (
+            </ul>
+          </div>
+        )}
+        {data[0].requirements && (
+          <div className={styles.item}>
+            <h3>Requirements</h3>
+            <ul>
+              {data[0].requirements.map((element, index) => (
                 <li key={element.id}>{element}</li>
               ))}
-          </ul>
-        </div>
-        <div className={styles.item}>
-          <h3>Renumeration</h3>
-          <p>{data[0].salary}</p>
-        </div>
+            </ul>
+          </div>
+        )}
+        {data[0].salary && (
+          <div className={styles.item}>
+            <h3>Renumeration</h3>
+            <p>{data[0].salary}</p>
+          </div>
+        )}
       </section>
       <hr />
       {/* {!(
