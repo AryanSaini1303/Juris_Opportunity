@@ -44,7 +44,7 @@ export default function Categories() {
               }
             >
               <img src="/moots.svg" alt="" />
-              <h4>Moots</h4>
+              <h4>Moot Courts</h4>
             </Link>
           </li>
           <li>
@@ -57,7 +57,7 @@ export default function Categories() {
               }
             >
               <img src="/paper.svg" alt="" />
-              <h4>Call for Paper</h4>
+              <h4>Call for Papers</h4>
             </Link>
           </li>
           <li>
@@ -70,7 +70,7 @@ export default function Categories() {
               }
             >
               <img src="/conferences.svg" alt="" />
-              <h4>Conference</h4>
+              <h4>Conferences</h4>
             </Link>
           </li>
           <li>
