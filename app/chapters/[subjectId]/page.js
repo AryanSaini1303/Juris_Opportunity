@@ -17,7 +17,7 @@ export default function ChaptersPage({ params }) {
           `/api/getAllChapters?subjectId=${subjectId}`
         );
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setAllChapters(data);
         setLoading(false);
       } catch (error) {

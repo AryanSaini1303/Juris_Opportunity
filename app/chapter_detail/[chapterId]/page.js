@@ -17,7 +17,7 @@ export default function ChapterDetailsPage({ params }) {
           `/api/getChapterDetails?chapterId=${chapterId}`
         );
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setChapterDetails(data[0]);
         setLoading(false);
       } catch (error) {

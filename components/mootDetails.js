@@ -107,30 +107,30 @@ export default function MootDetailsPage({ data }) {
             </ul>
           </div>
         )}
-        {data.registration_link && (
-          <div className={styles.item}>
-            <h3>Registration Link</h3>
-            <a href={data[0].registration_link} target="_blank">
-              {data[0].registration_link}
-            </a>
-          </div>
-        )}
-        {data[0].website_url && (
-          <div className={styles.item}>
-            <h3>Click to access website</h3>
-            <a href={data[0].website_url} target="_blank">
-              {data[0].website_url}
-            </a>
-          </div>
-        )}
         {data[0].moot_problem && (
-          <div className={styles.item}>
-            <h3>Click here for the moot problem</h3>
-            <a href={data[0].moot_problem} target="_blank">
-              {data[0].moot_problem}
-            </a>
-          </div>
+          <button className={styles.item}>
+            <Link
+              href={data[0].moot_problem}
+              target="_blank"
+              style={{ transition: "all 0.2s ease-in-out" }}
+            >
+              Click here for moot problem
+            </Link>
+          </button>
         )}
+        <br />
+        {data[0].website_url && (
+          <button className={styles.item}>
+            <Link
+              href={data[0].website_url}
+              target="_blank"
+              style={{ transition: "all 0.2s ease-in-out" }}
+            >
+              Click here to access website
+            </Link>
+          </button>
+        )}
+        <br />
         {data[0].registration_link && (
           <button className={styles.item}>
             <Link

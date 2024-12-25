@@ -82,7 +82,7 @@ export default async function EventsList({ category }) {
       conferences: conferencesData.data,
       callForPapers: callForPapersData.data,
     };
-    console.log(categoryData);
+    // console.log(categoryData);
     // Filter events within each category where created_at is within the last week
     filteredCategoryData = Object.keys(categoryData).reduce((acc, category) => {
       const filteredEvents = categoryData[category].filter((event) => {
