@@ -51,7 +51,7 @@ export default function Categories() {
             <Link
               href="/categories/CallForPapers"
               className={
-                url && url.toLowerCase().endsWith("callforpaper")
+                url && url.toLowerCase().endsWith("callforpapers")
                   ? `${styles.selected}`
                   : null
               }
