@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./jobDetails.module.css";
 export default function MootDetailsPage({ data }) {
   return (
@@ -129,6 +130,17 @@ export default function MootDetailsPage({ data }) {
               {data[0].moot_problem}
             </a>
           </div>
+        )}
+        {data[0].registration_link && (
+          <button className={styles.item}>
+            <Link
+              href={data[0].registration_link}
+              target="_blank"
+              style={{ transition: "all 0.2s ease-in-out" }}
+            >
+              Click here to Register
+            </Link>
+          </button>
         )}
       </section>
       <hr />

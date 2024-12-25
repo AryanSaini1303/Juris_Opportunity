@@ -49,7 +49,7 @@ export default function Categories() {
           </li>
           <li>
             <Link
-              href="/categories/CallForPaper"
+              href="/categories/CallForPapers"
               className={
                 url && url.toLowerCase().endsWith("callforpaper")
                   ? `${styles.selected}`
@@ -62,9 +62,9 @@ export default function Categories() {
           </li>
           <li>
             <Link
-              href="/categories/Conference"
+              href="/categories/Conferences"
               className={
-                url && url.toLowerCase().endsWith("conference")
+                url && url.toLowerCase().endsWith("conferences")
                   ? `${styles.selected}`
                   : null
               }

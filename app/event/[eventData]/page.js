@@ -5,6 +5,8 @@ import Navbar from "@/components/navbar";
 import { supabase } from "@/lib/supabaseClient";
 import MootDetailsPage from "@/components/mootDetails";
 import CompetitionDetailsPage from "@/components/competitionDetails";
+import ConferenceDetailsPage from "@/components/conferenceDetails";
+import CallForPapersDetails from "@/components/callForPaperDetails";
 
 export default async function EventPage({ params }) {
   const { eventData } = await params;
@@ -30,6 +32,12 @@ export default async function EventPage({ params }) {
         {category.toLowerCase() == "moots" && <MootDetailsPage data={data} />}
         {category.toLowerCase() == "competitions" && (
           <CompetitionDetailsPage data={data} />
+        )}
+        {category.toLowerCase() == "conferences" && (
+          <ConferenceDetailsPage data={data} />
+        )}
+        {category.toLowerCase() == "callforpapers" && (
+          <CallForPapersDetails data={data} />
         )}
       </main>
       <Footer />

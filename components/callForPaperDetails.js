@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./jobDetails.module.css";
-export default function InternshipDetailsPage({ data }) {
+export default function CallForPapersDetails({ data }) {
   return (
     <div className={styles.details}>
       <header className={styles.header}>
@@ -27,27 +27,17 @@ export default function InternshipDetailsPage({ data }) {
       <hr />
       {data[0].about && (
         <section className={styles.description}>
-          <h2>About the Internship</h2>
+          <h2>About the Job</h2>
           <p>{data[0].about}</p>
         </section>
       )}
       <hr />
 
       <section className={styles.detailsSection}>
-        {data[0].apply && (
+        {data[0].position && (
           <div className={styles.item}>
-            <h3>How to Apply?</h3>
-            <p>{data[0].apply}</p>
-          </div>
-        )}
-        {data[0].roles_responsibilities && (
-          <div className={styles.item}>
-            <h3>Roles and Responsibilities</h3>
-            <ul>
-              {data[0].roles_responsibilities.map((element, index) => (
-                <li key={element.id}>{element}</li>
-              ))}
-            </ul>
+            <h3>Position</h3>
+            <p>{data[0].position}</p>
           </div>
         )}
         {data[0].eligibility && (
@@ -60,12 +50,6 @@ export default function InternshipDetailsPage({ data }) {
             </ul>
           </div>
         )}
-        {data[0].stipend && (
-          <div className={styles.item}>
-            <h3>Stipend</h3>
-            <p>{data[0].stipend}</p>
-          </div>
-        )}
         {data[0].contact && (
           <div className={styles.item}>
             <h3>Contact</h3>
@@ -74,6 +58,22 @@ export default function InternshipDetailsPage({ data }) {
                 <li key={element.id}>{element}</li>
               ))}
             </ul>
+          </div>
+        )}
+        {data[0].fee_details && (
+          <div className={styles.item}>
+            <h3>Fee Details</h3>
+            <ul>
+              {data[0].fee_details.map((element, index) => (
+                <li key={element.id}>{element}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {data[0].prize && (
+          <div className={styles.item}>
+            <h3>Prize</h3>
+            <p>{data[0].prize}</p>
           </div>
         )}
         {data[0].registration_link && (

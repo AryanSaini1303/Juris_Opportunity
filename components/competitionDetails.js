@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./jobDetails.module.css";
 export default function CompetitionDetailsPage({ data }) {
   return (
@@ -61,11 +62,16 @@ export default function CompetitionDetailsPage({ data }) {
             <p>{data[0].stipend}</p>
           </div>
         )}
-        {data[0].deadline && (
-          <div className={styles.item}>
-            <h3>Deadline</h3>
-            <p>{data[0].deadline}</p>
-          </div>
+        {data[0].registration_link && (
+          <button className={styles.item}>
+            <Link
+              href={data[0].registration_link}
+              target="_blank"
+              style={{ transition: "all 0.2s ease-in-out" }}
+            >
+              Click here to Register
+            </Link>
+          </button>
         )}
       </section>
       <hr />

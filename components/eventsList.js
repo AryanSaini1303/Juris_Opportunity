@@ -6,49 +6,70 @@ export default async function EventsList({ category }) {
   let data;
   let categoryData;
   let filteredCategoryData;
-
   if (!category) {
     // Fetch data from all tables concurrently using Promise.all
-    const [jobsData, internshipsData, competitionsData, mootsData] =
-      await Promise.all([
-        supabase
-          .from("jobs")
-          .select(
-            "heading, category, start_date, poster, id, created_at, deadline"
-          )
-          .order("start_date", { ascending: true }),
-        supabase
-          .from("internships")
-          .select(
-            "heading, category, start_date, poster, id, created_at, deadline"
-          )
-          .order("start_date", { ascending: true }),
-        supabase
-          .from("competitions")
-          .select(
-            "heading, category, start_date, poster, id, created_at, deadline"
-          )
-          .order("start_date", { ascending: true }),
-        supabase
-          .from("moots")
-          .select(
-            "heading, category, start_date, poster, id, created_at, deadline"
-          )
-          .order("start_date", { ascending: true }),
-      ]);
+    const [
+      jobsData,
+      internshipsData,
+      competitionsData,
+      mootsData,
+      conferencesData,
+      callForPapersData,
+    ] = await Promise.all([
+      supabase
+        .from("jobs")
+        .select(
+          "heading, category, start_date, poster, id, created_at, deadline"
+        )
+        .order("start_date", { ascending: true }),
+      supabase
+        .from("internships")
+        .select(
+          "heading, category, start_date, poster, id, created_at, deadline"
+        )
+        .order("start_date", { ascending: true }),
+      supabase
+        .from("competitions")
+        .select(
+          "heading, category, start_date, poster, id, created_at, deadline"
+        )
+        .order("start_date", { ascending: true }),
+      supabase
+        .from("moots")
+        .select(
+          "heading, category, start_date, poster, id, created_at, deadline"
+        )
+        .order("start_date", { ascending: true }),
+      supabase
+        .from("conferences")
+        .select(
+          "heading, category, start_date, poster, id, created_at, deadline"
+        )
+        .order("start_date", { ascending: true }),
+      supabase
+        .from("callforpapers")
+        .select(
+          "heading, category, start_date, poster, id, created_at, deadline"
+        )
+        .order("start_date", { ascending: true }),
+    ]);
     // Check for errors in any of the queries
     if (
       jobsData.error ||
       internshipsData.error ||
       competitionsData.error ||
-      mootsData.error
+      mootsData.error ||
+      conferencesData.error ||
+      callForPapersData.error
     ) {
       console.error(
         "Error fetching data:",
         jobsData.error ||
           internshipsData.error ||
           competitionsData.error ||
-          mootsData.error
+          mootsData.error ||
+          conferencesData.error ||
+          callForPapersData.error
       );
       return;
     }
@@ -58,7 +79,10 @@ export default async function EventsList({ category }) {
       internships: internshipsData.data,
       competitions: competitionsData.data,
       moots: mootsData.data,
+      conferences: conferencesData.data,
+      callForPapers: callForPapersData.data,
     };
+    console.log(categoryData);
     // Filter events within each category where created_at is within the last week
     filteredCategoryData = Object.keys(categoryData).reduce((acc, category) => {
       const filteredEvents = categoryData[category].filter((event) => {
@@ -109,7 +133,7 @@ export default async function EventsList({ category }) {
             </svg>
           </span>
           {category == "CallForPaper"
-            ? "Call For Paper"
+            ? "Call For Papers"
             : !category
             ? "Latest Events"
             : category}
@@ -126,7 +150,7 @@ export default async function EventsList({ category }) {
                   <div className={styles.specifics}>
                     <h3>
                       {event.start_date}{" "}
-                      <span>&emsp; &emsp; {event.category}</span>
+                      <span>&emsp; &emsp; {event.category=='callforpapers'?"Call For Papers":event.category}</span>
                     </h3>
                     <h3>{event.heading}</h3>
                   </div>
@@ -134,7 +158,8 @@ export default async function EventsList({ category }) {
                 <hr />
               </li>
             ))
-          ) : filteredCategoryData &&  Object.keys(filteredCategoryData).length!=0 ? (
+          ) : filteredCategoryData &&
+            Object.keys(filteredCategoryData).length != 0 ? (
             // Loop through categoryData and render each category's events
             Object.keys(filteredCategoryData).map((categoryKey) => {
               const events = filteredCategoryData[categoryKey];
@@ -147,7 +172,7 @@ export default async function EventsList({ category }) {
                         <div className={styles.specifics}>
                           <h3>
                             {event.start_date}{" "}
-                            <span>&emsp; &emsp; {event.category}</span>
+                            <span>&emsp; &emsp; {event.category=='callforpapers'?"Call For Papers":event.category}</span>
                           </h3>
                           <h3>{event.heading}</h3>
                         </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./jobDetails.module.css";
 export default function JobDetailsPage({ data }) {
   return (
@@ -64,6 +65,17 @@ export default function JobDetailsPage({ data }) {
             <h3>Renumeration</h3>
             <p>{data[0].salary}</p>
           </div>
+        )}
+        {data[0].registration_link && (
+          <button className={styles.item}>
+            <Link
+              href={data[0].registration_link}
+              target="_blank"
+              style={{ transition: "all 0.2s ease-in-out" }}
+            >
+              Click here to Register
+            </Link>
+          </button>
         )}
       </section>
       <hr />
