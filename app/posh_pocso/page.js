@@ -98,4 +98,4 @@ const POSHandPOCSOPage = () => {
   );
 };
 
-export default AboutPage;
+export default POSHandPOCSOPage;
