@@ -1,85 +1,140 @@
+"use client";
 import styles from "./page.module.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function AboutPage() {
+  const [hover, setHover] = useState(0);
   return (
     <div className="wrapper">
       <Navbar />
-      <main
-        className="content"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <div className={styles.headerContainer}>
-          <div className={styles.info}>
-            <h1>Safe Workspaces, Empowered Lives</h1>
-            <h3>
-              Empowering safe, respectful workplaces with expert POSH and POSCO
-              guidance
-            </h3>
+      <main className="content" style={{ padding: "1rem 5rem" }}>
+        <section className={styles.info}>
+          <h1>Safe Workspaces, Empowered lives</h1>
+          <p>
+            Empowering safe, respectful workplaces with expert POSH and POSCO
+            guidance
+          </p>
+        </section>
+        <section className={styles.members}>
+          <div
+            onMouseEnter={() => {
+              setHover(1);
+            }}
+            onMouseLeave={() => {
+              setHover(0);
+            }}
+          >
+            <Image
+              src="/member1.jpg"
+              alt=""
+              className={styles.member1}
+              width={220}
+              height={350}
+            />
+            {hover==1 && (
+              <section className={styles.memberInfo}>
+                <h2>Sasha Grey</h2>
+                <p>Head of Designs</p>
+              </section>
+            )}
+            <section className={styles.shade}></section>
           </div>
-          <div className={styles.image}>
-            <div className={styles.bgCircle}>
-              <Image src={"/lawyer.png"} height={500} width={500} alt="" />
-            </div>
+          <div
+            onMouseEnter={() => {
+              setHover(2);
+            }}
+            onMouseLeave={() => {
+              setHover(0);
+            }}
+          >
+            <Image
+              src="/member2.jpg"
+              alt=""
+              className={styles.member2}
+              width={220}
+              height={350}
+            />
+            {hover==2 && (
+              <section className={styles.memberInfo}>
+                <h2>Mathew Brians</h2>
+                <p>Junior Developer</p>
+              </section>
+            )}
+            <section className={styles.shade}></section>
           </div>
-        </div>
-        <div className={styles.featuresContainer}>
-          <h1>Your Partner in Legal Safety and Compliance</h1>
-          <section className={styles.features}>
-            <div className={styles.feature}>
-              <Image src={"/track_record.jpg"} height={1000} width={1000} alt="" />
-              <h4>Comprehensive Training Programs</h4>
-              <p>
-                Equip your workforce with essential knowledge and skills to
-                prevent harassment and ensure a safe workplace.
-              </p>
-              <div className={styles.shade}></div>
-            </div>
-            <div className={styles.feature}>
-              <Image src={"/library.jpg"} height={1000} width={1000} alt="" />
-              <h4>Expert Legal Consultation</h4>
-              <p>
-                Offering expert guidance to protect
-                your organization and its employees.
-              </p>
-              <div className={styles.shade}></div>
-            </div>
-            <div className={styles.feature}>
-              <Image src={"/library.jpg"} height={1000} width={1000} alt="" />
-              <h4>Confidential Reporting Mechanisms</h4>
-              <p>
-                Providing secure, confidential channels for employees to report
-                harassment without fear of retaliation.
-              </p>
-              <div className={styles.shade}></div>
-            </div>
-            <div className={styles.feature}>
-              <Image src={"/library.jpg"} height={1000} width={1000} alt="" />
-              <h4>Tailored Compliance Audits</h4>
-              <p>
-                Regular assessments to ensure your organization remains
-                compliant with POSH and POSCO.
-              </p>
-              <div className={styles.shade}></div>
-            </div>
-            <div className={styles.feature}>
-              <Image src={"/library.jpg"} height={1000} width={1000} alt="" />
-              <h4>Employee Awareness Campaigns</h4>
-              <p>
-                Raising awareness and promoting a culture of respect and safety
-                through ongoing initiatives.
-              </p>
-              <div className={styles.shade}></div>
-            </div>
-          </section>
-        </div>
+          <div
+            onMouseEnter={() => {
+              setHover(3);
+            }}
+            onMouseLeave={() => {
+              setHover(0);
+            }}
+          >
+            <Image
+              src="/member3.jpg"
+              alt=""
+              className={styles.member3}
+              width={220}
+              height={350}
+            />
+            {hover==3 && (
+              <section className={styles.memberInfo}>
+                <h2>Xiaomi chang</h2>
+                <p>Database Administrator</p>
+              </section>
+            )}
+            <section className={styles.shade}></section>
+          </div>
+          <div
+            onMouseEnter={() => {
+              setHover(4);
+            }}
+            onMouseLeave={() => {
+              setHover(0);
+            }}
+          >
+            <Image
+              src="/member4.jpg"
+              alt=""
+              className={styles.member4}
+              width={220}
+              height={350}
+            />
+            {hover==4 && (
+              <section className={styles.memberInfo}>
+                <h2>Scarlett Watson</h2>
+                <p>Sales </p>
+              </section>
+            )}
+            <section className={styles.shade}></section>
+          </div>
+          <div
+            onMouseEnter={() => {
+              setHover(5);
+            }}
+            onMouseLeave={() => {
+              setHover(0);
+            }}
+          >
+            <Image
+              src="/member5.jpg"
+              alt=""
+              className={styles.member5}
+              width={220}
+              height={350}
+            />
+            {hover==5 && (
+              <section className={styles.memberInfo}>
+                <h2>Howard Potts</h2>
+                <p>Lead Developer</p>
+              </section>
+            )}
+            <section className={styles.shade}></section>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
