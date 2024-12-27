@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar";
 import React from "react";
 import Link from "next/link";
 
-const AboutPage = () => {
+const POSHandPOCSOPage = () => {
   return (
     <div className="wrapper">
       <Navbar />
