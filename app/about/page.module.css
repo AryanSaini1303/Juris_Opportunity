@@ -8,7 +8,8 @@
 }
 .info p {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  margin: 0.8rem;
+  margin: 0.8rem auto;
+  width: 80%;
 }
 .members {
   width: 100%;
@@ -42,10 +43,10 @@
   bottom: 3rem;
   animation: oddMembersReveal 1s ease-in-out;
 }
-.card:nth-child(2n){
+.card:nth-child(2n) {
   animation: evenMembersReveal 1s ease-in-out;
 }
-.card .memberInfo{
+.card .memberInfo {
   font-size: 0.9rem;
   position: absolute;
   bottom: 0;
@@ -54,40 +55,114 @@
   z-index: 1;
   animation: infoReveal 0.3s ease-in-out;
 }
-.card .shade{
+.card .shade {
   position: absolute;
-  background:linear-gradient(360deg, black, rgba(0, 0, 0, 0));
+  background: linear-gradient(360deg, black, rgba(0, 0, 0, 0));
   height: 100%;
   width: 100%;
   top: 0;
 }
 @keyframes infoReveal {
-  0%{
+  0% {
     transform: translateX(-1rem);
     opacity: 0;
   }
-  100%{
+  100% {
     transform: translateX(0);
     opacity: 1;
   }
 }
 @keyframes evenMembersReveal {
-  0%{
+  0% {
     opacity: 0;
     transform: translateY(3.2rem);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 @keyframes oddMembersReveal {
-  0%{
+  0% {
     opacity: 0;
     transform: translateY(-3.2rem);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+.cardsSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  margin: 3rem auto;
+}
+
+.cardContainer {
+  width: 400px;
+  height: 250px;
+  position: relative;
+  border-radius: 10px;
+  perspective: 500px; /* Creates the 3D perspective */
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 10px black;
+}
+
+.infoCard {
+  width: 100%;
+  height: 100%;
+  color: black;
+  border: var(--secondary-color) solid 2px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  position: absolute;
+  /* backface-visibility: hidden; Hides the back when flipping */
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out, background-color 1.3s ease-in-out;
+  /* transform-origin: center bottom; Flip starts from the bottom edge */
+}
+.infoCard:hover {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+}
+.infoCard h3 {
+  text-align: center;
+  margin: 0 1rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  animation: headingReveal 0.5s ease-in-out;
+}
+@keyframes headingReveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.infoCard ul{
+  padding: 0 1rem;
+}
+.infoCard ul li{
+  text-align: justify;
+  font-size: 1.15rem;
+  animation: paraReveal 0.8s ease-in-out;
+  transform: rotateX(180deg);
+  color: white;
+  margin: 0 1rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+@keyframes paraReveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
