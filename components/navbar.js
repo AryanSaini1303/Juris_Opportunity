@@ -106,10 +106,7 @@ export default function Navbar() {
                 href={"/posh_pocso"}
                 style={
                   url.startsWith("/posh_pocso")
-                    ? {
-                        backgroundColor: "white",
-                        color: "var(--secondary-color)",
-                      }
+                    ? mobile?{backgroundColor:"var(--secondary-color)", color:"var(--primary-color)"}:{backgroundColor:"var(--primary-color)", color:"var(--secondary-color)"}
                     : null
                 }
               >
@@ -121,10 +118,7 @@ export default function Navbar() {
                 href={"/bare_acts?page=1"}
                 style={
                   url.startsWith("/bare_acts")
-                    ? {
-                        backgroundColor: "white",
-                        color: "var(--secondary-color)",
-                      }
+                    ? mobile?{backgroundColor:"var(--secondary-color)", color:"var(--primary-color)"}:{backgroundColor:"var(--primary-color)", color:"var(--secondary-color)"}
                     : null
                 }
               >
@@ -136,10 +130,7 @@ export default function Navbar() {
                 href={"/judgements?page=1"}
                 style={
                   url.startsWith("/judgements")
-                    ? {
-                        backgroundColor: "white",
-                        color: "var(--secondary-color)",
-                      }
+                    ? mobile?{backgroundColor:"var(--secondary-color)", color:"var(--primary-color)"}:{backgroundColor:"var(--primary-color)", color:"var(--secondary-color)"}
                     : null
                 }
               >
@@ -153,10 +144,7 @@ export default function Navbar() {
                   url.startsWith("/chapters") ||
                   notesClick ||
                   url.startsWith("/chapter_detail")
-                    ? {
-                        backgroundColor: "white",
-                        color: "var(--secondary-color)",
-                      }
+                    ? mobile?{backgroundColor:"var(--secondary-color)", color:"var(--primary-color)"}:{backgroundColor:"var(--primary-color)", color:"var(--secondary-color)"}
                     : null
                 }
                 tabIndex={0}
@@ -194,10 +182,7 @@ export default function Navbar() {
                 href={!mobile ? "/MapSearch" : "/about"}
                 style={
                   url.startsWith(!mobile ? "/MapSearch" : "/about")
-                    ? {
-                        backgroundColor: "white",
-                        color: "var(--secondary-color)",
-                      }
+                    ? mobile?{backgroundColor:"var(--secondary-color)", color:"var(--primary-color)"}:{backgroundColor:"var(--primary-color)", color:"var(--secondary-color)"}
                     : null
                 }
               >
@@ -209,10 +194,7 @@ export default function Navbar() {
                 href={"/advisory"}
                 style={
                   url.startsWith("/advisory")
-                    ? {
-                        backgroundColor: "white",
-                        color: "var(--secondary-color)",
-                      }
+                    ? mobile?{backgroundColor:"var(--secondary-color)", color:"var(--primary-color)"}:{backgroundColor:"var(--primary-color)", color:"var(--secondary-color)"}
                     : null
                 }
               >
