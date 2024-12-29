@@ -96,28 +96,40 @@ export default function AboutPage() {
               info.map((element, index) => {
                 if (index == 0) return;
                 return (
-                  <div className={styles.cardContainer} key={element.id}>
+                  <div className={styles.cardContainer} key={element.id} style={hover1==index+1?{transform:"translateY(-0.5rem)"}:null}>
                     <div
+                      tabIndex={0}
                       className={styles.infoCard}
-                      onMouseEnter={() => {
-                        setHover1(index + 1);
+                      onClick={() => {
+                        hover1 == index + 1
+                          ? setHover1(0)
+                          : setHover1(index + 1);
                       }}
-                      onMouseLeave={() => {
+                      onBlur={() => {
                         setHover1(0);
                       }}
                       style={
                         hover1 == index + 1
-                          ? { transform: "rotateX(180deg)" }
+                          ? {
+                              transform: "rotateX(180deg)",
+                              backgroundColor: "var(--secondary-color)",
+                            }
                           : null
                       }
                     >
                       {hover1 != index + 1 ? (
                         <h3>{element.heading}</h3>
                       ) : (
-                        <ul style={element.description.length==1?{listStyleType:"none", padding:0}:null}>
-                          {element.description.map((element1, index)=>(
-                          <li key={index}>{element1}</li>
-                        ))}
+                        <ul
+                          style={
+                            element.description.length == 1
+                              ? { listStyleType: "none", padding: 0 }
+                              : null
+                          }
+                        >
+                          {element.description.map((element1, index) => (
+                            <li key={index}>{element1}</li>
+                          ))}
                         </ul>
                       )}
                     </div>

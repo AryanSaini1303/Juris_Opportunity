@@ -109,6 +109,15 @@
   perspective: 500px; /* Creates the 3D perspective */
   background-color: var(--secondary-color);
   box-shadow: 0 0 10px black;
+  transition: all 0.2s ease-in-out;
+}
+.cardContainer:hover{
+  transform: translateY(-0.5rem);
+  box-shadow: 0 0 20px black;
+}
+.cardContainer:active{
+  transform: translateY(0);
+  box-shadow: 0 0 5px black;
 }
 
 .infoCard {
@@ -130,7 +139,6 @@
 }
 .infoCard:hover {
   cursor: pointer;
-  background-color: var(--secondary-color);
 }
 .infoCard h3 {
   text-align: center;
