@@ -204,6 +204,21 @@ export default function Navbar() {
                 {!mobile ? "Map Search" : "About Us"}
               </Link>
             </li>
+            <li>
+              <Link
+                href={"/advisory"}
+                style={
+                  url.startsWith("/advisory")
+                    ? {
+                        backgroundColor: "white",
+                        color: "var(--secondary-color)",
+                      }
+                    : null
+                }
+              >
+                Advisory
+              </Link>
+            </li>
             {mobile && (
               <li>
                 <div onClick={!user ? signIn : signOut}>
