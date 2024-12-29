@@ -77,7 +77,7 @@
 .topStories h1 {
   font-size: 2rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  margin: 1rem;
+  margin: 0 0 1rem 1rem;
   position: relative;
   width: fit-content;
 }

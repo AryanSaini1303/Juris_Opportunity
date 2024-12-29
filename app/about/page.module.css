@@ -21,31 +21,31 @@
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
-.members div {
+.card {
   filter: saturate(0%);
   position: relative;
 }
-.members div:hover {
+.card:hover {
   transform: scale(1.03);
   cursor: pointer;
   filter: saturate(100%);
   box-shadow: 0.3rem 0.3rem 0.5rem black;
 }
-.members div h2 {
+.card h2 {
   margin: 0;
 }
-.members div p {
+.card p {
   margin: 0.3rem 0;
 }
-.members div:nth-child(2n + 1) {
+.card:nth-child(2n + 1) {
   position: relative;
   bottom: 3rem;
   animation: oddMembersReveal 1s ease-in-out;
 }
-.members div:nth-child(2n){
+.card:nth-child(2n){
   animation: evenMembersReveal 1s ease-in-out;
 }
-.members div .memberInfo{
+.card .memberInfo{
   font-size: 0.9rem;
   position: absolute;
   bottom: 0;
@@ -54,7 +54,7 @@
   z-index: 1;
   animation: infoReveal 0.3s ease-in-out;
 }
-.members div .shade{
+.card .shade{
   position: absolute;
   background:linear-gradient(360deg, black, rgba(0, 0, 0, 0));
   height: 100%;

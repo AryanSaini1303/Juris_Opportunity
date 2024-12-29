@@ -126,4 +126,7 @@
     transform: none;
     box-shadow: none;
   }
+  .card .info h4{
+    font-weight: bold;
+  }
 }
