@@ -14,7 +14,7 @@
   width: 100%;
   display: flex;
   gap: 1rem;
-  margin: 4rem 0;
+  margin: 6rem 0;
   justify-content: center;
 }
 .members * {
@@ -39,7 +39,7 @@
 }
 .members div:nth-child(2n + 1) {
   position: relative;
-  bottom: 1rem;
+  bottom: 3rem;
   animation: oddMembersReveal 1s ease-in-out;
 }
 .members div:nth-child(2n){
