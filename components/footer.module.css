@@ -3,14 +3,19 @@
   width: 100%;
   /* bottom: 0; */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   background-color: var(--secondary-color);
   color: white;
   /* padding: 1rem 0; */
+  position: relative;
 }
 .footer hr {
   height: 80%;
   margin: auto;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%);
 }
 .socialsSection {
   display: flex;
@@ -49,7 +54,9 @@
 .newsletterSection {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* align-items: center; */
+  padding: 0 5rem;
   justify-content: center;
 }
 .newsletterSection button {
@@ -61,12 +68,32 @@
   color: white;
   border-radius: 25px;
   transition: all 0.15s ease-in-out;
+  width: fit-content;
+  margin: auto;
+}
+.banner_posts {
+  width: fit-content;
+  margin: auto;
+}
+.banner_posts span:first-child a {
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+.banner_posts span:first-child a:hover {
+  color: lightblue;
 }
 .newsletterSection > h1 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: lighter;
   font-size: 1.8rem;
   margin: 0.8rem 0;
+}
+.newsletterSection span {
+  transition: all 0.2s ease-in-out;
+}
+.newsletterSection span:hover {
+  cursor: pointer;
+  color: lightblue;
 }
 .newsletterSection button:hover {
   cursor: pointer;

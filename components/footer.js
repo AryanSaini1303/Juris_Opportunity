@@ -117,7 +117,25 @@ export default function Footer() {
         </div>
         <hr />
         <div className={styles.newsletterSection}>
-          {/* <h1>Subscribe to the newsletter</h1> */}
+          <div className={styles.banner_posts}>
+            <p>
+              For Banner, Posts, Ads Contact:{" "}
+              <span>
+                <a href="mailto:jurisopportunity@gmail.com">
+                  jurisopportunity@gmail.com
+                </a>
+              </span>
+              ,{" "}
+              <span
+                onClick={() => {
+                  navigator.clipboard.writeText("+91-8385820107");
+                }}
+                className={styles.mobileNumber}
+              >
+                +91-8385820107
+              </span>
+            </p>
+          </div>
           <button onClick={subscribeToNewsletter}>
             {subscribed
               ? "Subscribed"
