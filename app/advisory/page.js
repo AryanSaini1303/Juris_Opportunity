@@ -18,8 +18,8 @@ export default function AdvisoryPage() {
             tabIndex={0}
             style={
               click == 1
-                ? { transform: "rotateX(180deg)" }
-                : { transform: "rotateX(0)" }
+                ? { transform:"translateY(-5px)", boxShadow:"0 8px 12px rgba(0, 0, 0, 0.2)" }
+                :null
             }
             onClick={() => {
               setClick(1);
@@ -41,7 +41,7 @@ export default function AdvisoryPage() {
                 <h4>UI/UX Designer</h4>
               </div>
             ) : (
-              <p style={{ transform: "rotateX(180deg)" }}>
+              <p>
                 Passionate UI/UX designer creating intuitive, user-friendly
                 interfaces, blending creativity and functionality to enhance
                 user experiences across digital platforms.
@@ -52,8 +52,8 @@ export default function AdvisoryPage() {
             className={styles.card}
             style={
               click == 2
-                ? { transform: "rotateX(180deg)" }
-                : { transform: "rotateX(0)" }
+                ? { transform:"translateY(-5px)", boxShadow:"0 8px 12px rgba(0, 0, 0, 0.2)" }
+                :null
             }
             tabIndex={0}
             onClick={() => {
@@ -76,7 +76,7 @@ export default function AdvisoryPage() {
                 <h4>UI/UX Designer</h4>
               </div>
             ) : (
-              <p style={{ transform: "rotateX(180deg)" }}>
+              <p>
                 Passionate UI/UX designer creating intuitive, user-friendly
                 interfaces, blending creativity and functionality to enhance
                 user experiences across digital platforms.
@@ -87,8 +87,8 @@ export default function AdvisoryPage() {
             className={styles.card}
             style={
               click == 3
-                ? { transform: "rotateX(180deg)" }
-                : { transform: "rotateX(0)" }
+                ? { transform:"translateY(-5px)", boxShadow:"0 8px 12px rgba(0, 0, 0, 0.2)" }
+                :null
             }
             tabIndex={0}
             onClick={() => {
@@ -111,7 +111,7 @@ export default function AdvisoryPage() {
                 <h4>UI/UX Designer</h4>
               </div>
             ) : (
-              <p style={{ transform: "rotateX(180deg)" }}>
+              <p>
                 Passionate UI/UX designer creating intuitive, user-friendly
                 interfaces, blending creativity and functionality to enhance
                 user experiences across digital platforms.
@@ -122,8 +122,8 @@ export default function AdvisoryPage() {
             className={styles.card}
             style={
               click == 4
-                ? { transform: "rotateX(180deg)" }
-                : { transform: "rotateX(0)" }
+                ? { transform:"translateY(-5px)", boxShadow:"0 8px 12px rgba(0, 0, 0, 0.2)" }
+                :null
             }
             tabIndex={0}
             onClick={() => {
@@ -146,7 +146,7 @@ export default function AdvisoryPage() {
                 <h4>UI/UX Designer</h4>
               </div>
             ) : (
-              <p style={{ transform: "rotateX(180deg)" }}>
+              <p>
                 Passionate UI/UX designer creating intuitive, user-friendly
                 interfaces, blending creativity and functionality to enhance
                 user experiences across digital platforms.
@@ -157,8 +157,8 @@ export default function AdvisoryPage() {
             className={styles.card}
             style={
               click == 5
-                ? { transform: "rotateX(180deg)" }
-                : { transform: "rotateX(0)" }
+                ? { transform:"translateY(-5px)", boxShadow:"0 8px 12px rgba(0, 0, 0, 0.2)" }
+                :null
             }
             tabIndex={0}
             onClick={() => {
@@ -181,7 +181,7 @@ export default function AdvisoryPage() {
                 <h4>UI/UX Designer</h4>
               </div>
             ) : (
-              <p style={{ transform: "rotateX(180deg)" }}>
+              <p>
                 Passionate UI/UX designer creating intuitive, user-friendly
                 interfaces, blending creativity and functionality to enhance
                 user experiences across digital platforms.
@@ -192,8 +192,8 @@ export default function AdvisoryPage() {
             className={styles.card}
             style={
               click == 6
-                ? { transform: "rotateX(180deg)" }
-                : { transform: "rotateX(0)" }
+                ? { transform:"translateY(-5px)", boxShadow:"0 8px 12px rgba(0, 0, 0, 0.2)" }
+                :null
             }
             tabIndex={0}
             onClick={() => {
@@ -216,7 +216,7 @@ export default function AdvisoryPage() {
                 <h4>UI/UX Designer</h4>
               </div>
             ) : (
-              <p style={{ transform: "rotateX(180deg)" }}>
+              <p>
                 Passionate UI/UX designer creating intuitive, user-friendly
                 interfaces, blending creativity and functionality to enhance
                 user experiences across digital platforms.
