@@ -252,4 +252,7 @@
   .noContentHeader {
     font-size: 1.5rem;
   }
+  .card{
+    height: fit-content;
+  }
 }
