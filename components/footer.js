@@ -116,26 +116,28 @@ export default function Footer() {
           </ul>
         </div>
         <hr />
-        <div className={styles.newsletterSection}>
-          <div className={styles.banner_posts}>
-            <p>
-              For Banner, Posts, Ads Contact:{" "}
-              <span>
-                <a href="mailto:jurisopportunity@gmail.com">
-                  jurisopportunity@gmail.com
-                </a>
-              </span>
-              ,{" "}
-              <span
-                onClick={() => {
-                  navigator.clipboard.writeText("+91-8385820107");
-                }}
-                className={styles.mobileNumber}
-              >
-                +91-8385820107
-              </span>
-            </p>
-          </div>
+        <div className={styles.newsletterSection} style={mobile?{padding:"0"}:null}>
+          {!mobile && (
+            <div className={styles.banner_posts}>
+              <p>
+                For Banner, Posts, Ads Contact:{" "}
+                <span>
+                  <a href="mailto:jurisopportunity@gmail.com">
+                    jurisopportunity@gmail.com
+                  </a>
+                </span>
+                ,{" "}
+                <span
+                  onClick={() => {
+                    navigator.clipboard.writeText("+91-8385820107");
+                  }}
+                  className={styles.mobileNumber}
+                >
+                  +91-8385820107
+                </span>
+              </p>
+            </div>
+          )}
           <button onClick={subscribeToNewsletter}>
             {subscribed
               ? "Subscribed"
