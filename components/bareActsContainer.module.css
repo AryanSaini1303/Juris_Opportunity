@@ -180,3 +180,22 @@
 .mainContainer{
   width: 100%;
 }
+@media (max-width: 768px) {
+  .acts_container{
+    flex-direction: column;
+  }
+  .state_acts{
+    width: 90%;
+    overflow-y: auto;
+    height: 26.9vh;
+  }
+  .titles_table tbody{
+    font-size: 0.8rem;
+  }
+  .titles_table tbody tr:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: black;
+    opacity: 1;
+  }
+}

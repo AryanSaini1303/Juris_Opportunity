@@ -9,7 +9,7 @@
 .searchBar form {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 90%;
   gap: 1rem;
   max-width: 400px;
   background-color: var(--primary-color);

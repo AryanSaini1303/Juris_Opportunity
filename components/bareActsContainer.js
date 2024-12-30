@@ -89,17 +89,39 @@ export default function BareActsContainer({ page }) {
   const [stateActQuery, setStateActQuery] = useState();
   const [showModal, setShowModal] = useState(false);
   const [bareActIntro, setBareActIntro] = useState();
-  const limit = 25;
   const [totalPageNumbers, setTotalPageNumbers] = useState();
   const router = useRouter();
   const [allBareActs, setAllBareActs] = useState();
   const [searchQuery, setSearchQuery] = useState();
   const [user, setUser] = useState();
   const [bareActClick, setBareActClick] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  const limit = mobile&&!mobile?25:10;
+
+  useEffect(() => {
+    // Ensure the code only runs in the browser
+    const handleResize = () => {
+      if (screen.width <= 426) {
+        setMobile(true);
+      }
+    };
+
+    // Set the initial screen width
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (
       (centralActQuery?.length == 0 && stateActQuery?.length == 0) ||
-      (!centralActQuery && !stateActQuery) && !searchQuery
+      (!centralActQuery && !stateActQuery && !searchQuery)
     ) {
       const fetchBareActs = async () => {
         const response = await fetch("/api/bareActs");
@@ -221,7 +243,7 @@ export default function BareActsContainer({ page }) {
           handleFormSubmit={handleFormSubmit}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
-          placeholder={"e.g. The Medication Act"}
+          placeholder={"e.g. The National Cadet"}
         />
       </div>
       <div className={styles.acts_container}>
@@ -290,8 +312,12 @@ export default function BareActsContainer({ page }) {
                       : "Category"}
                   </th>
                   <th>Title</th>
-                  <th>Act Number</th>
-                  <th>Year</th>
+                  {!mobile && (
+                    <>
+                      <th>Act Number</th>
+                      <th>Year</th>
+                    </>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -319,14 +345,20 @@ export default function BareActsContainer({ page }) {
                                 "_blank",
                                 "noopener,noreferrer"
                               )
-                            : alert("To access full information, Please login ☺️");
+                            : alert(
+                                "To access full information, Please login ☺️"
+                              );
                         }
                       }}
                     >
                       <td>{item.state ? item.state : "Central"}</td>
                       <td>{item.name}</td>
-                      <td>{item.act_number}</td>
-                      <td>{item.year}</td>
+                      {!mobile && (
+                        <>
+                          <td>{item.act_number}</td>
+                          <td>{item.year}</td>
+                        </>
+                      )}
                     </tr>
                   ))
                 ) : (
