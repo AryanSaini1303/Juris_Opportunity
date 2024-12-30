@@ -32,15 +32,33 @@ export default function JudgementsPage() {
     "November",
     "December",
   ];
-  const limit = 24;
   const router = useRouter();
-  const [totalPageNumbers, setTotalPageNumbers] = useState(
-    Math.ceil(48 / limit)
-  ); // As initially i'm fetching only 12 entries and one page can show 4 entries so the total page numbers can be calculated by totalEntries/limit
   const divRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState();
   const [judgementClick, setJudgementClick] = useState(false);
   const [user, setUser] = useState();
+  const [mobile, setMobile] = useState(false);
+  const limit = mobile&&!mobile?24:10;
+  const [totalPageNumbers, setTotalPageNumbers] = useState(
+    Math.ceil(48 / limit)
+  ); // As initially i'm fetching only 12 entries and one page can show 4 entries so the total page numbers can be calculated by totalEntries/limit
+
+  useEffect(() => {
+    // Ensure the code only runs in the browser
+    const handleResize = () => {
+      if (screen.width <= 426) {
+        setMobile(true);
+      }
+    };
+    // Set the initial screen width
+    handleResize();
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (!searchQuery) {
@@ -153,13 +171,14 @@ export default function JudgementsPage() {
     <div className="wrapper">
       <Navbar />
       <main className="content">
-        <div className={styles.container}>
           <SearchBar
             handleFormSubmit={handleFormSubmit}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             placeholder={"e.g. State of Rajasthan"}
+            margin={"2rem 0 0 0"}
           />
+        <div className={styles.container}>
           <div className={styles.yearSection}>
             {allJudgementYears && allJudgementYears.length != 0 && (
               <ul>
@@ -185,7 +204,7 @@ export default function JudgementsPage() {
               </ul>
             )}
           </div>
-          <div className={styles.cardSection}>
+          {mobile && (
             <div className={styles.monthSection}>
               <ul>
                 {monthNames.map((element, index) => (
@@ -212,6 +231,36 @@ export default function JudgementsPage() {
                 ))}
               </ul>
             </div>
+          )}
+          <div className={styles.cardSection}>
+            {!mobile && (
+              <div className={styles.monthSection}>
+                <ul>
+                  {monthNames.map((element, index) => (
+                    <li
+                      key={index}
+                      onClick={() => {
+                        monthQuery == element
+                          ? setMonthQuery()
+                          : monthQuery != element && yearQuery
+                          ? setMonthQuery(element)
+                          : null;
+                      }}
+                      style={
+                        monthQuery == element
+                          ? {
+                              backgroundColor: "var(--accent-color)",
+                              color: "black",
+                            }
+                          : null
+                      }
+                    >
+                      {element}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {loading ? (
               <h1 style={{ textAlign: "center" }}>Loading...</h1>
             ) : currentJudgements && currentJudgements.length != 0 ? (
@@ -236,7 +285,7 @@ export default function JudgementsPage() {
                 ))}
               </div>
             ) : (
-              <h1 style={{ textAlign: "center" }}>No Judgements Found!</h1>
+              <h1 style={{ textAlign: "center" }} className={styles.noContentHeader}>No Judgements Found!</h1>
             )}
             {currentJudgements && currentJudgements.length != 0 && !loading && (
               <PageNumberSection

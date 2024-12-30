@@ -11,7 +11,7 @@
   border-radius: 5px;
   animation: yearSectionReveal 0.5s ease-in-out;
   height: 65.5vh;
-  overflow: scroll;
+  overflow-y: auto;
 }
 .yearSection::-webkit-scrollbar {
   width: 5px;
@@ -189,4 +189,67 @@
 .card:active {
   transform: translateY(2px); /* Card slightly presses down on click */
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3); /* Soft shadow on active state */
+}
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+    margin: 1rem 0;
+  }
+  .monthSection ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .monthSection {
+    height: 62.5vh;
+    overflow-y: auto;
+    width: 45%;
+  }
+  .monthSection ul li {
+    width: 100%;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0.5rem;
+  }
+  .yearSection::-webkit-scrollbar {
+    width: 0px;
+  }
+  .yearSection {
+    width: 38%;
+    height: 62.5vh;
+  }
+  .monthSection li:hover {
+    background-color: var(--primary-color); /* Accent color on hover */
+    color: var(--secondary-color); /* Changes text color to white on hover */
+    transform: scale(1); /* Slight scaling effect */
+    box-shadow: none; /* Adds a shadow on hover */
+  }
+  .yearSection li:hover {
+    background-color: var(--primary-color); /* Accent color on hover */
+    color: var(--secondary-color); /* Changes text color to white on hover */
+    transform: scale(1); /* Slight scaling effect */
+    box-shadow: none; /* Adds a shadow on hover */
+  }
+  .card:hover {
+    transform: translateY(0); /* Lift the card slightly on hover */
+    box-shadow: 0px 2px 5px var(--secondary-color); /* Enhance shadow on hover */
+  }
+  .card h3 {
+    width: 70vw;
+    font-size: 1rem;
+    margin: 0 1rem;
+  }
+  .card h4 {
+    font-size: 0.85rem;
+  }
+  .card h5 {
+    font-size: 0.85rem;
+    margin: 0 1rem;
+  }
+  .noContentHeader {
+    font-size: 1.5rem;
+  }
 }
