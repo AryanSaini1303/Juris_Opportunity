@@ -184,16 +184,19 @@
   .members .card {
     bottom: 0;
   }
-  .info p{
-    width:100%;
+  .info p {
+    width: 100%;
   }
-  .info h1{
+  .info h1 {
     width: 100%;
     margin: 1rem auto;
   }
+  .infoCard ul li {
+    text-align: start;
+  }
   .card:hover {
     transform: none;
-    cursor:auto;
+    cursor: auto;
     filter: saturate(0%);
     box-shadow: none;
   }
