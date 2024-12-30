@@ -284,4 +284,10 @@
     background-color: var(--secondary-color);
     transition: all 0.2s ease-in-out;
   }
+  .navbar .linkSection .dropdown {
+    right:8rem;
+  }
+  .navbar .linkSection .dropdown::-webkit-scrollbar {
+    width: 0;
+  }
 }

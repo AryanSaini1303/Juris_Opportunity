@@ -6,7 +6,7 @@
   margin: 2rem;
 }
 .container h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   position: relative;
   margin: 0.5rem 0;
   width: fit-content;
@@ -19,6 +19,9 @@
   height: 10%;
   background-color: var(--secondary-color);
   animation: revealBefore 0.5s ease-in-out;
+}
+.container h2{
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
 }
 @keyframes revealBefore {
   0% {
@@ -45,9 +48,9 @@
   animation: reveal 0.5s ease-in-out;
 }
 .container div p{
-    font-size: 1.2rem;
+    font-size: clamp(0.8rem, 5vw, 1.2rem);
     font-style: italic;
 }
 .container div ul li{
-    font-size: 1.2rem;
+  font-size: clamp(0.8rem, 5vw, 1.2rem);
 }

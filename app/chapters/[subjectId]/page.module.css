@@ -7,7 +7,7 @@
   height: 100%;
 }
 .chaptersContainer > h1 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   position: relative;
   margin: 2rem 0;
 }
@@ -82,4 +82,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
   width: 37.5vw;
+}
+@media (max-width: 768px) {
+  .cardsContainer{
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+  .card h2 {
+    width: 80vw;
+    font-size: clamp(1.25rem, 5vw, 2rem);
+  }
+  .card p{
+    width: 80vw;
+    font-size: clamp(0.6rem, 5vw, 2rem);
+  }
+  .card:hover {
+    transform: translateY(0); /* Lift the card slightly on hover */
+    box-shadow: 0px 2px 5px var(--secondary-color);
+  }
 }

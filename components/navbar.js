@@ -180,7 +180,7 @@ export default function Navbar() {
                     : null
                 }
                 tabIndex={0}
-                onBlur={() => !chaptersHover && setNotesClick(false)}
+                onBlur={() => !chaptersHover && !mobile && setNotesClick(false)}
                 onClick={() => setNotesClick(!notesClick)}
               >
                 Notes
