@@ -11,7 +11,7 @@ export default function Footer() {
   useEffect(() => {
     // Ensure the code only runs in the browser
     const handleResize = () => {
-      if (window.innerWidth <= 426) {
+      if (screen.width <= 426) {
         setMobile(true);
       }
     };
@@ -116,7 +116,10 @@ export default function Footer() {
           </ul>
         </div>
         <hr />
-        <div className={styles.newsletterSection} style={mobile?{padding:"0"}:null}>
+        <div
+          className={styles.newsletterSection}
+          style={mobile ? { padding: "0" } : null}
+        >
           {!mobile && (
             <div className={styles.banner_posts}>
               <p>
