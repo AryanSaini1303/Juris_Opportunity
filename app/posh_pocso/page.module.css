@@ -224,6 +224,7 @@
     margin: auto;
   }
   .info {
+    font-size: 0.8rem;
     width: 90%;
   }
   .info *{
