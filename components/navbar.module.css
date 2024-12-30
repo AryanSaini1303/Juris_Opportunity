@@ -285,7 +285,7 @@
     transition: all 0.2s ease-in-out;
   }
   .navbar .linkSection .dropdown {
-    right:9rem;
+    right:8.5rem;
   }
   .navbar .linkSection .dropdown::-webkit-scrollbar {
     width: 0;
