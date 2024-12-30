@@ -56,40 +56,42 @@ const POSHandPOCSOPage = () => {
             </p>
           </div>
         </div>
-        <div className={styles.features}>
-          <img src="/client_centered.jpg" alt="" />
-          <div className={styles.info}>
-            <h1>Client-Centered Focus</h1>
-            <p>
-              The Juris Opportunity website emphasizes prioritizing the
-              client&apos;s interests in every legal case it handles. This is
-              reflected in the content and design, which showcase a strong
-              commitment to understanding client needs and tailoring legal
-              solutions accordingly.
-            </p>
+        <div className={styles.container2}>
+          <div className={styles.features}>
+            <img src="/client_centered.jpg" alt="" />
+            <div className={styles.info}>
+              <h1>Client-Centered Focus</h1>
+              <p>
+                The Juris Opportunity website emphasizes prioritizing the
+                client&apos;s interests in every legal case it handles. This is
+                reflected in the content and design, which showcase a strong
+                commitment to understanding client needs and tailoring legal
+                solutions accordingly.
+              </p>
+            </div>
           </div>
-        </div>
-        <div className={styles.features}>
-          <div className={styles.info}>
-            <h1>Transparent Communication</h1>
-            <p>
-              The website highlights a process where clients are kept informed
-              throughout their legal journey. This feature assures users of open
-              communication, fostering trust and confidence.
-            </p>
+          <div className={styles.features}>
+            <div className={styles.info}>
+              <h1>Transparent Communication</h1>
+              <p>
+                The website highlights a process where clients are kept informed
+                throughout their legal journey. This feature assures users of
+                open communication, fostering trust and confidence.
+              </p>
+            </div>
+            <img src="/communication.jpg" alt="" />
           </div>
-          <img src="/communication.jpg" alt="" />
-        </div>
-        <div className={styles.features}>
-          <img src="/track_record.jpg" alt="" />
-          <div className={styles.info}>
-            <h1>Proven Track Record</h1>
-            <p>
-              The Juris Opportunity website highlights a process where clients
-              are kept informed throughout their legal journey. This feature
-              assures users of open communication, fostering trust and
-              confidence.
-            </p>
+          <div className={styles.features}>
+            <img src="/track_record.jpg" alt="" />
+            <div className={styles.info}>
+              <h1>Proven Track Record</h1>
+              <p>
+                The Juris Opportunity website highlights a process where clients
+                are kept informed throughout their legal journey. This feature
+                assures users of open communication, fostering trust and
+                confidence.
+              </p>
+            </div>
           </div>
         </div>
       </main>

@@ -6,7 +6,7 @@
 }
 
 .title {
-  font-size: 4rem;
+  font-size: clamp(2rem, 5vw, 4rem);
   width: 50%;
   margin: auto;
   font-weight: 700;
@@ -15,7 +15,7 @@
 }
 
 .description {
-  font-size: 1.1rem;
+  font-size: clamp(0.5rem, 5vw, 1.1rem);
   line-height: 1.5;
   margin-bottom: 2rem;
   max-width: 600px;
@@ -39,7 +39,8 @@
   font-weight: bolder;
   cursor: pointer;
   transition: all 0.3s;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .primaryButton:hover {
@@ -73,7 +74,7 @@
 
 .iconWrapper {
   display: inline-block;
-  background-color:var(--secondary-color);
+  background-color: var(--secondary-color);
   padding: 1rem;
   border-radius: 50%;
   margin-bottom: 1rem;
@@ -95,7 +96,7 @@
   font-size: 1rem;
   color: #181818; /* Dark gray text */
   line-height: 1.5;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .unique-approach {
   max-width: 1200px;
@@ -190,20 +191,57 @@
   border-radius: 8px;
   object-fit: cover;
 }
-.features img{
+.features img {
   height: 20rem;
   width: 28rem;
   border-radius: 10px;
 }
-.features{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.features {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   display: flex;
   width: 70%;
   margin: 5rem auto;
   gap: 5rem;
 }
-.info{
-  font-size: 1.05rem;
-  margin: auto;
+.info {
+  font-size: clamp(0.8rem, 5vw, 1.05rem);
+  margin: 0 auto;
   width: 37%;
+}
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.8rem 0;
+    width: 100%;
+  }
+  .container2 .features:nth-child(2) {
+    flex-flow: column-reverse;
+  }
+  .container2 .features img {
+    height: 13rem;
+    width: 18rem;
+    margin: auto;
+  }
+  .info {
+    width: 90%;
+  }
+  .info *{
+    margin: 0.8rem 0;
+  }
+  .container1{
+    flex-wrap: wrap;
+  }
+  .title{
+    width: 100%;
+  }
+  .buttons button{
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+  .library{
+    height: 10rem;
+    width: 18rem;
+    margin: 1rem auto;
+  }
 }
