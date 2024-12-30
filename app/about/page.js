@@ -13,6 +13,27 @@ export default function AboutPage() {
 
   const [info, setInfo] = useState();
   const [infoLoading, infoLetLoading] = useState(true);
+  const [mobile, setMobile] = useState(false);
+
+  useEffect(() => {
+    // Ensure the code only runs in the browser
+    const handleResize = () => {
+      if (screen.width <= 426) {
+        setMobile(true);
+      }
+    };
+
+    // Set the initial screen width
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchAboutUs = async () => {
@@ -49,7 +70,10 @@ export default function AboutPage() {
   return (
     <div className="wrapper">
       <Navbar />
-      <main className="content" style={{ padding: "1rem 5rem" }}>
+      <main
+        className="content"
+        style={!mobile ? { padding: "1rem 5rem" } : { padding: "1rem" }}
+      >
         <section className={styles.info}>
           <h1>Driving Excellence in Legal Solutions, Empowering Growth</h1>
           <p>{info ? info[0].description : null}</p>
@@ -60,21 +84,37 @@ export default function AboutPage() {
           ) : members ? (
             members.map((element, index) => (
               <div
+                tabIndex={0}
                 onMouseEnter={() => {
-                  setHover(index + 1);
+                  !mobile && setHover(index + 1);
                 }}
                 onMouseLeave={() => {
-                  setHover(0);
+                  !mobile && setHover(0);
+                }}
+                onClick={() => {
+                  mobile && setHover(index + 1);
+                }}
+                onBlur={() => {
+                  mobile && setHover(0);
                 }}
                 key={element.id}
                 className={styles.card}
+                style={
+                  mobile && hover==index+1
+                    ? {
+                        transform: "scale(1.03",
+                        filter: "saturate(100%)",
+                        boxShadow: "0.3rem 0.3rem 0.5rem black",
+                      }
+                    : null
+                }
               >
                 <img
                   src={element.image}
                   alt=""
                   className={`styles.member${index + 1}`}
-                  width={220}
-                  height={350}
+                  width={!mobile?220:210}
+                  height={!mobile?350:310}
                 />
                 {hover == index + 1 && (
                   <section className={styles.memberInfo}>
@@ -96,7 +136,15 @@ export default function AboutPage() {
               info.map((element, index) => {
                 if (index == 0) return;
                 return (
-                  <div className={styles.cardContainer} key={element.id} style={hover1==index+1?{transform:"translateY(-0.5rem)"}:null}>
+                  <div
+                    className={styles.cardContainer}
+                    key={element.id}
+                    style={
+                      hover1 == index + 1
+                        ? { transform: "translateY(-0.5rem)" }
+                        : null
+                    }
+                  >
                     <div
                       tabIndex={0}
                       className={styles.infoCard}
