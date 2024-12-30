@@ -128,4 +128,10 @@
     height: 20rem;
     width: 10rem;
   }
+  .detailsSection button a{
+    font-size: 0.8rem;
+  }
+  .detailsSection button{
+    padding: 0.5rem;
+  }
 }
