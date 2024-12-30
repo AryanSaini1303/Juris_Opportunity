@@ -198,4 +198,14 @@
     color: black;
     opacity: 1;
   }
+  .state_acts li:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    overflow: 1;
+  }
+  .titles_section ul li a:hover {
+    background-color: var(--primary-color);
+    opacity:1;
+  }
 }
