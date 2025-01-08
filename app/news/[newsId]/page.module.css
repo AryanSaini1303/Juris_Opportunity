@@ -54,3 +54,23 @@
     transform: translateX(0);
   }
 }
+@media (max-width: 768px) {
+  .container div img{
+    height: 20%;
+    width: 100%;
+  }
+  .container h1{
+    font-size: 1.4rem;
+  }
+  .container p{
+    font-size: 0.85rem;
+  }
+  .container p:last-child {
+    width: 100%;
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+  .container{
+    width: 92%;
+  }
+}

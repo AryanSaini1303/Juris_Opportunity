@@ -281,6 +281,7 @@
   .hamburger div{
     height: 0.2rem;
     width: 1.1rem;
+    border-radius: 10px;
     background-color: var(--secondary-color);
     transition: all 0.2s ease-in-out;
   }

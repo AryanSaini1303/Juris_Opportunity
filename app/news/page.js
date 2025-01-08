@@ -11,14 +11,36 @@ import LoaderComponent from "@/components/loader";
 export default function NewsPage() {
   const [topNews, setTopNews] = useState();
   const [news, setNews] = useState();
-  const limit = 12;
+  // const limit = 12;
   const [otherNews, setOtherNews] = useState();
   const [loading, setLoading] = useState();
   const searchparams = useSearchParams();
-  const [totalPageNumbers, setTotalPageNumbers] = useState();
+  // const [totalPageNumbers, setTotalPageNumbers] = useState();
   const page = searchparams.get("page") || 1;
   const [searchQuery, setSearchQuery] = useState();
   const router = useRouter();
+  const [mobile, setMobile] = useState(false);
+  const limit = mobile && !mobile ? 12 : 5;
+  const [totalPageNumbers, setTotalPageNumbers] = useState(
+    Math.ceil(48 / limit)
+  ); // As initially i'm fetching only 12 entries and one page can show 4 entries so the total page numbers can be calculated by totalEntries/limit
+
+  useEffect(() => {
+    // Ensure the code only runs in the browser
+    const handleResize = () => {
+      if (screen.width <= 426) {
+        setMobile(true);
+      }
+    };
+    // Set the initial screen width
+    handleResize();
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (!searchQuery) {
@@ -134,51 +156,53 @@ export default function NewsPage() {
             {loading ? (
               <LoaderComponent />
             ) : (
-              <section
-                className={styles.topStories}
-                style={{ marginTop: "2rem" }}
-              >
-                <h1>News</h1>
-                {otherNews && otherNews.length != 0 ? (
-                  <div
-                    className={styles.cardsSection}
-                    style={{
-                      gridTemplateRows: "none",
-                      gridTemplateColumns: "1fr 1fr 1fr",
-                    }}
-                  >
-                    {otherNews.map((element, index) => {
-                      {
-                        return (
-                          <section
-                            className={styles.card}
-                            key={element.id}
-                            onClick={() => {
-                              router.push(`/news/${element.id}`);
-                            }}
-                          >
-                            <img src={element.poster} alt="" />
-                            <div className={styles.info}>
-                              <h3>{element.heading}</h3>
-                              <p>{element.readTime} min read</p>
-                              <p>{element.author}</p>
-                            </div>
-                          </section>
-                        );
-                      }
-                    })}
-                  </div>
-                ) : (
-                  <h2 style={{ margin: "0 1rem" }}>No News Found!</h2>
-                )}
-                {otherNews && otherNews.length != 0 && (
-                  <PageNumberSection
-                    totalPageNumbers={totalPageNumbers}
-                    path={"news"}
-                    currentPage={page}
-                  />
-                )}
-              </section>
+              !mobile && (
+                <section
+                  className={styles.topStories}
+                  style={{ marginTop: "2rem" }}
+                >
+                  <h1>News</h1>
+                  {otherNews && otherNews.length != 0 ? (
+                    <div
+                      className={styles.cardsSection}
+                      style={{
+                        gridTemplateRows: "none",
+                        gridTemplateColumns: "1fr 1fr 1fr",
+                      }}
+                    >
+                      {otherNews.map((element, index) => {
+                        {
+                          return (
+                            <section
+                              className={styles.card}
+                              key={element.id}
+                              onClick={() => {
+                                router.push(`/news/${element.id}`);
+                              }}
+                            >
+                              <img src={element.poster} alt="" />
+                              <div className={styles.info}>
+                                <h3>{element.heading}</h3>
+                                <p>{element.readTime} min read</p>
+                                <p>{element.author}</p>
+                              </div>
+                            </section>
+                          );
+                        }
+                      })}
+                    </div>
+                  ) : (
+                    <h2 style={{ margin: "0 1rem" }}>No News Found!</h2>
+                  )}
+                  {otherNews && otherNews.length != 0 && (
+                    <PageNumberSection
+                      totalPageNumbers={totalPageNumbers}
+                      path={"news"}
+                      currentPage={page}
+                    />
+                  )}
+                </section>
+              )
             )}
           </>
         ) : (
