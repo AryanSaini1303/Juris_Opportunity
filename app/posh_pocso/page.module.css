@@ -217,8 +217,9 @@
 }
 .extraPara{
   width: 70%;
-  margin: 5rem auto;
+  margin: auto;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: justify;
 }
 @media (max-width: 768px) {
   .features {
@@ -256,5 +257,9 @@
     height: 10rem;
     width: 100%;
     margin: 1rem auto;
+  }
+  .extraPara{
+    width: 90%;
+    font-size: 0.8rem;
   }
 }
