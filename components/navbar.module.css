@@ -7,6 +7,8 @@
   gap: 1rem;
   box-shadow: 0 0.3rem 0.8rem black;
   user-select: none;
+  position: relative;
+  z-index: 100;
 }
 .linkSection > li {
   color: var(--primary-color);

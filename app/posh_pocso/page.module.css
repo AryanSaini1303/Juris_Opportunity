@@ -1,26 +1,27 @@
 .container {
-  background-color: var(--secondary-color); /* Maroon background */
-  color: #fff; /* White text */
+  background-color: var(--secondary-color);
+  color: #fff;
   text-align: center;
   padding: 3rem 1rem;
 }
 
 .title {
-  font-size: clamp(2rem, 5vw, 4rem);
-  width: 50%;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  width: 60%;
   margin: auto;
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .description {
   font-size: clamp(0.5rem, 5vw, 1.1rem);
   line-height: 1.5;
   margin-bottom: 2rem;
-  max-width: 600px;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
+  text-align: justify;
 }
 
 .buttons {
@@ -97,6 +98,7 @@
   color: #181818; /* Dark gray text */
   line-height: 1.5;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: justify;
 }
 .unique-approach {
   max-width: 1200px;
@@ -195,6 +197,7 @@
   height: 20rem;
   width: 28rem;
   border-radius: 10px;
+  margin: auto;
 }
 .features {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -206,7 +209,16 @@
 .info {
   font-size: clamp(0.8rem, 5vw, 1.05rem);
   margin: 0 auto;
-  width: 37%;
+  width: 50%;
+  text-align: justify;
+}
+.info h1{
+  margin: 0.8rem 0;
+}
+.extraPara{
+  width: 70%;
+  margin: 5rem auto;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 @media (max-width: 768px) {
   .features {

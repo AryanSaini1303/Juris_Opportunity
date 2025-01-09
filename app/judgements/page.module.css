@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-rows: 0fr 10fr;
+  grid-template-rows: 10fr;
   grid-template-columns: 1.4fr 10fr;
   margin: 2rem 1rem;
   gap: 1.5rem;
@@ -10,7 +10,7 @@
   background-color: var(--secondary-color);
   border-radius: 5px;
   animation: yearSectionReveal 0.5s ease-in-out;
-  height: 65.5vh;
+  height: 133.5vh;
   overflow-y: auto;
 }
 .yearSection::-webkit-scrollbar {

@@ -117,7 +117,7 @@ export default function NewsPage() {
             />
             {page == 1 && !searchQuery && (
               <section className={styles.topStories}>
-                <h1>Today&apos; Top Stories</h1>
+                <h1>Today&apos;s Top Stories</h1>
                 <div className={styles.cardsSection}>
                   <section
                     className={styles.card1}

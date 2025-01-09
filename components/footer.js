@@ -125,8 +125,8 @@ export default function Footer() {
               <p>
                 For Banner, Posts, Ads Contact:{" "}
                 <span>
-                  <a href="mailto:jurisopportunity@gmail.com">
-                    jurisopportunity@gmail.com
+                  <a href="mailto:jurisopportunities@gmail.com">
+                    jurisopportunities@gmail.com
                   </a>
                 </span>
                 ,{" "}
