@@ -153,7 +153,7 @@ const POSHandPOCSOPage = () => {
                 Our sessions go beyond theory—integrating real-world case
                 studies, interactive discussions, and hands-on guidance to
                 ensure participants not only grasp the intricacies of the law
-                but can apply them effectively. Whether you're a corporate
+                but can apply them effectively. Whether you&apos;re a corporate
                 leader, educator, or law professional, our training equips you
                 with tools to make a lasting impact in safeguarding children and
                 preventing harassment.
@@ -186,7 +186,7 @@ const POSHandPOCSOPage = () => {
             </div>
           </div>
           <div className={styles.extraPara}>
-            <h3>What You'll Gain</h3>
+            <h3>What You&apos;ll Gain</h3>
             <ul>
               <li>Comprehensive understanding of POCSO and POSH laws.</li>
               <li>
