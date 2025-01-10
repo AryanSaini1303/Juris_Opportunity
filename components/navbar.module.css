@@ -152,7 +152,7 @@
   box-shadow: 0.3rem 0.3rem 0.3rem black, inset 0 0 0.5rem grey;
   animation: dropdownReveal 0.2s ease-in-out;
   overflow-y: auto;
-  max-height: 46.5%;
+  max-height: 25vh;
 }
 .navbar .linkSection .dropdown::-webkit-scrollbar {
   width: 0.2rem;
@@ -289,8 +289,20 @@
   }
   .navbar .linkSection .dropdown {
     right:8.5rem;
+    max-height: 23vh;
   }
   .navbar .linkSection .dropdown::-webkit-scrollbar {
     width: 0;
+  }
+  .navbar .linkSection .dropdown li a:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+  }
+  .navbar .linkSection .dropdown li a:active {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform: scale(0.95);
+    opacity: 0.5;
   }
 }
