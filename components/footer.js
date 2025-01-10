@@ -153,7 +153,7 @@ export default function Footer() {
         </div>
       </section>
       <p className={styles.rights}>
-        &copy; 2024 Juris Opportunity. All rights reserved.
+        &copy; 2024 Juris Opportunities. All rights reserved.
       </p>
     </>
   );

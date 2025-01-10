@@ -13,7 +13,7 @@ export default function ConferenceDetailsPage({ data }) {
           <h1 className={styles.heading}>{data[0].heading || "-"}</h1>
           <p className={styles.dateTime}>
             {data[0].start_date && "Start:"} {data[0].start_date + " |"}{" "}
-            {data[0].end_date && "End:"} {data[0].end_date + " |"}{" "}
+            {/* {data[0].end_date && "End:"} {data[0].end_date + " |"}{" "} */}
             {data[0].deadline && "Deadline:"} {data[0].deadline}
           </p>
           {data[0].location && (
