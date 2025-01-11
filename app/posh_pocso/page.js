@@ -186,6 +186,7 @@ const POSHandPOCSOPage = () => {
             </div>
           </div>
           <div className={styles.extraPara}>
+            <h1>Learn to Build Safer, Inclusive Workplaces</h1>
             <h3>What You&apos;ll Gain</h3>
             <ul>
               <li>Comprehensive understanding of POCSO and POSH laws.</li>

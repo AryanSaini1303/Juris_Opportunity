@@ -104,9 +104,9 @@ export default async function LeftComponent() {
                     <Link href={`/event/${event.category}_${event.id}`}>
                       <h3>{event.heading}</h3>
                       <div className={styles.venueDetails}>
-                        <h5>{event.start_date}</h5>
+                        <h5>{event.start_date?event.start_date:"--"}</h5>
                         <hr />
-                        <h5>{event.location}</h5>
+                        <h5>{event.location?event.location:"--"}</h5>
                       </div>
                       {/* <div className={styles.venueDetails}>
                         <h5>{event.mode}</h5>
