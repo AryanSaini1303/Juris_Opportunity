@@ -112,7 +112,7 @@ export default function NewsPage() {
               handleFormSubmit={handleSearch}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
-              placeholder={"e.g. Significance change in patent law"}
+              placeholder={"e.g. Significant change in patent law"}
               margin={"2rem 0"}
             />
             {page == 1 && !searchQuery && (
