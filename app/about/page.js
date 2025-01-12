@@ -57,7 +57,7 @@ export default function AboutPage() {
       try {
         const response = await fetch(`/api/getMembers`);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setMembers(data);
         setLoading(false);
       } catch (error) {
