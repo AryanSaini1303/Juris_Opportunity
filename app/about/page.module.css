@@ -446,9 +446,11 @@
   }
   .info2 img{
     margin: auto;
+    width: 90%;
   }
   .info1 img{
     margin:auto;
+    width: 90%;
   }
   .info1 h3{
     margin: 0 1rem;
