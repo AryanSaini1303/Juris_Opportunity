@@ -188,7 +188,7 @@ export default function AboutPage() {
           </section>
         )} */}
         <div className={styles.container}>
-          <div className={styles.image_container}>
+          {!mobile&&<div className={styles.image_container}>
             <p>
               Juris Opportunities connects legal aspirations with real-world
               opportunities, offering resources like judgments and bare acts to
@@ -206,7 +206,7 @@ export default function AboutPage() {
               className={styles.header_image}
               layout="responsive"
             />
-          </div>
+          </div>}
           <div className={styles.info1}>
             <svg
               width="1.5em"
@@ -232,9 +232,8 @@ export default function AboutPage() {
             <Image
               src="/court_image.jpg"
               alt=""
-              height={180}
-              width={640}
-              layout="responsive"
+              height={!mobile?180:140}
+              width={!mobile?640:295}
             />
             <section>
               <h2>
@@ -319,9 +318,8 @@ export default function AboutPage() {
             <Image
               src={"/square_court.jpg"}
               alt=""
-              height={400}
-              width={400}
-              layout="responsive"
+              height={!mobile?400:290}
+              width={!mobile?400:290}
             />
           </div>
         </div>
