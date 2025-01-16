@@ -5,47 +5,60 @@ export default async function LeftComponent() {
   // Fetch data from all tables concurrently using Promise.all
   let categoryData;
   let filteredCategoryData;
-  const [jobsData, internshipsData, competitionsData, mootsData] =
-    await Promise.all([
-      supabase
-        .from("jobs")
-        .select(
-          "heading, category, start_date, id, created_at, location, mode, deadline"
-        )
-        .order("start_date", { ascending: true }),
-      supabase
-        .from("internships")
-        .select(
-          "heading, category, start_date, id, created_at, location, mode, deadline"
-        )
-        .order("start_date", { ascending: true }),
-      supabase
-        .from("competitions")
-        .select(
-          "heading, category, start_date, id, created_at, location, mode, deadline"
-        )
-        .order("start_date", { ascending: true }),
-      supabase
-        .from("moots")
-        .select(
-          "heading, category, start_date, id, created_at, location, mode, deadline"
-        )
-        .order("start_date", { ascending: true }),
-    ]);
+  const [
+    jobsData,
+    internshipsData,
+    competitionsData,
+    mootsData,
+    callforpapers,
+  ] = await Promise.all([
+    supabase
+      .from("jobs")
+      .select(
+        "heading, category, start_date, id, created_at, location, mode, deadline"
+      )
+      .order("start_date", { ascending: true }),
+    supabase
+      .from("internships")
+      .select(
+        "heading, category, start_date, id, created_at, location, mode, deadline"
+      )
+      .order("start_date", { ascending: true }),
+    supabase
+      .from("competitions")
+      .select(
+        "heading, category, start_date, id, created_at, location, mode, deadline"
+      )
+      .order("start_date", { ascending: true }),
+    supabase
+      .from("moots")
+      .select(
+        "heading, category, start_date, id, created_at, location, mode, deadline"
+      )
+      .order("start_date", { ascending: true }),
+    supabase
+      .from("callforpapers")
+      .select(
+        "heading, category, start_date, id, created_at, location, mode, deadline"
+      )
+      .order("start_date", { ascending: true }),
+  ]);
 
   // Check for errors in any of the queries
   if (
     jobsData.error ||
     internshipsData.error ||
     competitionsData.error ||
-    mootsData.error
+    mootsData.error ||
+    callforpapers.error
   ) {
     console.error(
       "Error fetching data:",
       jobsData.error ||
         internshipsData.error ||
         competitionsData.error ||
-        mootsData.error
+        mootsData.error ||
+        callforpapers.error
     );
     return;
   }
@@ -55,6 +68,7 @@ export default async function LeftComponent() {
     internships: internshipsData.data,
     competitions: competitionsData.data,
     moots: mootsData.data,
+    callforpapers: callforpapers.data,
   };
   // Step 1: Get the current date and the date two days from now
   // Step 2: Filter events within each category where the event's deadline is within 2 days from now
@@ -104,9 +118,9 @@ export default async function LeftComponent() {
                     <Link href={`/event/${event.category}_${event.id}`}>
                       <h3>{event.heading}</h3>
                       <div className={styles.venueDetails}>
-                        <h5>{event.start_date?event.start_date:"--"}</h5>
+                        <h5>{event.start_date ? event.start_date : "--"}</h5>
                         <hr />
-                        <h5>{event.location?event.location:"--"}</h5>
+                        <h5>{event.location ? event.location : "--"}</h5>
                       </div>
                       {/* <div className={styles.venueDetails}>
                         <h5>{event.mode}</h5>
