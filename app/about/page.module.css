@@ -590,4 +590,7 @@
   .card .info h4{
     font-weight: bold;
   }
+  .header{
+    margin: 0 2.5rem;
+  }
 }
