@@ -13,7 +13,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Juris Opportunity",
+  title: "Juris Opportunities",
   description:
     "Juris Opportunities is a premier platform empowering law students and legal professionals with exclusive resources, internships, job opportunities, mentorship, and more. Simplify and elevate your legal journey with curated materials, competitions, and networking opportunities.",
 };

@@ -38,6 +38,17 @@ export default function InternshipDetailsPage({ data }) {
           <div className={styles.item}>
             <h3>How to Apply?</h3>
             <p>{data[0].apply}</p>
+            {data[0].registration_link && (
+              <button className={styles.item}>
+                <Link
+                  href={data[0].registration_link}
+                  target="_blank"
+                  style={{ transition: "all 0.2s ease-in-out" }}
+                >
+                  Click here to Register
+                </Link>
+              </button>
+            )}
           </div>
         )}
         {data[0].roles_responsibilities && (
@@ -75,17 +86,6 @@ export default function InternshipDetailsPage({ data }) {
               ))}
             </ul>
           </div>
-        )}
-        {data[0].registration_link && (
-          <button className={styles.item}>
-            <Link
-              href={data[0].registration_link}
-              target="_blank"
-              style={{ transition: "all 0.2s ease-in-out" }}
-            >
-              Click here to Register
-            </Link>
-          </button>
         )}
       </section>
       <hr />

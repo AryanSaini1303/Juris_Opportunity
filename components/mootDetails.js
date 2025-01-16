@@ -53,6 +53,41 @@ export default function MootDetailsPage({ data }) {
                 <li key={element.id}>{element}</li>
               ))}
             </ul>
+            {data[0].moot_problem && (
+              <button className={styles.item}>
+                <Link
+                  href={data[0].moot_problem}
+                  target="_blank"
+                  style={{ transition: "all 0.2s ease-in-out" }}
+                >
+                  Click here for moot problem
+                </Link>
+              </button>
+            )}
+            <br />
+            {data[0].website_url && (
+              <button className={styles.item}>
+                <Link
+                  href={data[0].website_url}
+                  target="_blank"
+                  style={{ transition: "all 0.2s ease-in-out" }}
+                >
+                  Click here to access website
+                </Link>
+              </button>
+            )}
+            <br />
+            {data[0].registration_link && (
+              <button className={styles.item}>
+                <Link
+                  href={data[0].registration_link}
+                  target="_blank"
+                  style={{ transition: "all 0.2s ease-in-out" }}
+                >
+                  Click here to Register
+                </Link>
+              </button>
+            )}
           </div>
         )}
         {data[0].team_size && (
@@ -73,7 +108,7 @@ export default function MootDetailsPage({ data }) {
         )}
         {data[0].prize_pool && (
           <div className={styles.item}>
-            <h3>Prize Pool</h3>
+            <h3>Reward/Recognition</h3>
             <ul>
               {data[0].prize_pool.map((element, index) => (
                 <li key={element.id}>{element}</li>
@@ -106,41 +141,6 @@ export default function MootDetailsPage({ data }) {
               ))}
             </ul>
           </div>
-        )}
-        {data[0].moot_problem && (
-          <button className={styles.item}>
-            <Link
-              href={data[0].moot_problem}
-              target="_blank"
-              style={{ transition: "all 0.2s ease-in-out" }}
-            >
-              Click here for moot problem
-            </Link>
-          </button>
-        )}
-        <br />
-        {data[0].website_url && (
-          <button className={styles.item}>
-            <Link
-              href={data[0].website_url}
-              target="_blank"
-              style={{ transition: "all 0.2s ease-in-out" }}
-            >
-              Click here to access website
-            </Link>
-          </button>
-        )}
-        <br />
-        {data[0].registration_link && (
-          <button className={styles.item}>
-            <Link
-              href={data[0].registration_link}
-              target="_blank"
-              style={{ transition: "all 0.2s ease-in-out" }}
-            >
-              Click here to Register
-            </Link>
-          </button>
         )}
       </section>
       <hr />

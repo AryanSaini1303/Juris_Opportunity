@@ -16,7 +16,7 @@ export default function JobDetailsPage({ data }) {
             {/* {data[0].end_date && "End:"} {data[0].end_date + " |"}{" "} */}
             {data[0].deadline && "Deadline:"} {data[0].deadline}
           </p>
-          {data[0].location && (
+          {data[0].location &&  (
             <p className={styles.location}>Location: {data[0].location}</p>
           )}
           {data[0].mode && (

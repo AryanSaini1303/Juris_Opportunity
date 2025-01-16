@@ -44,34 +44,32 @@ export default function CompetitionDetailsPage({ data }) {
             </ul>
           </div>
         )}
-        {data[0].apply && (
-          <div className={styles.item}>
-            <h3>How to Apply?</h3>
-            <p>{data[0].apply}</p>
-          </div>
-        )}
-        {data[0].application_submission && (
-          <div className={styles.item}>
-            <h3>Application Submission</h3>
-            <p>{data[0].application_submission}</p>
-          </div>
-        )}
         {data[0].stipend && (
           <div className={styles.item}>
-            <h3>Prize</h3>
+            <h3>Reward/Recognition</h3>
             <p>{data[0].stipend}</p>
           </div>
         )}
-        {data[0].registration_link && (
-          <button className={styles.item}>
-            <Link
-              href={data[0].registration_link}
-              target="_blank"
-              style={{ transition: "all 0.2s ease-in-out" }}
-            >
-              Click here to Register
-            </Link>
-          </button>
+        {data[0].apply && (
+          <div className={styles.item}>
+            <h3>How to Apply?</h3>
+            <p>
+              {data[0].apply}
+              <br />
+              {data[0].application_submission && data[0].application_submission}
+            </p>
+            {data[0].registration_link && (
+              <button className={styles.item}>
+                <Link
+                  href={data[0].registration_link}
+                  target="_blank"
+                  style={{ transition: "all 0.2s ease-in-out" }}
+                >
+                  Click here to Register
+                </Link>
+              </button>
+            )}
+          </div>
         )}
       </section>
       <hr />
