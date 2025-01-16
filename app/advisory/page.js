@@ -30,7 +30,7 @@ export default function AdvisoryPage() {
     <div className="wrapper">
       <Navbar />
       <main className="content">
-        <header className={styles.header}>Our Advisory Board</header>
+        <header className={styles.header}>Journal</header>
         {!loading ? (
           <section className={styles.cardsSection}>
             {members &&

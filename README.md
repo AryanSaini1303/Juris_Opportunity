@@ -1,6 +1,6 @@
-# Juris Opportunity✨⚖️
+# Juris Opportunities✨⚖️
 
-Welcome to Juris Opportunity — your go-to platform for discovering legal opportunities, exploring bare acts and judgments, and becoming part of a vibrant law community. Whether you're a law student, professional, or enthusiast, our platform helps you stay connected to the latest events and resources in the legal field.
+Welcome to Juris Opportunities — your go-to platform for discovering legal opportunities, exploring bare acts and judgments, and becoming part of a vibrant law community. Whether you're a law student, professional, or enthusiast, our platform helps you stay connected to the latest events and resources in the legal field.
 
 ---
 
@@ -30,32 +30,27 @@ Welcome to Juris Opportunity — your go-to platform for discovering legal oppor
    ```bash
    git clone https://github.com/AryanSaini1303/Juris_Opportunity.git
    ```
-
 2. Navigate to the project directory:
 
    ```bash
    cd Juris_Opportunity
    ```
-
 3. Install dependencies:
 
    ```bash
    npm install
    ```
-
 4. Set up environment variables in `.env.local`:
 
    ```env
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
-
 5. Run the project:
 
    ```bash
    npm run dev
    ```
-
 6. Open `http://localhost:3000` in your browser.
 
 ---

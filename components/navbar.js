@@ -231,9 +231,9 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href={"/advisory"}
+                href={"/journal"}
                 style={
-                  url.startsWith("/advisory")
+                  url.startsWith("/journal")
                     ? mobile
                       ? {
                           backgroundColor: "var(--secondary-color)",
@@ -246,7 +246,7 @@ export default function Navbar() {
                     : null
                 }
               >
-                Advisory
+                Journal
               </Link>
             </li>
             {mobile && (

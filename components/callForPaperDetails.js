@@ -50,9 +50,34 @@ export default function CallForPapersDetails({ data }) {
             </ul>
           </div>
         )}
-        {data[0].contact && (
+        {data[0].prize && (
           <div className={styles.item}>
-            <h3>Contact</h3>
+            <h3>Reward/Recognition</h3>
+            <p>{data[0].prize}</p>
+          </div>
+        )}
+        {data[0].fee_details && (
+          <div className={styles.item}>
+            <h3>Registration Details</h3>
+            <ul>
+              {data[0].fee_details.map((element, index) => (
+                <li key={element.id}>{element}</li>
+              ))}
+            </ul>
+            {data[0].registration_link && (
+              <button className={styles.item}>
+                <Link
+                  href={data[0].registration_link}
+                  target="_blank"
+                  style={{ transition: "all 0.2s ease-in-out" }}
+                >
+                  Click here to Register
+                </Link>
+              </button>
+            )}
+            {data[0].contact && (
+          <div className={styles.item}>
+            <h3>Contact Details</h3>
             <ul>
               {data[0].contact.map((element, index) => (
                 <li key={element.id}>{element}</li>
@@ -60,32 +85,7 @@ export default function CallForPapersDetails({ data }) {
             </ul>
           </div>
         )}
-        {data[0].fee_details && (
-          <div className={styles.item}>
-            <h3>Fee Details</h3>
-            <ul>
-              {data[0].fee_details.map((element, index) => (
-                <li key={element.id}>{element}</li>
-              ))}
-            </ul>
           </div>
-        )}
-        {data[0].prize && (
-          <div className={styles.item}>
-            <h3>Prize</h3>
-            <p>{data[0].prize}</p>
-          </div>
-        )}
-        {data[0].registration_link && (
-          <button className={styles.item}>
-            <Link
-              href={data[0].registration_link}
-              target="_blank"
-              style={{ transition: "all 0.2s ease-in-out" }}
-            >
-              Click here to Register
-            </Link>
-          </button>
         )}
       </section>
       <hr />
