@@ -4,6 +4,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const POSHandPOCSOPage = () => {
   return (
@@ -201,6 +202,110 @@ const POSHandPOCSOPage = () => {
                 modules.
               </li>
             </ul>
+            {/* <h3>Testimonials</h3> */}
+            <section className={styles.testimonials}>
+              <ul>
+                <li>
+                  <img
+                    src={"/testi2.jpg"}
+                    alt="testimonial image"
+                  ></img>
+                  <p>
+                    POSH session conducted on 23rd Dec, 2023 in GD Goenka High
+                    School, Sohna Road, Gurugram. During the session, we
+                    unpacked the significance of POCSO (Protection of Children
+                    from Sexual Offences) and POSH (Prevention of Sexual
+                    Harassment), and how vital it is to create awareness and
+                    action that can change our environments for the better,
+                    emphasizing legal awareness, personal boundaries, and the
+                    significance of respect in all spaces.
+                  </p>
+                </li>
+                <li>
+                  <img
+                    src={"/testi3.jpg"}
+                    alt="testimonial image"
+                  ></img>
+                  <p>
+                    POSH session conducted in GD Goenka University on 18th July,
+                    2024. The training session on Gender Sensitization & POSH
+                    (Prevention of Sexual Harassment) was a part of the Faculty
+                    Development Programme (FDP) on "Upskilling for Dynamic
+                    Higher Education Landscape" (July 15-20, 2024). This session
+                    aimed to promote gender awareness, sensitivity, and a
+                    culture of respect, empathy, and zero tolerance for
+                    harassment.
+                  </p>
+                </li>
+                <li>
+                  <img
+                    src={"/testi4.jpg"}
+                    alt="testimonial image"
+                  ></img>
+                  <p>
+                    POSH & POCSO Session conducted in GD Goenka World School on
+                    19th September, 2024. The sessions opened with discussion on
+                    definitions and types of sexual harassment and child sexual
+                    offences, mechanisms for reporting and addressing
+                    grievances, roles and responsibilities of employers,
+                    employees, and the community in fostering safety and focused
+                    on legal repercussions for offenders under both laws.
+                  </p>
+                </li>
+                <li>
+                  <img
+                    src={"/testi5.jpg"}
+                    alt="testimonial image"
+                  ></img>
+                  <p>
+                    The seminar on the Protection of Children from Sexual
+                    Offences (POCSO) Act, 2012 & POSH, was held on 17th October
+                    2024 at GD Goenka Global School, DLF Phase 3, Gurgaon. The
+                    seminar focused on the sensitivity and importance of the
+                    POCSO Act in addressing child sexual abuse. The seminar
+                    concluded with a discussion on the special provisions
+                    available for children with disabilities, including the
+                    availability of translators during trials. I reiterated the
+                    importance of vigilance, awareness, and the responsibility
+                    of both schools and parents to protect children from sexual
+                    abuse.
+                  </p>
+                </li>
+                <li>
+                  <img
+                    src={"/testi6.jpg"}
+                    alt="testimonial image"
+                  ></img>
+                  <p>
+                    POSH session conducted on 09 December, 24 and this session
+                    aimed to promote gender awareness, sensitivity, and a
+                    culture of respect, empathy, and zero tolerance for
+                    harassment. The sessions opened with discussion on
+                    definitions and types of sexual harassment and child sexual
+                    offences, mechanisms for reporting and addressing
+                    grievances, roles and responsibilities of employers,
+                    employees, and the community in fostering safety and focused
+                    on legal repercussions for offenders under both laws
+                  </p>
+                </li>
+                <li>
+                  <img
+                    src={"/testi7.jpg"}
+                    alt="testimonial image"
+                  ></img>
+                  <p>
+                    POCSO session conducted at GD Goenka High School, Sohna
+                    Road, Gurugram on 09 Dec, 2024. We delved into the
+                    preventive and protective measures that educational
+                    institutions must adopt to foster safe environments, while
+                    discussing the physical and mental well-being of children.
+                    The complete procedural framework under POCSO was explained
+                    in detail to empower staff with legal and practical
+                    awareness for safeguarding students
+                  </p>
+                </li>
+              </ul>
+            </section>
             <h3>Join Us to Be a Catalyst for Change</h3>
             <p>
               This isn&apos;t just training—it&apos;s a transformative step
