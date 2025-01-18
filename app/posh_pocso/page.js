@@ -230,8 +230,8 @@ const POSHandPOCSOPage = () => {
                     POSH session conducted in GD Goenka University on 18th July,
                     2024. The training session on Gender Sensitization & POSH
                     (Prevention of Sexual Harassment) was a part of the Faculty
-                    Development Programme (FDP) on "Upskilling for Dynamic
-                    Higher Education Landscape" (July 15-20, 2024). This session
+                    Development Programme (FDP) on &quot;Upskilling for Dynamic
+                    Higher Education Landscape&quot; (July 15-20, 2024). This session
                     aimed to promote gender awareness, sensitivity, and a
                     culture of respect, empathy, and zero tolerance for
                     harassment.
