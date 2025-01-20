@@ -34,17 +34,6 @@ export default function MootDetailsPage({ data }) {
       <hr />
 
       <section className={styles.detailsSection}>
-        {console.log(data[0].eligibility[0])}
-        {data[0].eligibility && (
-          <div className={styles.item}>
-            <h3>Eligibility</h3>
-            <ul>
-              {data[0].eligibility.map((element, index) => (
-                <li key={element.id}>{element}</li>
-              ))}
-            </ul>
-          </div>
-        )}
         {data[0].registration_details && (
           <div className={styles.item}>
             <h3>Registration Details</h3>
