@@ -46,7 +46,7 @@ export default function CompetitionDetailsPage({ data }) {
         )}
         {data[0].stipend && (
           <div className={styles.item}>
-            <h3>Reward/Recognition</h3>
+            <h3>Rewards & Recognition</h3>
             <p>{data[0].stipend}</p>
           </div>
         )}
