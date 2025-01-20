@@ -150,7 +150,12 @@ export default async function EventsList({ category }) {
                   <div className={styles.specifics}>
                     <h3>
                       {event.start_date}{" "}
-                      <span>&emsp; &emsp; {event.category=='callforpapers'?"Call For Papers":event.category}</span>
+                      <span>
+                        &emsp; &emsp;{" "}
+                        {event.category == "callforpapers"
+                          ? "Call For Papers"
+                          : event.category}
+                      </span>
                     </h3>
                     <h3>{event.heading}</h3>
                   </div>
@@ -172,7 +177,14 @@ export default async function EventsList({ category }) {
                         <div className={styles.specifics}>
                           <h3>
                             {event.start_date}{" "}
-                            <span>&emsp; &emsp; {event.category=='callforpapers'?"Call For Papers":event.category}</span>
+                            <span>
+                              &emsp; &emsp;{" "}
+                              {event.category == "callforpapers"
+                                ? "Call For Papers"
+                                : event.category == "Moots"
+                                ? "Moot Court Competitions"
+                                : event.category}
+                            </span>
                           </h3>
                           <h3>{event.heading}</h3>
                         </div>

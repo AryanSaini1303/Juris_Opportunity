@@ -2,11 +2,13 @@
   margin: 3rem 4rem;
   animation: reveal 0.5s ease-in-out;
 }
-.details p{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.details p {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.details li{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.details li {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 @keyframes reveal {
   0% {
@@ -116,34 +118,38 @@
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3); /* Soft shadow on active state */
 }
 @media (max-width: 768px) {
-  .header{
+  .header {
     flex-direction: column;
   }
-  .poster{
+  .poster {
     height: 200px;
     width: 200px;
     margin: auto;
   }
-  .info *{
+  .info * {
     margin: 0.2rem;
   }
-  .details p{
+  .details p {
     font-size: 0.9rem;
   }
-  .detailsSection p{
+  .detailsSection p {
     font-size: 0.9rem;
   }
-  .detailsSection img{
+  .detailsSection img {
     height: 20rem;
     width: 10rem;
   }
-  .detailsSection button a{
+  .detailsSection button a {
     font-size: 0.8rem;
   }
-  .detailsSection button{
+  .detailsSection button {
     padding: 0.5rem;
   }
-  .details{
+  .details {
     margin: 3rem 1.5rem;
+  }
+  .description,
+  .detailsSection {
+    font-size: 0.9rem;
   }
 }
