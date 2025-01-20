@@ -129,7 +129,15 @@ export default function MootDetailsPage({ data }) {
         {data[0].payment && (
           <div className={styles.item}>
             <h3>Payment</h3>
-            <img src={data[0].payment} alt="" />
+            <ul>
+              {data[0].payment.map((element) => {
+                return element.startsWith("https://") ? (
+                  <img src={element} />
+                ) : (
+                  <li>{element}</li>
+                );
+              })}
+            </ul>
           </div>
         )}
         {data[0].contact && (
