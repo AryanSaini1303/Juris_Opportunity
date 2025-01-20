@@ -38,9 +38,13 @@ export default function MootDetailsPage({ data }) {
           <div className={styles.item}>
             <h3>Registration Details</h3>
             <ul>
-              {data[0].registration_details.map((element, index) => (
-                <li key={element.id}>{element}</li>
-              ))}
+              {data[0].registration_details.map((element, index) => {
+                return element.startsWith("https://") ? (
+                  <a href={element} target="_blank">{element}</a>
+                ) : (
+                  <li key={element.id}>{element}</li>
+                );
+              })}
             </ul>
             {data[0].moot_problem && (
               <button className={styles.item}>
