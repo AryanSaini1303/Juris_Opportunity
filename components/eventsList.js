@@ -154,6 +154,8 @@ export default async function EventsList({ category }) {
                         &emsp; &emsp;{" "}
                         {event.category == "callforpapers"
                           ? "Call For Papers"
+                          : event.category == "Moots"
+                          ? "Moot Court Competitions"
                           : event.category}
                       </span>
                     </h3>
