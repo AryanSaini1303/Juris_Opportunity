@@ -47,7 +47,11 @@ export default function CompetitionDetailsPage({ data }) {
         {data[0].stipend && (
           <div className={styles.item}>
             <h3>Rewards & Recognition</h3>
-            <p>{data[0].stipend}</p>
+            <ul>
+              {data[0].stipend.map((element, index) => (
+                <li key={element.id}>{element}</li>
+              ))}
+            </ul>
           </div>
         )}
         {data[0].apply && (
