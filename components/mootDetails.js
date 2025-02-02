@@ -130,10 +130,11 @@ export default function MootDetailsPage({ data }) {
         {data[0].payment && (
           <div className={styles.item}>
             <h3>Payment</h3>
-            {data[0].payment[0] && !data[0].payment[0].startsWith("https://") ? (
+            {data[0].payment[0] &&
+            !data[0].payment[0].startsWith("https://") ? (
               <ul>
-                {data[0].payment.map((element) => (
-                  <li>{element}</li>
+                {data[0].payment.map((element, index) => (
+                  <li key={index}>{element}</li>
                 ))}
               </ul>
             ) : (
@@ -143,7 +144,9 @@ export default function MootDetailsPage({ data }) {
                 ) ? (
                   <img src={element} />
                 ) : (
-                  <a href={element} target="_blank">{element}</a>
+                  <a href={element} target="_blank">
+                    {element}
+                  </a>
                 );
               })
             )}
