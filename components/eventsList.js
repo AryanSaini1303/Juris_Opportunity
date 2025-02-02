@@ -115,7 +115,7 @@ export default async function EventsList({ category }) {
         return eventDeadline > currentDate;
       });
   }
-  // console.log(filteredCategoryData);
+  console.log("filteredCategoryData: ",filteredCategoryData);
 
   return (
     <>

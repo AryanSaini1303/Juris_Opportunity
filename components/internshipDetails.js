@@ -13,8 +13,8 @@ export default function InternshipDetailsPage({ data }) {
           <h1 className={styles.heading}>{data[0].heading || "-"}</h1>
           <p className={styles.dateTime}>
             {data[0].start_date && "Start:"} {data[0].start_date + " |"}{" "}
-            {/* {data[0].end_date && "End:"} {data[0].end_date + " |"}{" "} */}
-            {data[0].deadline && "Deadline:"} {data[0].deadline}
+            {data[0].deadline && "Deadline:"} {data[0].deadline + " |"}{" "}
+            {data[0].duration && "Duration:"} {data[0].duration}
           </p>
           {data[0].location && (
             <p className={styles.location}>Location: {data[0].location}</p>
@@ -29,6 +29,12 @@ export default function InternshipDetailsPage({ data }) {
         <section className={styles.description}>
           <h2>About the Internship</h2>
           <p>{data[0].about}</p>
+        </section>
+      )}
+      {data[0].about_the_event && (
+        <section className={styles.description}>
+          <h2>About the Event</h2>
+          <p>{data[0].about_the_event}</p>
         </section>
       )}
       <hr />

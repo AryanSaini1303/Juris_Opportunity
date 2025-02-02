@@ -31,6 +31,12 @@ export default function MootDetailsPage({ data }) {
           <p>{data[0].about}</p>
         </section>
       )}
+      {data[0].about_the_event && (
+        <section className={styles.description}>
+          <h2>About the Event</h2>
+          <p>{data[0].about_the_event}</p>
+        </section>
+      )}
       <hr />
 
       <section className={styles.detailsSection}>
@@ -40,7 +46,9 @@ export default function MootDetailsPage({ data }) {
             <ul>
               {data[0].registration_details.map((element, index) => {
                 return element.startsWith("https://") ? (
-                  <a href={element} target="_blank">{element}</a>
+                  <a href={element} target="_blank">
+                    {element}
+                  </a>
                 ) : (
                   <li key={element.id}>{element}</li>
                 );
@@ -122,15 +130,23 @@ export default function MootDetailsPage({ data }) {
         {data[0].payment && (
           <div className={styles.item}>
             <h3>Payment</h3>
-            <ul>
-              {data[0].payment.map((element) => {
-                return element.startsWith("https://") ? (
+            {data[0].payment[0] && !data[0].payment[0].startsWith("https://") ? (
+              <ul>
+                {data[0].payment.map((element) => (
+                  <li>{element}</li>
+                ))}
+              </ul>
+            ) : (
+              data[0].payment.map((element) => {
+                return element.startsWith(
+                  "https://svebydnbodxleebbinrx.supabase.co"
+                ) ? (
                   <img src={element} />
                 ) : (
-                  <li>{element}</li>
+                  <a href={element} target="_blank">{element}</a>
                 );
-              })}
-            </ul>
+              })
+            )}
           </div>
         )}
         {data[0].contact && (

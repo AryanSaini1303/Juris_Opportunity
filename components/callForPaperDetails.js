@@ -31,6 +31,12 @@ export default function CallForPapersDetails({ data }) {
           <p>{data[0].about}</p>
         </section>
       )}
+      {data[0].about_the_event && (
+        <section className={styles.description}>
+          <h2>About the Event</h2>
+          <p>{data[0].about_the_event}</p>
+        </section>
+      )}
       <hr />
 
       <section className={styles.detailsSection}>

@@ -31,6 +31,12 @@ export default function CompetitionDetailsPage({ data }) {
           <p>{data[0].about}</p>
         </section>
       )}
+      {data[0].about_the_event && (
+        <section className={styles.description}>
+          <h2>About the Event</h2>
+          <p>{data[0].about_the_event}</p>
+        </section>
+      )}
       <hr />
 
       <section className={styles.detailsSection}>
@@ -73,6 +79,16 @@ export default function CompetitionDetailsPage({ data }) {
                 </Link>
               </button>
             )}
+          </div>
+        )}
+        {data[0].contact && (
+          <div className={styles.item}>
+            <h3>Contact</h3>
+            <ul>
+              {data[0].contact.map((element, index) => (
+                <li key={element.id}>{element}</li>
+              ))}
+            </ul>
           </div>
         )}
       </section>
