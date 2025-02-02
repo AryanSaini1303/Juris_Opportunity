@@ -116,7 +116,6 @@ export default async function EventsList({ category }) {
       });
   }
   // console.log(filteredCategoryData);
-  // console.log(data);
 
   return (
     <>
