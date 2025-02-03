@@ -67,7 +67,7 @@ export default function InternshipDetailsPage({ data }) {
             </ul>
           </div>
         )}
-        {data[0].eligibility && (
+        {data[0].eligibility && ( 
           <div className={styles.item}>
             <h3>Eligibility</h3>
             <ul>

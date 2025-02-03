@@ -15,7 +15,7 @@ export default function AdvisoryPage() {
       try {
         const response = await fetch(`/api/getAdvisory`);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setMembers(data);
         setLoading(false);
       } catch (error) {

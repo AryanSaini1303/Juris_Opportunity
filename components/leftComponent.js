@@ -85,6 +85,7 @@ export default async function LeftComponent() {
     }
     return acc;
   }, {});
+  // console.log(filteredCategoryData);
 
   return (
     <section className={styles.leftContent}>
@@ -116,10 +117,9 @@ export default async function LeftComponent() {
                 {events.map((event) => (
                   <li key={event.id}>
                     <Link href={`/event/${event.category}_${event.id}`}>
-                      <h3>{event.heading}</h3>
+                      <h4>{event.heading}</h4>
                       <div className={styles.venueDetails}>
                         <h5>{event.start_date ? event.start_date : "--"}</h5>
-                        <hr />
                         <h5>{event.location ? event.location : "--"}</h5>
                       </div>
                       {/* <div className={styles.venueDetails}>

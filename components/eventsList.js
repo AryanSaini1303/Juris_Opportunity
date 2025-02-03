@@ -115,7 +115,7 @@ export default async function EventsList({ category }) {
         return eventDeadline > currentDate;
       });
   }
-  console.log("filteredCategoryData: ",filteredCategoryData);
+  // console.log("filteredCategoryData: ",filteredCategoryData);
 
   return (
     <>
@@ -145,7 +145,7 @@ export default async function EventsList({ category }) {
             data.map((event) => (
               <li key={event.id}>
                 <Link href={`/event/${event.category}_${event.id}`}>
-                  <img src={event.poster} alt="" />
+                  <img src={event.poster || null} alt="" />
                   <div className={styles.specifics}>
                     <h3>
                       {event.start_date}{" "}
@@ -174,7 +174,7 @@ export default async function EventsList({ category }) {
                   {events.map((event) => (
                     <li key={event.id}>
                       <Link href={`/event/${event.category}_${event.id}`}>
-                        <img src={event.poster} alt="" />
+                        <img src={event.poster || null} alt="" />
                         <div className={styles.specifics}>
                           <h3>
                             {event.start_date}{" "}
