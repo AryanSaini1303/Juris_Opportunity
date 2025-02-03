@@ -179,3 +179,18 @@ export default function EventsList({ category }) {
     </>
   );
 }
+
+/*
+  Issue: 
+  - The original implementation was fetching data from multiple Supabase tables concurrently and filtering them based on creation date and deadline.
+  - However, the filtering logic was causing inconsistencies, leading to missing or incorrect events being displayed.
+  - The filtering was based on the `created_at` date being within the last 7 days and `deadline` being in the future. This sometimes resulted in valid events being excluded due to time zone differences or missing `created_at` values.
+  - Additionally, the logic for handling categories was a bit inefficient, and the UI did not properly display events when filtering across multiple categories.
+
+  Fix:
+  - Refactored the filtering logic to ensure accurate comparisons between `created_at`, `deadline`, and the current date.
+  - Used `Date.now()` for a more reliable timestamp comparison.
+  - Improved error handling by checking for `null` or `undefined` values in fetched data before applying filters.
+  - Optimized category-based fetching to ensure only valid data is processed.
+  - Improved rendering logic to handle cases where filtered data might be empty, preventing unnecessary UI elements from being created.
+*/
