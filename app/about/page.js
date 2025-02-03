@@ -272,7 +272,7 @@ export default function AboutPage() {
                 designed to empower law students and legal professionals at
                 every stage of their journey. From your first steps in law
                 school to securing your dream job, we are your one-stop solution
-                to thriving in the legal world. Whether you're looking for
+                to thriving in the legal world. Whether you&apos;re looking for
                 updates on Moot Court competitions, prestigious seminars,
                 groundbreaking academic publications, or networking
                 opportunities, we bring the entire legal landscape to your
