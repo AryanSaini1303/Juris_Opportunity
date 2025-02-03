@@ -1,34 +1,203 @@
 import { supabase } from "@/lib/supabaseClient";
 
 export default async function handler(req, res) {
+  const priorityActs = [
+    "The Air (Prevention And Control Of Pollution) Act, 1981",
+    "The Arbitration and Conciliation Act, 1996",
+    "The Advocates Act, 1961",
+    "The Ancient Monuments and Archaeological Sites and Remains Act, 1958",
+    "The Architects Act, 1972",
+    "The Atomic Energy Act, 1962",
+    "The Births, Deaths and Marriages Registration Act, 1886",
+    "The Cable Television Networks (Regulation) Act, 1995",
+    "The Central Goods and Services Tax Act, 2017",
+    "The Central Vigilance Commission Act, 2003",
+    "The Companies (Amendment) Act, 2020",
+    "The Consumer Protection (E-Commerce) Rules, 2020",
+    "The Contempt of Courts (Amendment) Act, 2006",
+    "The Copyright (Amendment) Act, 2012",
+    "The Cinematograph Act, 1952",
+    "The Civil Procedure Code, 1908",
+    "The Commercial Courts Act, 2015",
+    "The Companies Act, 2013",
+    "The Competition Act, 2002",
+    "The Constitution Of India",
+    "The Consumer Protection Act, 2019",
+    "The Contempt Of Courts Act, 1971",
+    "The Contract Act, 1872",
+    "The Copyright Act, 1957",
+    "The Copyright Rules, 2013",
+    "The Court Fees Act, 1870",
+    "The Criminal Procedure Code, 1973",
+    "The Copyright (Amendment) Act, 2012",
+    "The Delhi Land Reforms Act, 1954",
+    "The Delhi Rent Act, 1995",
+    "The Dentists Act, 1948",
+    "The Disaster Management Act, 2005",
+    "The Divorce Act, 1869",
+    "The Dowry Prohibition Act, 1961",
+    "The Dowry Prohibition Act, 1961",
+    "The Drugs And Cosmetics Act, 1940",
+    "The Drugs And Magic Remedies (Objectionable Advertisements) Act, 1954",
+    "The Electricity Act, 2003",
+    "The Emigration Act, 1983",
+    "The Employees' Compensation Act, 1923",
+    "The Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
+    "The Environment (Protection) Act, 1986",
+    "The Essential Commodities Act, 1955",
+    "The Explosives Act, 1884",
+    "The Factories Act, 1948",
+    "The Factories Act, 1948",
+    "The Family Courts Act, 1984",
+    "The Foreign Exchange Management Act, 1999",
+    "The Forest Act, 1927",
+    "The General Clauses Act, 1897",
+    "The Geographical Indications of Goods (Registration and Protection) Act, 1999",
+    "The Geographical Indications of Goods (Registration and Protection) Rules, 2002",
+    "The Gram Nyayalayas Act, 2008",
+    "The Guardians And Wards Act, 1890",
+    "The Hindu Adoptions And Maintenance Act, 1956",
+    "The Hindu Marriage Act, 1955",
+    "The Hindu Minority And Guardianship Act, 1956",
+    "The Hindu Succession Act, 1956",
+    "The Immoral Traffic (Prevention) Act, 1956",
+    "The Income Tax Act, 1961",
+    "The Indecent Representation Of Women (Prohibition) Act, 1986",
+    "The Indian Evidence Act, 1872",
+    "The Indian Penal Code, 1860",
+    "The Indian Stamp Act, 1899",
+    "The Industrial Employment (Standing Orders) Act, 1946",
+    "The Industrial Employment (Standing Orders) Central Rules,1946",
+    "The Industrial Disputes Act, 1947",
+    "The Industrial Relations Code, 2020",
+    "The Information Technology Act, 2000",
+    "The Insecticides Act, 1968",
+    "The Insurance Act, 1938",
+    "The Insurance Regulatory And Development Authority Act, 1999",
+    "The Insurance Rules, 1939",
+    "The Juvenile Justice (Care And Protection Of Children) Act, 2015",
+    "The Juvenile Justice (Care And Protection Of Children) Model Rules, 2016",
+    "The Limitation Act, 1963",
+    "The Maintenance And Welfare Of Parents And Senior Citizens Act, 2007",
+    "The Maternity Benefit Act, 1961",
+    "The Mediation Act, 2023",
+    "The Medical Termination Of Pregnancy Act, 1971",
+    "The Mental Healthcare Act, 2017",
+    "The Micro, Small, and Medium Enterprises Development Act, 2006",
+    "The Minimum Wages Act, 1948",
+    "The Motor Vehicles Act, 1988",
+    "The Muslim Personal Law (Shariat) Application Act, 1937",
+    "The Narcotic Drugs And Psychotropic Substances Act, 1985",
+    "The National Bank For Agriculture And Rural Development Act, 1981",
+    "The National Security Act, 1980",
+    "The Negotiable Instruments Act, 1881",
+    "The Notaries Act, 1952",
+    "The Employees' Provident Funds And Miscellaneous Provisions Act, 1952",
+    "The Employees' State Insurance Act, 1948",
+    "The Patents Act, 1970",
+    "The Patents Rules, 2003",
+    "The Payment of Wages Act, 1936",
+    "The Payment and Settlement Systems Act, 2007",
+    "The Petroleum Act, 1934",
+    "The Pre-Conception And Pre-Natal Diagnostic Techniques (Prohibition Of Sex Selection) Act, 1994",
+    "The Prevention Of Corruption Act, 1988",
+    "The Prevention Of Damage To Public Property Act, 1984",
+    "The Prevention Of Money- Laundering Act, 2002",
+    "The Probation Of Offenders Act, 1958",
+    "The Protection Of Children From Sexual Offences Act, 2012",
+    "The Protection Of Civil Rights Act, 1955",
+    "The Protection Of Human Rights Act, 1993",
+    "The Protection Of Women From Domestic Violence Act, 2005",
+    "The Protection of Children from Sexual Offences Act, 2012",
+    "The Protection of Plant Varieties and Farmers' Rights Act, 2001",
+    "The Protection of Plant Varieties and Farmers' Rights Rules, 2003",
+    "The Protection of Women from Domestic Violence Act, 2005",
+    "The Provincial Insolvency Act, 1920",
+    "The Public Premises (Eviction Of Unauthorised Occupants) Act, 1971",
+    "The Railways Act, 1989",
+    "The Real Estate (Regulation And Development) Act, 2016",
+    "The Recovery Of Debts And Bankruptcy Act, 1993",
+    "The Registration Act, 1908",
+    "The Representation Of The People Act, 1950",
+    "The Requisitioning And Acquisition Of Immovable Property Act, 1952",
+    "The Reserve Bank of India Act, 1934",
+    "The Right To Fair Compensation And Transparency In Land Acquisition, Rehabilitation And Resettlement Act, 2013",
+    "The Right To Information Act, 2005",
+    "The Rights Of Persons With Disabilities Act, 2016",
+    "The Sale Of Goods Act, 1930",
+    "The Scheduled Castes And The Scheduled Tribes (Prevention Of Atrocities) Act, 1989",
+    "The Securities and Exchange Board of India Act, 1992",
+    "The Semiconductor Integrated Circuits Layout-Design Act, 2000",
+    "The Sexual Harassment Of Women At Workplace (Prevention, Prohibition And Redressal) Act, 2013",
+    "The Special Marriage Act, 1954",
+    "The Specific Relief Act, 1963",
+    "The Stamp Act, 1899",
+    "The Limited Liability Partnership Act, 2008",
+    "The Partnership Act, 1932",
+    "The Succession Act, 1925",
+    "The Plantation Labour Act, 1951",
+    "The Code on Wages 2019",
+    "The Industrial Relations Code 2020",
+    "The Occupational Safety, Health and Working Conditions Code 2020",
+    "The Code on Social Security 2020",
+    "The Trade Unions (Amendment) Act, 2001",
+    "The Workmens Compensation (Amendment) Act 2000",
+    "The Employees’ Compensation Act, 1923",
+    "The Trade Unions Act, 1926",
+    "The Dock Workers (Safety, Health & Welfare) Act, 1986",
+    "The Contract Labour (Regulation and Abolition) Act, 1970",
+    "The Employees liability Act 1938",
+    "The Child Labour Prohibition & Regulation Act 1986",
+    "The Equal Remuneration Act, 1976",
+    "The Employees' State Insurance Act, 1948",
+    "The Maternity Benefit Act, 1961",
+    "The Payment of Bonus Act, 1965",
+    "The Payment of Wages Act, 1936",
+    "The Trade and Merchandise Marks Act, 1958",
+    "The Trade Marks Act, 1999",
+    "The Trade Marks Rules, 2017",
+    "The Transfer Of Property Act, 1882",
+    "The Transgender Persons (Protection of Rights) Act, 2019",
+    "The Transfer of Prisoners Act, 1950",
+    "The Trusts Act, 1882",
+    "The Wakf Act, 1995",
+    "The Water (Prevention And Control Of Pollution) Act, 1974",
+    "The Wild Life (Protection) Act, 1972",
+  ];
+
   if (req.method === "GET") {
     try {
-      // Query the 'bare_acts' table
-      const { data: central_acts_data, error: central_acts_error } = await supabase
-        .from("central_bare_acts")
-        .select("*") // You can specify columns here if needed
-        .limit(40)
-        .order("year", { ascending: false });
+      // Query the 'central_bare_acts' table with filtering
+      const { data: central_acts_data, error: central_acts_error } =
+        await supabase
+          .from("central_bare_acts")
+          .select("*")
+          .in("name", priorityActs)
+          .order("name", { ascending: true });
 
+      // Query the 'state_bare_acts' table with filtering
       const { data: state_acts_data, error: state_acts_error } = await supabase
         .from("state_bare_acts")
-        .select("*") // You can specify columns here if needed
-        .limit(40)
-        .order("year", { ascending: false });
+        .select("*")
+        .in("name", priorityActs)
+        .order("name", { ascending: true });
 
-      const data=[...central_acts_data, ...state_acts_data]
-
-      if (central_acts_error) {
-        return res.status(500).json({ message: "Error fetching data", central_acts_error });
+      if (central_acts_error || state_acts_error) {
+        return res.status(500).json({
+          message: "Error fetching data",
+          central_acts_error,
+          state_acts_error,
+        });
       }
-      if (state_acts_error) {
-        return res.status(500).json({ message: "Error fetching data", state_acts_error });
-      }
 
-      // Return the fetched data
+      // Combine results
+      const data = [...(central_acts_data || []), ...(state_acts_data || [])];
       res.status(200).json(data);
-    } catch (central_acts_error) {
-      res.status(500).json({ message: "Error", central_acts_error: central_acts_error.message });
+    } catch (error) {
+      res.status(500).json({
+        message: "Error",
+        error: error.message,
+      });
     }
   } else {
     res.status(405).json({ message: "Method Not Allowed" });
