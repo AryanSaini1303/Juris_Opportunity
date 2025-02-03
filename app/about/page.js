@@ -207,25 +207,27 @@ export default function AboutPage() {
           </section>
         )} */}
         <div className={styles.container}>
-          {!mobile&&<div className={styles.image_container}>
-            <p>
-              Juris Opportunities connects legal aspirations with real-world
-              opportunities, offering resources like judgments and bare acts to
-              support your legal journey.
-            </p>
-            <h1>
-              Our Story, Vision, <br /> and Values
-            </h1>
-            <div className={styles.box}></div>
-            <Image
-              src={"/about_us_header.jpg"}
-              height={700}
-              width={1500}
-              alt="law_image"
-              className={styles.header_image}
-              layout="responsive"
-            />
-          </div>}
+          {!mobile && (
+            <div className={styles.image_container}>
+              <p>
+                Juris Opportunities connects legal aspirations with real-world
+                opportunities, offering resources like judgments and bare acts
+                to support your legal journey.
+              </p>
+              <h1>
+                Our Story, Vision, <br /> and Values
+              </h1>
+              <div className={styles.box}></div>
+              <Image
+                src={"/about_us_header.jpg"}
+                height={700}
+                width={1500}
+                alt="law_image"
+                className={styles.header_image}
+                layout="responsive"
+              />
+            </div>
+          )}
           <div className={styles.info1}>
             <svg
               width="1.5em"
@@ -236,23 +238,20 @@ export default function AboutPage() {
               <path d="M3.516 7a3.5 3.5 0 1 1-3.5 3.5L0 10a7 7 0 0 1 7-7v2a4.97 4.97 0 0 0-3.536 1.464 5.01 5.01 0 0 0-.497.578c.179-.028.362-.043.548-.043zm9 0a3.5 3.5 0 1 1-3.5 3.5L9 10a7 7 0 0 1 7-7v2a4.97 4.97 0 0 0-3.536 1.464 5.01 5.01 0 0 0-.497.578c.179-.028.362-.043.549-.043z" />
             </svg>
             <h3>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptates, cum, neque reiciendis perspiciatis alias enim magni
-              suscipit explicabo quae repellendus, beatae fuga cupiditate ut
-              illo adipisci sint at impedit quibusdam eveniet consequuntur
-              illum. Asperiores exercitationem vitae, sit ut deleniti aperiam
-              suscipit, aut dolorum blanditiis omnis impedit eligendi iste dolor
-              doloremque. Voluptatibus molestias repellat ipsam voluptas,
-              corrupti aspernatur unde distinctio eius alias aperiam obcaecati
-              adipisci velit nisi porro provident non, quaerat nemo ratione
-              voluptatum iusto maiores, harum corporis. Cumque, corporis.
-              Accusantium!
+              Juris Opportunities is not just a platform—it&apos;s the most
+              comprehensive legal resource available today. Imagine having
+              access to everything you need in one place: an expansive
+              collection of central and state laws, Supreme Court judgments, and
+              the latest legal developments. Whether you are researching,
+              preparing for a competition, drafting a paper, or simply refining
+              your skills, our legal directory provides everything in a single,
+              streamlined experience.
             </h3>
             <Image
               src="/court_image.jpg"
               alt=""
-              height={!mobile?180:140}
-              width={!mobile?640:295}
+              height={!mobile ? 180 : 140}
+              width={!mobile ? 640 : 295}
             />
             <section>
               <h2>
@@ -269,19 +268,16 @@ export default function AboutPage() {
                 </span>
               </h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloribus commodi soluta voluptatibus voluptate dolores tempora?
-                Dolore temporibus unde, repellendus repellat architecto, ad quis
-                reprehenderit aliquid suscipit, eveniet iure molestias dicta
-                hic? Delectus eum fuga minima consequatur ea? Dolore aliquid
-                cumque facilis reprehenderit? Iusto eveniet deserunt incidunt.
-                Hic culpa ipsum accusantium minus quo delectus ipsa dolore
-                quibusdam facere? Eveniet consequatur placeat non quisquam
-                omnis, culpa, reprehenderit, incidunt quod hic nisi dolorum
-                cupiditate? Accusamus at nisi nemo illo, perferendis officiis.
-                Sapiente quod, id doloremque cupiditate optio maxime molestias
-                dolorem neque consequuntur doloribus fugit mollitia eaque
-                consequatur! Vero eos illum minima praesentium facilis?
+                Welcome to Juris Opportunities—the world&apos;s premier platform
+                designed to empower law students and legal professionals at
+                every stage of their journey. From your first steps in law
+                school to securing your dream job, we are your one-stop solution
+                to thriving in the legal world. Whether you're looking for
+                updates on Moot Court competitions, prestigious seminars,
+                groundbreaking academic publications, or networking
+                opportunities, we bring the entire legal landscape to your
+                fingertips. With curated internships, exclusive job openings,
+                and personalized one-on-one mentorship.
               </p>
             </section>
           </div>
@@ -303,47 +299,59 @@ export default function AboutPage() {
           </div>
           <div className={styles.info2}>
             <div>
-                <svg width="3rem" height="3rem" fill="#00c893" viewBox="0 0 512 512">
-                  <path d="M208 32c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v140.9l122-70.4c15.3-8.8 34.9-3.6 43.7 11.7l16 27.7c8.8 15.3 3.6 34.9-11.7 43.7L352 256l122 70.4c15.3 8.8 20.6 28.4 11.7 43.7l-16 27.7c-8.8 15.3-28.4 20.6-43.7 11.7l-122-70.4V480c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32V339.1L86 409.6c-15.3 8.8-34.9 3.6-43.7-11.7l-16-27.7c-8.8-15.3-3.6-34.9 11.7-43.7L160 256 38 185.6c-15.3-8.8-20.5-28.4-11.7-43.7l16-27.7c8.8-15.4 28.4-20.6 43.7-11.8l122 70.4V32z" />
-                </svg>
+              <svg
+                width="3rem"
+                height="3rem"
+                fill="#00c893"
+                viewBox="0 0 512 512"
+              >
+                <path d="M208 32c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v140.9l122-70.4c15.3-8.8 34.9-3.6 43.7 11.7l16 27.7c8.8 15.3 3.6 34.9-11.7 43.7L352 256l122 70.4c15.3 8.8 20.6 28.4 11.7 43.7l-16 27.7c-8.8 15.3-28.4 20.6-43.7 11.7l-122-70.4V480c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32V339.1L86 409.6c-15.3 8.8-34.9 3.6-43.7-11.7l-16-27.7c-8.8-15.3-3.6-34.9 11.7-43.7L160 256 38 185.6c-15.3-8.8-20.5-28.4-11.7-43.7l16-27.7c8.8-15.4 28.4-20.6 43.7-11.8l122 70.4V32z" />
+              </svg>
               <section>
                 <h1>Vision</h1>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Ipsam totam quidem doloribus aliquam voluptate. Officia cum
-                  molestiae repellendus voluptate veniam quibusdam ullam
-                  reiciendis sint error natus enim officiis ratione facilis,
-                  vitae mollitia numquam doloremque laudantium adipisci unde in.
-                  Qui, numquam?
+                  Juris Opportunities was created by top-tier legal
+                  professionals who have worked tirelessly to eliminate the
+                  barriers law students face. Built on their deep insights and
+                  experience, we&apos;ve designed this platform to simplify and
+                  amplify your legal journey. Every feature—from exclusive
+                  resources to one-on-one mentorship programs—has been carefully
+                  crafted to ensure your success in the competitive legal world.
                 </p>
               </section>
             </div>
             <div>
-                <svg width="3rem" height="3rem" fill="#00c893" viewBox="0 0 512 512">
-                  <path d="M208 32c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v140.9l122-70.4c15.3-8.8 34.9-3.6 43.7 11.7l16 27.7c8.8 15.3 3.6 34.9-11.7 43.7L352 256l122 70.4c15.3 8.8 20.6 28.4 11.7 43.7l-16 27.7c-8.8 15.3-28.4 20.6-43.7 11.7l-122-70.4V480c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32V339.1L86 409.6c-15.3 8.8-34.9 3.6-43.7-11.7l-16-27.7c-8.8-15.3-3.6-34.9 11.7-43.7L160 256 38 185.6c-15.3-8.8-20.5-28.4-11.7-43.7l16-27.7c8.8-15.4 28.4-20.6 43.7-11.8l122 70.4V32z" />
-                </svg>
+              <svg
+                width="3rem"
+                height="3rem"
+                fill="#00c893"
+                viewBox="0 0 512 512"
+              >
+                <path d="M208 32c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v140.9l122-70.4c15.3-8.8 34.9-3.6 43.7 11.7l16 27.7c8.8 15.3 3.6 34.9-11.7 43.7L352 256l122 70.4c15.3 8.8 20.6 28.4 11.7 43.7l-16 27.7c-8.8 15.3-28.4 20.6-43.7 11.7l-122-70.4V480c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32V339.1L86 409.6c-15.3 8.8-34.9 3.6-43.7-11.7l-16-27.7c-8.8-15.3-3.6-34.9 11.7-43.7L160 256 38 185.6c-15.3-8.8-20.5-28.4-11.7-43.7l16-27.7c8.8-15.4 28.4-20.6 43.7-11.8l122 70.4V32z" />
+              </svg>
               <section>
                 <h1>Mission</h1>
                 <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
-                  maxime possimus ducimus provident distinctio eaque
-                  perspiciatis, nihil earum porro assumenda nam architecto.
-                  Maxime, porro nesciunt, quisquam obcaecati illo quidem odio ab
-                  tempora voluptates quod amet nulla incidunt veniam fugit
-                  atque!
+                  We understand that the key to unlocking your future lies in
+                  guidance. That&apos;s why we offer personalized one-to-one
+                  mentorship with seasoned professionals who have walked the
+                  path before you. Whether it&apos;s securing internships,
+                  building a professional network, or navigating the
+                  complexities of legal practice, our mentors are here to give
+                  you actionable advice and help you grow with purpose.
                 </p>
               </section>
             </div>
             <Image
               src={"/square_court.jpg"}
               alt=""
-              height={!mobile?400:290}
-              width={!mobile?400:290}
+              height={!mobile ? 400 : 290}
+              width={!mobile ? 400 : 290}
             />
           </div>
         </div>
         <header className={styles.header}>Our Advisory Board</header>
-        {!loading&&(
+        {!loading && (
           <section className={styles.cardsSection}>
             {members &&
               members.map((element, index) => (
