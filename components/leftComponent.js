@@ -11,35 +11,42 @@ export default async function LeftComponent() {
     competitionsData,
     mootsData,
     callforpapers,
+    conferencesData,
   ] = await Promise.all([
     supabase
       .from("jobs")
       .select(
-        "heading, category, start_date, id, created_at, location, mode, deadline"
+        "heading, category, start_date, id, created_at, location, mode, deadline",{cache:"no-store"}
       )
       .order("start_date", { ascending: true }),
     supabase
       .from("internships")
       .select(
-        "heading, category, start_date, id, created_at, location, mode, deadline"
+        "heading, category, start_date, id, created_at, location, mode, deadline",{cache:"no-store"}
       )
       .order("start_date", { ascending: true }),
     supabase
       .from("competitions")
       .select(
-        "heading, category, start_date, id, created_at, location, mode, deadline"
+        "heading, category, start_date, id, created_at, location, mode, deadline",{cache:"no-store"}
       )
       .order("start_date", { ascending: true }),
     supabase
       .from("moots")
       .select(
-        "heading, category, start_date, id, created_at, location, mode, deadline"
+        "heading, category, start_date, id, created_at, location, mode, deadline",{cache:"no-store"}
       )
       .order("start_date", { ascending: true }),
     supabase
       .from("callforpapers")
       .select(
-        "heading, category, start_date, id, created_at, location, mode, deadline"
+        "heading, category, start_date, id, created_at, location, mode, deadline",{cache:"no-store"}
+      )
+      .order("start_date", { ascending: true }),
+    supabase
+      .from("conferences")
+      .select(
+        "heading, category, start_date, id, created_at, location, mode, deadline",{cache:"no-store"}
       )
       .order("start_date", { ascending: true }),
   ]);
@@ -50,7 +57,8 @@ export default async function LeftComponent() {
     internshipsData.error ||
     competitionsData.error ||
     mootsData.error ||
-    callforpapers.error
+    callforpapers.error || 
+    conferencesData.error
   ) {
     console.error(
       "Error fetching data:",
@@ -58,7 +66,8 @@ export default async function LeftComponent() {
         internshipsData.error ||
         competitionsData.error ||
         mootsData.error ||
-        callforpapers.error
+        callforpapers.error || 
+        conferencesData.error
     );
     return;
   }
@@ -69,6 +78,7 @@ export default async function LeftComponent() {
     competitions: competitionsData.data,
     moots: mootsData.data,
     callforpapers: callforpapers.data,
+    conferences: conferencesData.data
   };
   // Step 1: Get the current date and the date two days from now
   // Step 2: Filter events within each category where the event's deadline is within 2 days from now
