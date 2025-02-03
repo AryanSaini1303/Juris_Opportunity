@@ -17,14 +17,14 @@
     transform: translateY(0);
   }
 }
-/* .central_acts {
+.central_acts {
   width: 20%;
   background-color: var(--secondary-color);
   color: var(--primary-color);
   padding: 16px;
   border-radius: 8px;
   height: fit-content;
-} */
+}
 
 .state_acts {
   width: 20%;
@@ -184,10 +184,13 @@
   .acts_container{
     flex-direction: column;
   }
-  .state_acts{
+  .state_acts, .central_acts{
     width: 90%;
     overflow-y: auto;
     height: 26.9vh;
+  }
+  .mainContainer{
+    order: 3;
   }
   .titles_table tbody{
     font-size: 0.8rem;
@@ -198,7 +201,7 @@
     color: black;
     opacity: 1;
   }
-  .state_acts li:hover {
+  .state_acts li:hover, .central_acts li:hover {
     cursor: pointer;
     background-color: var(--primary-color);
     color: var(--secondary-color);

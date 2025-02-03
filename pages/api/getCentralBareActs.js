@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabaseClient";
 export default async function handler(req, res) {
   if (req.method === "GET") {
     const { query } = req.query;
+    console.log(query);
     try {
       // Query the 'bare_acts' table
       const { data, error } = await supabase

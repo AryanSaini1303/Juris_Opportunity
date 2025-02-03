@@ -1,5 +1,3 @@
-// pages/api/bareActs.js
-
 import { supabase } from "@/lib/supabaseClient";
 
 export default async function handler(req, res) {
@@ -22,6 +20,9 @@ export default async function handler(req, res) {
 
       if (central_acts_error) {
         return res.status(500).json({ message: "Error fetching data", central_acts_error });
+      }
+      if (state_acts_error) {
+        return res.status(500).json({ message: "Error fetching data", state_acts_error });
       }
 
       // Return the fetched data

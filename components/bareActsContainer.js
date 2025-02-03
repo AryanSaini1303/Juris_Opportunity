@@ -8,46 +8,168 @@ import SearchBar from "./searchBar";
 import { supabase } from "@/lib/supabaseClient";
 
 export default function BareActsContainer({ page }) {
-  // const centralActs = [
-  //   "Alternative Dispute Resolution Laws",
-  //   "Armed Forces Laws",
-  //   "Banking Laws",
-  //   "Bills in Parliament",
-  //   "Children Laws",
-  //   "Civil Laws",
-  //   "Consumer Protection Laws",
-  //   "Corporate Laws",
-  //   "Criminal Laws",
-  //   "Direct Tax Laws",
-  //   "Education Laws",
-  //   "Environmental Laws",
-  //   "Family Laws",
-  //   "Food & Agriculture Laws",
-  //   "Foreign Exchange Laws ",
-  //   "Human Rights Laws",
-  //   "Indirect Tax Laws",
-  //   "Information Technology Laws",
-  //   "Insurance Laws ",
-  //   "Intellectual Property Laws ",
-  //   "International Laws and Conventions ",
-  //   "Legal and Professional Laws ",
-  //   "Media and Entertainment Laws ",
-  //   "Medical and Health Laws",
-  //   "Miscellaneous Laws",
-  //   "Petroleum & Natural Gas Laws",
-  //   "Political and Election Laws",
-  //   "Power Sector Laws",
-  //   "Property Laws",
-  //   "Public Related Laws",
-  //   "Railway Laws",
-  //   "Repealed Laws",
-  //   "Service and Labour Laws",
-  //   "Tourism Laws",
-  //   "Transport Laws",
-  //   "BNS with IPC",
-  //   "BNSS with CrPC",
-  //   "BSA with IEA",
-  // ];
+  const centralActs = [
+    "Administration Laws",
+    "Agriculture and Cooperatives Laws",
+    "Agriculture and Food Security Laws",
+    "Agriculture and Trade Laws",
+    "Agricultural Laws",
+    "Animal Laws",
+    "Animal Welfare Laws",
+    "Anti-Corruption Laws",
+    "Arbitration Laws",
+    "Aviation Laws",
+    "Banking and Finance Laws",
+    "Banking Laws",
+    "Bankruptcy Laws",
+    "BNS with IPC Laws",
+    "Business Laws",
+    "Charitable Laws",
+    "Child Protection Laws",
+    "Child Welfare Laws",
+    "Civil Laws",
+    "Civil Registration Laws",
+    "Commerce Laws",
+    "Commercial Laws",
+    "Communication Laws",
+    "Constitutional Laws",
+    "Consumer Protection Laws",
+    "Contract Laws",
+    "Cooperative Laws",
+    "Corporate Laws",
+    "Corporates Laws",
+    "Court Laws",
+    "Cultural Heritage Laws",
+    "Cultural Laws",
+    "Currency Laws",
+    "Defence and Armed Forces Laws",
+    "Defence Laws",
+    "Disability Welfare Laws",
+    "Disaster Management Laws",
+    "Diplomacy Laws",
+    "Dispute Resolution Laws",
+    "Education and Culture Laws",
+    "Educational Laws",
+    "Education Laws",
+    "Educations Laws",
+    "Election Laws",
+    "Elections Laws",
+    "Electoral Laws",
+    "Electorals Laws",
+    "Emergency Laws",
+    "Energy and Resources Laws",
+    "Energy Laws",
+    "Entertainment Laws",
+    "Environmental Laws",
+    "Family Laws",
+    "Finance Laws",
+    "Financial Laws",
+    "Food Safety Laws",
+    "Food Security Laws",
+    "Gambling and Lotteries Laws",
+    "Gambling Laws",
+    "Gender Equality Laws",
+    "Governance Laws",
+    "Health Laws",
+    "Healthcare Regulation Laws",
+    "Heritage and Archaeology Laws",
+    "Historical Laws",
+    "Housing and Rents Laws",
+    "Human Rights and Social Justice Laws",
+    "Human Rights Laws",
+    "Immigration and Foreign Affairs Laws",
+    "Immigration Laws",
+    "Indirect Taxs Laws",
+    "Industry Laws",
+    "Infrastructure Laws",
+    "Insurance and Finance Laws",
+    "Insurance Laws",
+    "Intellectual Property Laws",
+    "Intellectual Propertys Laws",
+    "Internationals Laws",
+    "International Finance Laws",
+    "International Laws",
+    "International Organizations Laws",
+    "International Relations Laws",
+    "Judicial Laws",
+    "Judiciary and Courts Laws",
+    "Judiciary Laws",
+    "Labor Laws",
+    "Labour and Employment Laws",
+    "Labour Laws",
+    "Lands Laws",
+    "Land Reform Laws",
+    "Law Enforcement Laws",
+    "Legal Administration Laws",
+    "Legal Laws",
+    "Legal Profession Laws",
+    "Legal Profession Regulation Laws",
+    "Legislative Laws",
+    "Libraries Laws",
+    "Linguistic Laws",
+    "Local Governance Laws",
+    "Local Government Laws",
+    "Marriage and Family Laws",
+    "Maritime Laws",
+    "Maritime Security Laws",
+    "Media Laws",
+    "Military Laws",
+    "Mining and Natural Resources Laws",
+    "Mining Laws",
+    "Miscellaneous Laws",
+    "Municipal Laws",
+    "National Security Laws",
+    "National Symbols Laws",
+    "NGO Laws",
+    "Parliamentary Laws",
+    "Personal Laws",
+    "Police Laws",
+    "Postal Laws",
+    "Professional Regulation Laws",
+    "Property Laws",
+    "Public Administration Laws",
+    "Public Diplomacy Laws",
+    "Public Health Laws",
+    "Public Services Laws",
+    "Railways Laws",
+    "Regional Laws",
+    "Religious and Charitable Institutions Laws",
+    "Religious Laws",
+    "Research and Statistics Laws",
+    "Research Laws",
+    "Revenue Laws",
+    "Rural Development and Handicrafts Laws",
+    "Safety Laws",
+    "Security Laws",
+    "Social Justice Laws",
+    "Social Laws",
+    "Social Security Laws",
+    "Social Welfare and Justice Laws",
+    "Social Welfare Laws",
+    "Standards Laws",
+    "State Reorganization Laws",
+    "Statistics Laws",
+    "Succession and Inheritance Laws",
+    "Tax Laws",
+    "Taxation Laws",
+    "Taxations Laws",
+    "Technology Laws",
+    "Tort Laws",
+    "Trade and Commerce Regulation Laws",
+    "Trade Laws",
+    "Transports Laws",
+    "Transportation Laws",
+    "Transparency Laws",
+    "Transport Laws",
+    "Trust Laws",
+    "Trusts Laws",
+    "Tribal Laws",
+    "Urban Development Laws",
+    "Welfare Laws",
+    "Water Resource Management Laws",
+    "Water Resources Laws",
+    "Women and Child Welfare Laws",
+  ];
 
   const stateActs = [
     "Andhra Pradesh",
@@ -87,8 +209,8 @@ export default function BareActsContainer({ page }) {
   const [loading, setLoading] = useState();
   const [centralActQuery, setCentralActQuery] = useState();
   const [stateActQuery, setStateActQuery] = useState();
-  const [showModal, setShowModal] = useState(false);
-  const [bareActIntro, setBareActIntro] = useState();
+  // const [showModal, setShowModal] = useState(false);
+  // const [bareActIntro, setBareActIntro] = useState();
   const [totalPageNumbers, setTotalPageNumbers] = useState();
   const router = useRouter();
   const [allBareActs, setAllBareActs] = useState();
@@ -96,7 +218,7 @@ export default function BareActsContainer({ page }) {
   const [user, setUser] = useState();
   const [bareActClick, setBareActClick] = useState(false);
   const [mobile, setMobile] = useState(false);
-  const limit = mobile&&!mobile?25:10;
+  const limit =!mobile?40:10;
 
   useEffect(() => {
     // Ensure the code only runs in the browser
@@ -251,7 +373,7 @@ export default function BareActsContainer({ page }) {
           <BareActModal closeFunction={setShowModal} intro={bareActIntro} />
         )} */}
         {/* Central Acts */}
-        {/* <div className={styles.central_acts}>
+        <div className={styles.central_acts}>
           <h2>Central Acts</h2>
           <ul>
             {centralActs.map((act, index) => (
@@ -269,30 +391,6 @@ export default function BareActsContainer({ page }) {
                 }
               >
                 {act}
-              </li>
-            ))}
-          </ul>
-        </div> */}
-
-        {/* State Bare Acts */}
-        <div className={styles.state_acts}>
-          <h2>State Bare Acts</h2>
-          <ul>
-            {stateActs.map((act, index) => (
-              <li
-                key={index}
-                onClick={() => {
-                  stateActQuery == act
-                    ? handleStateActsClick("")
-                    : handleStateActsClick(act);
-                }}
-                style={
-                  stateActQuery === act
-                    ? { backgroundColor: "var(--accent-color)", color: "white" }
-                    : null
-                }
-              >
-                {act} state law
               </li>
             ))}
           </ul>
@@ -314,7 +412,6 @@ export default function BareActsContainer({ page }) {
                   <th>Title</th>
                   {!mobile && (
                     <>
-                      <th>Act Number</th>
                       <th>Year</th>
                     </>
                   )}
@@ -351,11 +448,10 @@ export default function BareActsContainer({ page }) {
                         }
                       }}
                     >
-                      <td>{item.state ? item.state : "Central"}</td>
+                      <td>{item.state ? item.state : item.category}</td>
                       <td>{item.name}</td>
                       {!mobile && (
                         <>
-                          <td>{item.act_number}</td>
                           <td>{item.year}</td>
                         </>
                       )}
@@ -381,6 +477,30 @@ export default function BareActsContainer({ page }) {
               currentPage={page}
             />
           )}
+        </div>
+
+        {/* State Bare Acts */}
+        <div className={styles.state_acts}>
+          <h2>State Bare Acts</h2>
+          <ul>
+            {stateActs.map((act, index) => (
+              <li
+                key={index}
+                onClick={() => {
+                  stateActQuery == act
+                    ? handleStateActsClick("")
+                    : handleStateActsClick(act);
+                }}
+                style={
+                  stateActQuery === act
+                    ? { backgroundColor: "var(--accent-color)", color: "white" }
+                    : null
+                }
+              >
+                {act} state law
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>
