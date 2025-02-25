@@ -67,6 +67,18 @@ export default function ConferenceDetailsPage({ data }) {
             </Link>
           </button>
         )}
+        <br />
+            {data[0].brochure && (
+              <button className={styles.item}>
+                <Link
+                  href={data[0].brochure}
+                  target="_blank"
+                  style={{ transition: "all 0.2s ease-in-out" }}
+                >
+                  Click here to access Brochure
+                </Link>
+              </button>
+            )}
       </section>
       <hr />
       {/* {!(
