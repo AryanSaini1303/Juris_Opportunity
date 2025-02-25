@@ -4,11 +4,13 @@ export default function CallForPapersDetails({ data }) {
   return (
     <div className={styles.details}>
       <header className={styles.header}>
-        <img
-          src={data[0].poster || "https://picsum.photos/300/300"}
-          alt="Event Poster"
-          className={styles.poster}
-        />
+        {data[0].poster && (
+          <img
+            src={data[0].poster || "https://picsum.photos/300/300"}
+            alt="Event Poster"
+            className={styles.poster}
+          />
+        )}
         <div className={styles.info}>
           <h1 className={styles.heading}>{data[0].heading || "-"}</h1>
           <p className={styles.dateTime}>
@@ -19,9 +21,9 @@ export default function CallForPapersDetails({ data }) {
           {data[0].location && (
             <p className={styles.location}>Location: {data[0].location}</p>
           )}
-          {data[0].mode && (
+          {/* {data[0].mode && (
             <p className={styles.location}>Mode: {data[0].mode}</p>
-          )}
+          )} */}
         </div>
       </header>
       <hr />
@@ -81,16 +83,48 @@ export default function CallForPapersDetails({ data }) {
                 </Link>
               </button>
             )}
+            <br />
+            {data[0].brochure && (
+              <button className={styles.item}>
+                <Link
+                  href={data[0].brochure}
+                  target="_blank"
+                  style={{ transition: "all 0.2s ease-in-out" }}
+                >
+                  Click here to access Brochure
+                </Link>
+              </button>
+            )}
+            {data[0].submissionGuidlines && (
+              <div className={styles.item}>
+                <h3>Submission Guidelines</h3>
+                <ul>
+                  {data[0].submissionGuidlines.map((element, index) => (
+                    <li key={element.id}>{element}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {data[0].contact && (
-          <div className={styles.item}>
-            <h3>Contact Details</h3>
-            <ul>
-              {data[0].contact.map((element, index) => (
-                <li key={element.id}>{element}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+              <div className={styles.item}>
+                <h3>Contact Details</h3>
+                <ul>
+                  {data[0].contact.map((element, index) => (
+                    <li key={element.id}>{element}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {data[0].importantDates && (
+              <div className={styles.item}>
+                <h3>Important Dates</h3>
+                <ul>
+                  {data[0].importantDates.map((element, index) => (
+                    <li key={element.id}>{element}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
       </section>

@@ -124,7 +124,7 @@ export default function EventsList({ category }) {
               data.map((event) => (
                 <li key={event.id}>
                   <Link href={`/event/${event.category}_${event.id}`}>
-                    <img src={event.poster || null} alt="" />
+                    {event.poster&&<img src={event.poster || null} alt="" />}
                     <div className={styles.specifics}>
                       <h3>
                         {event.start_date}{' '}
@@ -149,7 +149,7 @@ export default function EventsList({ category }) {
                   {filteredCategoryData[categoryKey].map((event) => (
                     <li key={event.id}>
                       <Link href={`/event/${event.category}_${event.id}`}>
-                        <img src={event.poster || null} alt="" />
+                        {event.poster&&<img src={event.poster || null} alt="" />}
                         <div className={styles.specifics}>
                           <h3>
                             {event.start_date}{' '}
