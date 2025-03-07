@@ -77,7 +77,7 @@ export default function Footer() {
           <h1>Get in Touch</h1>
           <ul>
             <li>
-              <Link href="#" target="_blank">
+              <Link href="mailto:jurisopportunities@gmail.com" target="_blank">
                 <svg
                   height={!mobile ? "2rem" : "1.5rem"}
                   width={!mobile ? "2rem" : "1.5rem"}
@@ -89,7 +89,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="#" target="_blank">
+              <Link href="https://www.instagram.com/juris_opportunities/" target="_blank">
                 <svg
                   viewBox="0 0 512 512"
                   fill="#FD0AAD"
@@ -102,7 +102,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="#" target="_blank">
+              <Link href="https://www.linkedin.com/in/juris-opportunities-5086b5321/?originalSubdomain=in" target="_blank">
                 <svg
                   fill="#0A66C2"
                   viewBox="0 0 16 16"
