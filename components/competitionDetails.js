@@ -27,7 +27,7 @@ export default function CompetitionDetailsPage({ data }) {
       <hr />
       {data[0].about && (
         <section className={styles.description}>
-          <h2>About the Competition</h2>
+          <h2>About the Organization</h2>
           <p>{data[0].about}</p>
         </section>
       )}

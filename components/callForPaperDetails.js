@@ -18,9 +18,9 @@ export default function CallForPapersDetails({ data }) {
             {/* {data[0].end_date && "End:"} {data[0].end_date + " |"}{" "} */}
             {data[0].deadline && "Deadline:"} {data[0].deadline}
           </p>
-          {data[0].location && (
+          {/* {data[0].location && (
             <p className={styles.location}>Location: {data[0].location}</p>
-          )}
+          )} */}
           {/* {data[0].mode && (
             <p className={styles.location}>Mode: {data[0].mode}</p>
           )} */}
@@ -48,7 +48,7 @@ export default function CallForPapersDetails({ data }) {
             <p>{data[0].position}</p>
           </div>
         )}
-        {data[0].eligibility && (
+        {/* {data[0].eligibility && (
           <div className={styles.item}>
             <h3>Eligibility</h3>
             <ul>
@@ -57,13 +57,13 @@ export default function CallForPapersDetails({ data }) {
               ))}
             </ul>
           </div>
-        )}
-        {data[0].prize && (
+        )} */}
+        {/* {data[0].prize && (
           <div className={styles.item}>
             <h3>Reward/Recognition</h3>
             <p>{data[0].prize}</p>
           </div>
-        )}
+        )} */}
         {data[0].fee_details && (
           <div className={styles.item}>
             <h3>Registration Details</h3>
@@ -72,7 +72,7 @@ export default function CallForPapersDetails({ data }) {
                 <li key={element.id}>{element}</li>
               ))}
             </ul>
-            {data[0].registration_link && (
+            {/* {data[0].registration_link && (
               <button className={styles.item}>
                 <Link
                   href={data[0].registration_link}
@@ -82,6 +82,26 @@ export default function CallForPapersDetails({ data }) {
                   Click here to Register
                 </Link>
               </button>
+            )} */}
+            {data[0].themes && (
+              <div className={styles.item}>
+                <h3>Themes</h3>
+                <ul>
+                  {data[0].themes.map((element, index) => (
+                    <li key={element.id}>{element}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {data[0].howToSubmit && (
+              <div className={styles.item}>
+                <h3>How To Submit</h3>
+                <ul>
+                  {data[0].howToSubmit.map((element, index) => (
+                    <li key={element.id}>{element}</li>
+                  ))}
+                </ul>
+              </div>
             )}
             <br />
             {data[0].brochure && (
