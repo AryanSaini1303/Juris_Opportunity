@@ -16,7 +16,7 @@ export default function JobDetailsPage({ data }) {
             {/* {data[0].end_date && "End:"} {data[0].end_date + " |"}{" "} */}
             {data[0].deadline && "Deadline:"} {data[0].deadline}
           </p>
-          {data[0].location &&  (
+          {data[0].location && (
             <p className={styles.location}>Location: {data[0].location}</p>
           )}
           {data[0].mode && (
@@ -31,10 +31,10 @@ export default function JobDetailsPage({ data }) {
           <p>{data[0].about}</p>
         </section>
       )}
-      {data[0].about_the_event && (
+      {data[0].about_the_organisation && (
         <section className={styles.description}>
-          <h2>About the Event</h2>
-          <p>{data[0].about_the_event}</p>
+          <h2>About the Organisation</h2>
+          <p>{data[0].about_the_organisation}</p>
         </section>
       )}
       <hr />
@@ -84,17 +84,17 @@ export default function JobDetailsPage({ data }) {
           </button>
         )}
         <br />
-            {data[0].brochure && (
-              <button className={styles.item}>
-                <Link
-                  href={data[0].brochure}
-                  target="_blank"
-                  style={{ transition: "all 0.2s ease-in-out" }}
-                >
-                  Click here to access Brochure
-                </Link>
-              </button>
-            )}
+        {data[0].brochure && (
+          <button className={styles.item}>
+            <Link
+              href={data[0].brochure}
+              target="_blank"
+              style={{ transition: "all 0.2s ease-in-out" }}
+            >
+              Click here to access Brochure
+            </Link>
+          </button>
+        )}
         {data[0].contact && (
           <div className={styles.item}>
             <h3>Contact</h3>
